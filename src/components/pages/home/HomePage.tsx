@@ -3,6 +3,7 @@ import { RaceEntryTable } from "./RaceEntryTable";
 
 const entries: RaceEntry[] = [
   createRaceEntry({
+    id: "dummy-1",
     raceTitle: "有馬記念",
     tadunaComment: "平均的",
     speedRank: "great",
@@ -20,6 +21,7 @@ const entries: RaceEntry[] = [
     commentatorComment: "これ以上ない仕上がり",
   }),
   createRaceEntry({
+    id: "dummy-2",
     raceTitle: "ジャパンカップ",
     tadunaComment: "有力",
     speedRank: "great",
