@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { createRaceEntry, RaceEntry } from "../../../data/RaceEntry";
 import { RaceEntryTable } from "./RaceEntryTable";
 
