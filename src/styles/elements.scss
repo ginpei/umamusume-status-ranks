@@ -3,13 +3,28 @@
 }
 
 h1,
-p {
+p,
+table {
   margin-top: 1em;
 }
 
 body {
   background-color: var(--base-bg);
   color: var(--base-fg);
+}
+
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border: 1px solid var(--base-border-color);
+  padding: 0.5em;
+}
+
+th {
+  background-color: #666;
+  color: #fff;
 }
 
 a {
