@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+}
+
+h1,
+p {
+  margin-top: 1em;
+}
+
+body {
+  background-color: var(--base-bg);
+  color: var(--base-fg);
+}
+
+a {
+  color: var(--link-fg);
+
+  &:hover {
+    color: var(--link-hover-fg);
+  }
+}
