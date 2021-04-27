@@ -17,6 +17,9 @@
     "web-vitals": "^1.1.1"
   },
   "scripts": {
+    "lint:js": "eslint .",
+    "lint:type": "tsc",
+    "lint": "npm run lint:type && npm run lint:js",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
@@ -41,6 +44,13 @@
     ]
   },
   "devDependencies": {
-    "git-cz": "^4.7.6"
+    "@ginpei/eslintrc": "^1.1.0",
+    "@typescript-eslint/eslint-plugin": "^4.22.0",
+    "eslint": "^7.25.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.22.1",
+    "eslint-plugin-prettier": "^3.4.0",
+    "git-cz": "^4.7.6",
+    "prettier": "^2.2.1"
   }
 }
