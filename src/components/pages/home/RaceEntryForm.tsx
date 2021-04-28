@@ -1,7 +1,8 @@
-import { ChangeEventHandler, FormEventHandler } from "react";
+import { ChangeEventHandler, FormEventHandler, useState } from "react";
 import { RaceEntry, RaceEntryCallback } from "../../../data/RaceEntry";
 import { InputBlock, InputField } from "../../stable/InputField";
 import styles from "./RaceEntryForm.module.scss";
+import { StatusInput } from "./StatusInput";
 import { OnStatusRankRadioChange } from "./StatusRankRadio";
 import { StatusRankSelect } from "./StatusRankSelect";
 
@@ -90,6 +91,9 @@ export const RaceEntryForm: React.FC<{
             value={entry.intelligenceRank}
           />
         </InputBlock>
+      </div>
+      <div data-area="status">
+        <StatusInput entry={entry} onChange={onChange} />
       </div>
       <button data-area="submit">OK</button>
     </form>

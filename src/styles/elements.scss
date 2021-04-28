@@ -42,7 +42,8 @@ label {
 
 button,
 input,
-select {
+select,
+textarea {
   box-sizing: border-box;
   min-height: var(--clickable-height);
 }

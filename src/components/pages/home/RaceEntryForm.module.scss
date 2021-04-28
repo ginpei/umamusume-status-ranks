@@ -4,7 +4,7 @@
   grid-template:
     "raceTitle   raceTitle     raceTitle   raceTitle raceTitle         "
     "speedRank   staminaRank   powerRank   gutRank   intelligenceRank  "
-    "speedStatus staminaStatus powerStatus gutStatus intelligenceStatus"
+    "status      status        status      status    status            "
     "submit      submit        submit      submit    submit            "
     / 1fr 1fr 1fr 1fr 1fr;
 
@@ -16,11 +16,7 @@
   & > [data-area="gutRank"] { grid-area: gutRank; }
   & > [data-area="intelligenceRank"] { grid-area: intelligenceRank; }
 
-  & > [data-area="speedStatus"] { grid-area: speedStatus; }
-  & > [data-area="staminaStatus"] { grid-area: staminaStatus; }
-  & > [data-area="powerStatus"] { grid-area: powerStatus; }
-  & > [data-area="gutStatus"] { grid-area: gutStatus; }
-  & > [data-area="intelligenceStatus"] { grid-area: intelligenceStatus; }
+  & > [data-area="status"] { grid-area: status; }
 
   & > [data-area="submit"] { grid-area: submit; }
 }
