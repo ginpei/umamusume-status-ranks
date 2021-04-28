@@ -1,0 +1,38 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.RaceEntryItem {
+  display: grid;
+  gap: 1em;
+  grid-template:
+    "raceTitle     raceTitle     raceTitle     raceTitle     raceTitle       "
+    "speed         stamina       power         gut           intelligence    "
+    "tadunaComment tadunaComment tadunaComment tadunaComment tadunaComment   "
+    "voteRank      voteRank      expectation   expectation   expectation     "
+    "commentatorComment commentatorComment commentatorComment commentatorComment commentatorComment   "
+    "submit        submit        submit        submit        submit          "
+    / 1fr 1fr 1fr 1fr 1fr;
+
+    & > [data-area="raceTitle"] { grid-area: raceTitle; }
+
+    & > [data-area="speed"] { grid-area: speed; }
+    & > [data-area="stamina"] { grid-area: stamina; }
+    & > [data-area="power"] { grid-area: power; }
+    & > [data-area="gut"] { grid-area: gut; }
+    & > [data-area="intelligence"] { grid-area: intelligence; }
+
+    & > [data-area="status"] { grid-area: status; }
+    & > [data-area="tadunaComment"] { grid-area: tadunaComment; }
+
+    & > [data-area="voteRank"] { grid-area: voteRank; }
+    & > [data-area="expectation1"] { grid-area: expectation1; }
+    & > [data-area="expectation2"] { grid-area: expectation2; }
+    & > [data-area="expectation3"] { grid-area: expectation3; }
+
+    & > [data-area="commentatorComment"] { grid-area: commentatorComment; }
+    & > [data-area="submit"] { grid-area: submit; }
+}

@@ -5,7 +5,7 @@ import {
   RaceEntryCallback,
 } from "../../../data/RaceEntry";
 import { RaceEntryForm } from "./RaceEntryForm";
-import { RaceEntryTable } from "./RaceEntryTable";
+import { RaceEntryList } from "./RaceEntryList";
 
 const entries: RaceEntry[] = [
   createRaceEntry({
@@ -54,12 +54,12 @@ export const HomePage: React.FC = () => {
   return (
     <div className="HomePage u-container">
       <h1>HomePage</h1>
-      <details open>
+      <details>
         <summary>追加</summary>
         <NewRaceEntryForm onSubmit={onNewFormSubmit} />
       </details>
       <div className="u-vScroll">
-        <RaceEntryTable entries={entries} />
+        <RaceEntryList entries={entries} />
       </div>
     </div>
   );
