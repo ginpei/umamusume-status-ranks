@@ -37,13 +37,12 @@ export const expectationLevels = [
   "good",
   "maybe",
   "possibly",
-  "",
+  "none",
 ] as const;
 
-export const tadunaRanks = ["great", "good", "ok", "poor", ""] as const;
+export const tadunaRanks = ["great", "good", "ok", "poor"] as const;
 
 const tadunaRankSymbolMap: Record<TadunaRank, string> = {
-  "": "？",
   good: "○",
   great: "◎",
   ok: "△",
@@ -51,10 +50,10 @@ const tadunaRankSymbolMap: Record<TadunaRank, string> = {
 };
 
 const expectationSymbolMap: Record<ExpectationLevel, string> = {
-  "": "―",
   good: "○",
   great: "◎",
   maybe: "△",
+  none: "―",
   possibly: "▲",
 };
 
@@ -62,17 +61,17 @@ export function createRaceEntry(initial: Partial<RaceEntry> = {}): RaceEntry {
   return {
     ...createDataRecord(initial),
     commentatorComment: initial.commentatorComment ?? "",
-    expectations: initial.expectations ?? ["", "", ""],
-    gutRank: initial.gutRank ?? "",
+    expectations: initial.expectations ?? ["great", "great", "great"],
+    gutRank: initial.gutRank ?? "great",
     gutStatus: initial.gutStatus ?? 0,
-    intelligenceRank: initial.intelligenceRank ?? "",
+    intelligenceRank: initial.intelligenceRank ?? "great",
     intelligenceStatus: initial.intelligenceStatus ?? 0,
-    powerRank: initial.powerRank ?? "",
+    powerRank: initial.powerRank ?? "great",
     powerStatus: initial.powerStatus ?? 0,
     raceTitle: initial.raceTitle ?? "",
-    speedRank: initial.speedRank ?? "",
+    speedRank: initial.speedRank ?? "great",
     speedStatus: initial.speedStatus ?? 0,
-    staminaRank: initial.staminaRank ?? "",
+    staminaRank: initial.staminaRank ?? "great",
     staminaStatus: initial.staminaStatus ?? 0,
     tadunaComment: initial.tadunaComment ?? "",
     voteRank: initial.voteRank ?? 1,

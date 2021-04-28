@@ -23,7 +23,7 @@ const entries: RaceEntry[] = [
     intelligenceRank: "poor",
     intelligenceStatus: 433,
     voteRank: 5,
-    expectations: ["maybe", "possibly", ""],
+    expectations: ["maybe", "possibly", "none"],
     commentatorComment: "これ以上ない仕上がり",
   }),
   createRaceEntry({
