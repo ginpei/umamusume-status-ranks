@@ -1,0 +1,26 @@
+.root {
+  display: grid;
+  gap: 1em;
+  grid-template:
+    "raceTitle   raceTitle     raceTitle   raceTitle raceTitle         "
+    "speedRank   staminaRank   powerRank   gutRank   intelligenceRank  "
+    "speedStatus staminaStatus powerStatus gutStatus intelligenceStatus"
+    "submit      submit        submit      submit    submit            "
+    / 1fr 1fr 1fr 1fr 1fr;
+
+  & > [data-area="raceTitle"] { grid-area: raceTitle; }
+
+  & > [data-area="speedRank"] { grid-area: speedRank; }
+  & > [data-area="staminaRank"] { grid-area: staminaRank; }
+  & > [data-area="powerRank"] { grid-area: powerRank; }
+  & > [data-area="gutRank"] { grid-area: gutRank; }
+  & > [data-area="intelligenceRank"] { grid-area: intelligenceRank; }
+
+  & > [data-area="speedStatus"] { grid-area: speedStatus; }
+  & > [data-area="staminaStatus"] { grid-area: staminaStatus; }
+  & > [data-area="powerStatus"] { grid-area: powerStatus; }
+  & > [data-area="gutStatus"] { grid-area: gutStatus; }
+  & > [data-area="intelligenceStatus"] { grid-area: intelligenceStatus; }
+
+  & > [data-area="submit"] { grid-area: submit; }
+}

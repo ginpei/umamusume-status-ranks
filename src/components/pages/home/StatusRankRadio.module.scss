@@ -1,0 +1,13 @@
+.root {
+  border: 1px solid transparent;
+  display: grid;
+  place-items: center;
+
+  &[data-checked="true"] {
+    border-color: tomato;
+  }
+}
+
+.input {
+  display: none;
+}

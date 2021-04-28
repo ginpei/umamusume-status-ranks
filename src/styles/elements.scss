@@ -34,3 +34,8 @@ a {
     color: var(--link-hover-fg);
   }
 }
+
+button,
+input {
+  min-height: 2em;
+}

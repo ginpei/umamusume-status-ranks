@@ -1,4 +1,10 @@
-import { createRaceEntry, RaceEntry } from "../../../data/RaceEntry";
+import { useState } from "react";
+import {
+  createRaceEntry,
+  RaceEntry,
+  RaceEntryCallback,
+} from "../../../data/RaceEntry";
+import { RaceEntryForm } from "./RaceEntryForm";
 import { RaceEntryTable } from "./RaceEntryTable";
 
 const entries: RaceEntry[] = [
@@ -41,10 +47,34 @@ const entries: RaceEntry[] = [
 ];
 
 export const HomePage: React.FC = () => {
+  const onNewFormSubmit: RaceEntryCallback = (entry) => {
+    console.log("# entry", entry);
+  };
+
   return (
     <div className="HomePage u-container">
       <h1>HomePage</h1>
-      <RaceEntryTable entries={entries} />
+      <details open>
+        <summary>追加</summary>
+        <NewRaceEntryForm onSubmit={onNewFormSubmit} />
+      </details>
+      <div className="u-vScroll">
+        <RaceEntryTable entries={entries} />
+      </div>
     </div>
+  );
+};
+
+const NewRaceEntryForm: React.FC<{
+  onSubmit: RaceEntryCallback;
+}> = ({ onSubmit }) => {
+  const [entry, setEntry] = useState(createRaceEntry());
+
+  const onChange: RaceEntryCallback = (newEntry) => {
+    setEntry(newEntry);
+  };
+
+  return (
+    <RaceEntryForm entry={entry} onChange={onChange} onSubmit={onSubmit} />
   );
 };

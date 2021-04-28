@@ -28,6 +28,10 @@ export type ExpectationList = [
 
 export type TadunaRank = typeof tadunaRanks[number];
 
+export type RaceEntryCallback = (entry: RaceEntry) => void;
+
+export type TadunaRankCallback = (rank: TadunaRank) => void;
+
 export const expectationLevels = [
   "great",
   "good",
