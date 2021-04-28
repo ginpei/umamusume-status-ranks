@@ -2,10 +2,16 @@
   display: flex;
   flex-direction: column;
   gap: 1rem;
+  margin-left: -1rem;
+  margin-right: -1rem;
   margin-top: 1rem;
 }
 
 .RaceEntryItem {
+  background-color: #fafafa;
+  border-color: gray;
+  border-style: solid none;
+  border-width: 1px;
   display: grid;
   gap: 1em;
   grid-template:
@@ -14,8 +20,8 @@
     "tadunaComment tadunaComment tadunaComment tadunaComment tadunaComment   "
     "voteRank      voteRank      expectation   expectation   expectation     "
     "commentatorComment commentatorComment commentatorComment commentatorComment commentatorComment   "
-    "submit        submit        submit        submit        submit          "
     / 1fr 1fr 1fr 1fr 1fr;
+  padding: 1rem;
 
     & > [data-area="raceTitle"] { grid-area: raceTitle; }
 
@@ -25,14 +31,15 @@
     & > [data-area="gut"] { grid-area: gut; }
     & > [data-area="intelligence"] { grid-area: intelligence; }
 
-    & > [data-area="status"] { grid-area: status; }
     & > [data-area="tadunaComment"] { grid-area: tadunaComment; }
 
     & > [data-area="voteRank"] { grid-area: voteRank; }
-    & > [data-area="expectation1"] { grid-area: expectation1; }
-    & > [data-area="expectation2"] { grid-area: expectation2; }
-    & > [data-area="expectation3"] { grid-area: expectation3; }
+    & > [data-area="expectation"] { grid-area: expectation; }
 
     & > [data-area="commentatorComment"] { grid-area: commentatorComment; }
-    & > [data-area="submit"] { grid-area: submit; }
+}
+
+.RaceEntryItem_status {
+  background-color: #f0f0f0;
+  text-align: center;
 }

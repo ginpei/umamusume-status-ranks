@@ -26,37 +26,47 @@ const RaceEntryItem: React.FC<{ entry: RaceEntry }> = ({ entry }) => {
       </div>
       <div data-area="speed">
         <InputBlock title="スピード">
-          {tadunaRankToSymbol(entry.speedRank)}
-          <br />
-          {entry.speedStatus}
+          <div className={styles.RaceEntryItem_status}>
+            {tadunaRankToSymbol(entry.speedRank)}
+            <br />
+            {entry.speedStatus}
+          </div>
         </InputBlock>
       </div>
       <div data-area="stamina">
         <InputBlock title="スタミナ">
-          {tadunaRankToSymbol(entry.staminaRank)}
-          <br />
-          {entry.staminaStatus}
+          <div className={styles.RaceEntryItem_status}>
+            {tadunaRankToSymbol(entry.staminaRank)}
+            <br />
+            {entry.staminaStatus}
+          </div>
         </InputBlock>
       </div>
       <div data-area="power">
         <InputBlock title="パワー">
-          {tadunaRankToSymbol(entry.powerRank)}
-          <br />
-          {entry.powerStatus}
+          <div className={styles.RaceEntryItem_status}>
+            {tadunaRankToSymbol(entry.powerRank)}
+            <br />
+            {entry.powerStatus}
+          </div>
         </InputBlock>
       </div>
       <div data-area="gut">
         <InputBlock title="根性">
-          {tadunaRankToSymbol(entry.gutRank)}
-          <br />
-          {entry.gutStatus}
+          <div className={styles.RaceEntryItem_status}>
+            {tadunaRankToSymbol(entry.gutRank)}
+            <br />
+            {entry.gutStatus}
+          </div>
         </InputBlock>
       </div>
       <div data-area="intelligence">
         <InputBlock title="賢さ">
-          {tadunaRankToSymbol(entry.intelligenceRank)}
-          <br />
-          {entry.intelligenceStatus}
+          <div className={styles.RaceEntryItem_status}>
+            {tadunaRankToSymbol(entry.intelligenceRank)}
+            <br />
+            {entry.intelligenceStatus}
+          </div>
         </InputBlock>
       </div>
       <div data-area="tadunaComment">

@@ -58,9 +58,7 @@ export const HomePage: React.FC = () => {
         <summary>追加</summary>
         <NewRaceEntryForm onSubmit={onNewFormSubmit} />
       </details>
-      <div className="u-vScroll">
-        <RaceEntryList entries={entries} />
-      </div>
+      <RaceEntryList entries={entries} />
     </div>
   );
 };
