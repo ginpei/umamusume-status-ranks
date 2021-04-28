@@ -1,8 +1,4 @@
-import {
-  TadunaRankCallback,
-  tadunaRanks,
-  tadunaRankToSymbol,
-} from "../../../data/RaceEntry";
+import { tadunaRanks, tadunaRankToSymbol } from "../../../data/RaceEntry";
 import { OnStatusRankRadioChange, StatusRankRadio } from "./StatusRankRadio";
 import styles from "./StatusRankSelect.module.scss";
 
