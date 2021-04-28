@@ -1,5 +1,4 @@
-import { MouseEventHandler } from "react";
-import { TadunaRank, TadunaRankCallback } from "../../../data/RaceEntry";
+import { TadunaRank } from "../../../data/RaceEntry";
 import styles from "./StatusRankRadio.module.scss";
 
 export type OnStatusRankRadioChange = (name: string, value: TadunaRank) => void;
