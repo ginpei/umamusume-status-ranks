@@ -95,6 +95,17 @@ export const RaceEntryForm: React.FC<{
       <div data-area="status">
         <StatusInput entry={entry} onChange={onChange} />
       </div>
+      <div data-area="tadunaComment">
+        <InputBlock title="たづなさん評価">
+          <input
+            name="tadunaComment"
+            onChange={onValueChange}
+            required
+            type="text"
+            value={entry.tadunaComment}
+          />
+        </InputBlock>
+      </div>
       <button data-area="submit">OK</button>
     </form>
   );

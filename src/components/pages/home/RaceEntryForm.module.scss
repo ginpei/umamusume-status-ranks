@@ -2,10 +2,11 @@
   display: grid;
   gap: 1em;
   grid-template:
-    "raceTitle   raceTitle     raceTitle   raceTitle raceTitle         "
-    "speedRank   staminaRank   powerRank   gutRank   intelligenceRank  "
-    "status      status        status      status    status            "
-    "submit      submit        submit      submit    submit            "
+    "raceTitle     raceTitle     raceTitle     raceTitle     raceTitle       "
+    "speedRank     staminaRank   powerRank     gutRank       intelligenceRank"
+    "status        status        status        status        status          "
+    "tadunaComment tadunaComment tadunaComment tadunaComment tadunaComment   "
+    "submit        submit        submit        submit        submit          "
     / 1fr 1fr 1fr 1fr 1fr;
 
   & > [data-area="raceTitle"] { grid-area: raceTitle; }
@@ -17,6 +18,7 @@
   & > [data-area="intelligenceRank"] { grid-area: intelligenceRank; }
 
   & > [data-area="status"] { grid-area: status; }
+  & > [data-area="tadunaComment"] { grid-area: tadunaComment; }
 
   & > [data-area="submit"] { grid-area: submit; }
 }
