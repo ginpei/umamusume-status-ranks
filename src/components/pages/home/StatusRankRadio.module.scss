@@ -1,10 +1,18 @@
 .root {
+  background-color: #f9f9f9;
   border: 1px solid transparent;
+  border-radius: var(--radius);
   display: grid;
+  height: var(--clickable-height);
   place-items: center;
 
+  &:where(:hover, :focus-visible) {
+    background-color: #fff;
+  }
+
   &[data-checked="true"] {
-    border-color: tomato;
+    background-color: #fff;
+    border-color: gray;
   }
 }
 

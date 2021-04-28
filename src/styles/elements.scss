@@ -35,7 +35,13 @@ a {
   }
 }
 
+label {
+  cursor: pointer;
+}
+
 button,
-input {
-  min-height: 2em;
+input,
+select {
+  box-sizing: border-box;
+  min-height: var(--clickable-height);
 }
