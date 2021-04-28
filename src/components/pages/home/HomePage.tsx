@@ -4,6 +4,7 @@ import {
   RaceEntry,
   RaceEntryCallback,
 } from "../../../data/RaceEntry";
+import { BasicLayout } from "../basicLayout/BasicLayout";
 import { RaceEntryForm } from "./RaceEntryForm";
 import { RaceEntryList } from "./RaceEntryList";
 
@@ -52,14 +53,14 @@ export const HomePage: React.FC = () => {
   };
 
   return (
-    <div className="HomePage u-container">
+    <BasicLayout>
       <h1>HomePage</h1>
       <details>
         <summary>追加</summary>
         <NewRaceEntryForm onSubmit={onNewFormSubmit} />
       </details>
       <RaceEntryList entries={entries} />
-    </div>
+    </BasicLayout>
   );
 };
 

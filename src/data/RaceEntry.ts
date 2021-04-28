@@ -1,4 +1,4 @@
-import { createDataRecord, DataRecord } from "./DataRecord";
+import { createDataRecord, DataRecord } from "../gp/data/DataRecord";
 
 export interface RaceEntry extends DataRecord {
   commentatorComment: string;
