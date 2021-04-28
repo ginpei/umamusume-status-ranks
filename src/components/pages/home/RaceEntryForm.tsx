@@ -21,7 +21,7 @@ export const RaceEntryForm: React.FC<{
     onChange(updated);
   };
 
-  const onXxxChange: OnStatusRankRadioChange = (name, rank) => {
+  const onRankChange: OnStatusRankRadioChange = (name, rank) => {
     const updated: RaceEntry = {
       ...entry,
       [name]: rank,
@@ -59,7 +59,7 @@ export const RaceEntryForm: React.FC<{
         <InputBlock title="スピード">
           <StatusRankSelect
             name="speedRank"
-            onChange={onXxxChange}
+            onChange={onRankChange}
             value={entry.speedRank}
           />
         </InputBlock>
@@ -68,7 +68,7 @@ export const RaceEntryForm: React.FC<{
         <InputBlock title="スタミナ">
           <StatusRankSelect
             name="staminaRank"
-            onChange={onXxxChange}
+            onChange={onRankChange}
             value={entry.staminaRank}
           />
         </InputBlock>
@@ -77,7 +77,7 @@ export const RaceEntryForm: React.FC<{
         <InputBlock title="パワー">
           <StatusRankSelect
             name="powerRank"
-            onChange={onXxxChange}
+            onChange={onRankChange}
             value={entry.powerRank}
           />
         </InputBlock>
@@ -86,7 +86,7 @@ export const RaceEntryForm: React.FC<{
         <InputBlock title="根性">
           <StatusRankSelect
             name="gutRank"
-            onChange={onXxxChange}
+            onChange={onRankChange}
             value={entry.gutRank}
           />
         </InputBlock>
@@ -95,7 +95,7 @@ export const RaceEntryForm: React.FC<{
         <InputBlock title="賢さ">
           <StatusRankSelect
             name="intelligenceRank"
-            onChange={onXxxChange}
+            onChange={onRankChange}
             value={entry.intelligenceRank}
           />
         </InputBlock>
