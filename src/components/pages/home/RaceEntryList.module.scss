@@ -8,8 +8,8 @@
 }
 
 .RaceEntryItem {
-  background-color: #fafafa;
-  border-color: gray;
+  background-color: snow;
+  border-color: lightgray;
   border-style: solid none;
   border-width: 1px;
   display: grid;
@@ -22,6 +22,14 @@
     "commentatorComment commentatorComment commentatorComment commentatorComment commentatorComment   "
     / 1fr 1fr 1fr 1fr 1fr;
   padding: 1rem;
+
+  // show background color on status
+  &:before {
+    background-color: #f6f0f0;
+    content: "";
+    display: block;
+    grid-area: 2 / 1 / 2/ 6;
+  }
 
   & > [data-area="raceTitle"] { grid-area: raceTitle; }
 
@@ -40,6 +48,5 @@
 }
 
 .RaceEntryItem_status {
-  background-color: #f0f0f0;
   text-align: center;
 }
