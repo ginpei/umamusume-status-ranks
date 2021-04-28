@@ -23,20 +23,20 @@
     / 1fr 1fr 1fr 1fr 1fr;
   padding: 1rem;
 
-    & > [data-area="raceTitle"] { grid-area: raceTitle; }
+  & > [data-area="raceTitle"] { grid-area: raceTitle; }
 
-    & > [data-area="speed"] { grid-area: speed; }
-    & > [data-area="stamina"] { grid-area: stamina; }
-    & > [data-area="power"] { grid-area: power; }
-    & > [data-area="gut"] { grid-area: gut; }
-    & > [data-area="intelligence"] { grid-area: intelligence; }
+  & > [data-area="speed"] { grid-area: speed; }
+  & > [data-area="stamina"] { grid-area: stamina; }
+  & > [data-area="power"] { grid-area: power; }
+  & > [data-area="gut"] { grid-area: gut; }
+  & > [data-area="intelligence"] { grid-area: intelligence; }
 
-    & > [data-area="tadunaComment"] { grid-area: tadunaComment; }
+  & > [data-area="tadunaComment"] { grid-area: tadunaComment; }
 
-    & > [data-area="voteRank"] { grid-area: voteRank; }
-    & > [data-area="expectation"] { grid-area: expectation; }
+  & > [data-area="voteRank"] { grid-area: voteRank; }
+  & > [data-area="expectation"] { grid-area: expectation; }
 
-    & > [data-area="commentatorComment"] { grid-area: commentatorComment; }
+  & > [data-area="commentatorComment"] { grid-area: commentatorComment; }
 }
 
 .RaceEntryItem_status {
