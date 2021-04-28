@@ -123,12 +123,20 @@ export const RaceEntryForm: React.FC<{
       <div data-area="tadunaComment">
         <InputBlock title="たづなさん評価">
           <input
+            list="RaceEntryForm-tadunaComment"
             name="tadunaComment"
             onChange={onValueChange}
+            placeholder="1着争い, 有力, 上位入着, 平均的"
             required
             type="text"
             value={entry.tadunaComment}
           />
+          <datalist id="RaceEntryForm-tadunaComment">
+            <option value="1着争い">1着争い</option>
+            <option value="有力">有力</option>
+            <option value="上位入着">上位入着</option>
+            <option value="平均的">平均的</option>
+          </datalist>
         </InputBlock>
       </div>
       <div data-area="voteRank">
@@ -173,12 +181,21 @@ export const RaceEntryForm: React.FC<{
       <div data-area="commentatorComment">
         <InputBlock title="解説評価">
           <input
+            list="RaceEntryForm-commentatorComment"
             name="commentatorComment"
             onChange={onValueChange}
+            placeholder="完全に上位, 素質は負けていません, 引けを取りません"
             required
             type="text"
             value={entry.commentatorComment}
           />
+          <datalist id="RaceEntryForm-commentatorComment">
+            <option value="実力は完全に上位">実力は完全に上位</option>
+            <option value="素質は負けていません">素質は負けていません</option>
+            <option value="引けを取りません">引けを取りません</option>
+            <option value="逆転を狙える">逆転を狙える</option>
+            <option value="これ以上ない仕上がり">これ以上ない仕上がり</option>
+          </datalist>
         </InputBlock>
       </div>
       <button data-area="submit">OK</button>
