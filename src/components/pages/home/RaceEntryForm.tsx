@@ -1,6 +1,12 @@
 import { ChangeEventHandler, FormEventHandler, useState } from "react";
-import { RaceEntry, RaceEntryCallback } from "../../../data/RaceEntry";
+import {
+  ExpectationList,
+  RaceEntry,
+  RaceEntryCallback,
+} from "../../../data/RaceEntry";
 import { InputBlock, InputField } from "../../stable/InputField";
+import { OnExpectationRadioChange } from "./ExpectationRadio";
+import { ExpectationSelect } from "./ExpectationSelect";
 import styles from "./RaceEntryForm.module.scss";
 import { StatusInput } from "./StatusInput";
 import { OnStatusRankRadioChange } from "./StatusRankRadio";
@@ -29,12 +35,23 @@ export const RaceEntryForm: React.FC<{
     onChange(updated);
   };
 
-  const onExpectationChange: OnStatusRankRadioChange = (name, rank) => {
-    // const updated: RaceEntry = {
-    //   ...entry,
-    //   [name]: rank,
-    // };
-    // onChange(updated);
+  const onExpectationChange: OnExpectationRadioChange = (name, level) => {
+    const newExpectations: ExpectationList = [...entry.expectations];
+    if (name === "expectation1") {
+      newExpectations[0] = level;
+    } else if (name === "expectation2") {
+      newExpectations[1] = level;
+    } else if (name === "expectation3") {
+      newExpectations[2] = level;
+    } else {
+      throw new Error(`Unknown name "${name}"`);
+    }
+
+    const updated: RaceEntry = {
+      ...entry,
+      expectations: newExpectations,
+    };
+    onChange(updated);
   };
 
   const onFormSubmit: FormEventHandler = (event) => {
@@ -128,7 +145,7 @@ export const RaceEntryForm: React.FC<{
       </div>
       <div data-area="expectation1">
         <InputBlock title="予想1">
-          <StatusRankSelect
+          <ExpectationSelect
             name="expectation1"
             onChange={onExpectationChange}
             value={entry.expectations[0]}
@@ -137,7 +154,7 @@ export const RaceEntryForm: React.FC<{
       </div>
       <div data-area="expectation2">
         <InputBlock title="予想2">
-          <StatusRankSelect
+          <ExpectationSelect
             name="expectation2"
             onChange={onExpectationChange}
             value={entry.expectations[1]}
@@ -146,7 +163,7 @@ export const RaceEntryForm: React.FC<{
       </div>
       <div data-area="expectation3">
         <InputBlock title="予想3">
-          <StatusRankSelect
+          <ExpectationSelect
             name="expectation3"
             onChange={onExpectationChange}
             value={entry.expectations[2]}
