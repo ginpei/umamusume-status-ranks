@@ -6,6 +6,8 @@
     "speedRank     staminaRank   powerRank     gutRank       intelligenceRank"
     "status        status        status        status        status          "
     "tadunaComment tadunaComment tadunaComment tadunaComment tadunaComment   "
+    "voteRank      voteRank      expectation1  expectation2  expectation3    "
+    "commentatorComment commentatorComment commentatorComment commentatorComment commentatorComment   "
     "submit        submit        submit        submit        submit          "
     / 1fr 1fr 1fr 1fr 1fr;
 
@@ -20,5 +22,11 @@
   & > [data-area="status"] { grid-area: status; }
   & > [data-area="tadunaComment"] { grid-area: tadunaComment; }
 
+  & > [data-area="voteRank"] { grid-area: voteRank; }
+  & > [data-area="expectation1"] { grid-area: expectation1; }
+  & > [data-area="expectation2"] { grid-area: expectation2; }
+  & > [data-area="expectation3"] { grid-area: expectation3; }
+
+  & > [data-area="commentatorComment"] { grid-area: commentatorComment; }
   & > [data-area="submit"] { grid-area: submit; }
 }

@@ -29,6 +29,14 @@ export const RaceEntryForm: React.FC<{
     onChange(updated);
   };
 
+  const onExpectationChange: OnStatusRankRadioChange = (name, rank) => {
+    // const updated: RaceEntry = {
+    //   ...entry,
+    //   [name]: rank,
+    // };
+    // onChange(updated);
+  };
+
   const onFormSubmit: FormEventHandler = (event) => {
     event.preventDefault();
     onSubmit(entry);
@@ -103,6 +111,56 @@ export const RaceEntryForm: React.FC<{
             required
             type="text"
             value={entry.tadunaComment}
+          />
+        </InputBlock>
+      </div>
+      <div data-area="voteRank">
+        <InputBlock title="人気順位">
+          <input
+            name="voteRank"
+            onChange={onValueChange}
+            required
+            style={{ width: "100%" }}
+            type="number"
+            value={entry.voteRank}
+          />
+        </InputBlock>
+      </div>
+      <div data-area="expectation1">
+        <InputBlock title="予想1">
+          <StatusRankSelect
+            name="expectation1"
+            onChange={onExpectationChange}
+            value={entry.expectations[0]}
+          />
+        </InputBlock>
+      </div>
+      <div data-area="expectation2">
+        <InputBlock title="予想2">
+          <StatusRankSelect
+            name="expectation2"
+            onChange={onExpectationChange}
+            value={entry.expectations[1]}
+          />
+        </InputBlock>
+      </div>
+      <div data-area="expectation3">
+        <InputBlock title="予想3">
+          <StatusRankSelect
+            name="expectation3"
+            onChange={onExpectationChange}
+            value={entry.expectations[2]}
+          />
+        </InputBlock>
+      </div>
+      <div data-area="commentatorComment">
+        <InputBlock title="解説評価">
+          <input
+            name="commentatorComment"
+            onChange={onValueChange}
+            required
+            type="text"
+            value={entry.commentatorComment}
           />
         </InputBlock>
       </div>

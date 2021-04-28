@@ -75,7 +75,7 @@ export function createRaceEntry(initial: Partial<RaceEntry> = {}): RaceEntry {
     staminaRank: initial.staminaRank ?? "",
     staminaStatus: initial.staminaStatus ?? 0,
     tadunaComment: initial.tadunaComment ?? "",
-    voteRank: initial.voteRank ?? 0,
+    voteRank: initial.voteRank ?? 1,
   };
 }
 
