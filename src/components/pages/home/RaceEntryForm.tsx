@@ -1,4 +1,4 @@
-import { FormEventHandler } from "react";
+import { ChangeEventHandler, FormEventHandler } from "react";
 import { RaceEntry, RaceEntryCallback } from "../../../data/RaceEntry";
 import { InputBlock, InputField } from "../../stable/InputField";
 import styles from "./RaceEntryForm.module.scss";
@@ -10,6 +10,16 @@ export const RaceEntryForm: React.FC<{
   onChange: RaceEntryCallback;
   onSubmit: RaceEntryCallback;
 }> = ({ entry, onChange, onSubmit }) => {
+  const onValueChange: ChangeEventHandler<HTMLInputElement> = (event) => {
+    const { name, value } = event.currentTarget;
+
+    const updated: RaceEntry = {
+      ...entry,
+      [name]: value,
+    };
+    onChange(updated);
+  };
+
   const onXxxChange: OnStatusRankRadioChange = (name, rank) => {
     const updated: RaceEntry = {
       ...entry,
@@ -27,7 +37,13 @@ export const RaceEntryForm: React.FC<{
     <form className={styles.root} onSubmit={onFormSubmit}>
       <div data-area="raceTitle">
         <InputField title="レース名">
-          <input type="text" />
+          <input
+            name="raceTitle"
+            onChange={onValueChange}
+            required
+            type="text"
+            value={entry.raceTitle}
+          />
         </InputField>
       </div>
       <div data-area="speedRank">
