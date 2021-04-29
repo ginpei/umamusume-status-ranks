@@ -16,8 +16,8 @@ export const RegisterPage: React.FC = () => {
   const loggedIn = useLoggedIn();
 
   return (
-    <BasicLayout>
-      <h1>追加</h1>
+    <BasicLayout title="出走記録追加">
+      <h1>出走記録追加</h1>
       {loggedIn ? <RegisterPageContent /> : <LoginFormWithMessage />}
     </BasicLayout>
   );

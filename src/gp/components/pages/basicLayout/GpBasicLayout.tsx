@@ -1,12 +1,21 @@
+import { Helmet } from "react-helmet";
 import { GpBasicNavBar, GpBasicNavBarProps } from "./GpBasicNavBar";
 
-export const GpBasicLayout: React.FC<GpBasicNavBarProps> = ({
+export type GpBasicLayoutProps = GpBasicNavBarProps & {
+  title: string;
+};
+
+export const GpBasicLayout: React.FC<GpBasicLayoutProps> = ({
   appName,
   children,
   homePath,
+  title,
 }) => {
   return (
     <div className="BasicLayout">
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <GpBasicNavBar {...{ appName, homePath }} />
       <div className="u-container">{children}</div>
     </div>

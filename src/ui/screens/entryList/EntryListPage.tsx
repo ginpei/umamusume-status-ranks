@@ -13,16 +13,18 @@ export function entryListPagePath(raceName: string): string {
 export const EntryListPage: React.FC = () => {
   const { raceTitle } = useParams<{ raceTitle: string }>();
 
+  const title = `${raceTitle} - 出走記録一覧`;
+
   if (!isValidRaceTitle(raceTitle)) {
     return <NotFoundScreen />;
   }
 
   return (
-    <BasicLayout>
+    <BasicLayout title={title}>
       <p>
         <Link to={raceListPagePath()}>⬅️ レース一覧</Link>
       </p>
-      <h1>出走記録一覧 - {raceTitle}</h1>
+      <h1>{title}</h1>
     </BasicLayout>
   );
 };

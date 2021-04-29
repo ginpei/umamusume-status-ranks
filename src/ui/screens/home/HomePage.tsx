@@ -6,7 +6,7 @@ import { registerPagePath } from "../register/RegisterPage";
 
 export const HomePage: React.FC = () => {
   return (
-    <BasicLayout>
+    <BasicLayout title="ウマ娘評価">
       <h1>HomePage</h1>
       <p>
         <Link to={loginPagePath()}>ログイン</Link>

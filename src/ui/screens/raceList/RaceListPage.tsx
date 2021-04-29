@@ -10,7 +10,7 @@ export function raceListPagePath(): string {
 
 export const RaceListPage: React.FC = () => {
   return (
-    <BasicLayout>
+    <BasicLayout title="レース一覧">
       <h1>レース一覧</h1>
       <ul>
         {raceTitles.map((title) => (

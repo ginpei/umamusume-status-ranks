@@ -13,7 +13,7 @@ export const LoginScreen: React.FC = () => {
   }, []);
 
   return (
-    <BasicLayout>
+    <BasicLayout title="ログイン">
       <h1>ログイン</h1>
       <div className="u-margin">
         {loggedIn ? <LogoutForm /> : <LoginForm />}
