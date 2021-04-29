@@ -1,10 +1,10 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { HomePage } from "./components/pages/home/HomePage";
-import { NotFoundScreen } from "./components/pages/misc/NotFoundScreen";
+import { HomePage } from "./components/screens/home/HomePage";
+import { NotFoundScreen } from "./components/screens/misc/NotFoundScreen";
 import {
   RegisterPage,
   registerPagePath,
-} from "./components/pages/register/RegisterPage";
+} from "./components/screens/register/RegisterPage";
 import { rootPath } from "./misc";
 
 const App: React.FC = () => {
