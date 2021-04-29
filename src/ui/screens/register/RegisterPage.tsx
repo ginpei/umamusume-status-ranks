@@ -4,6 +4,7 @@ import { createRaceEntry, RaceEntryCallback } from "../../../data/RaceEntry";
 import { rootPath } from "../../../misc";
 import { BasicLayout } from "../basicLayout/BasicLayout";
 import { RaceEntryForm } from "../home/RaceEntryForm";
+import { LoginScreen } from "../misc/LoginScreen";
 
 export function registerPagePath(): string {
   return `${rootPath()}register`;
@@ -22,8 +23,7 @@ export const RegisterPage: React.FC = () => {
   };
 
   if (!loggedIn) {
-    // TODO show login screen
-    return <p>ログインして</p>;
+    return <LoginScreen />;
   }
 
   return (
