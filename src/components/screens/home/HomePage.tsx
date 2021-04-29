@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { createRaceEntry, RaceEntry } from "../../../data/RaceEntry";
 import { auth, db } from "../../../gp-firebase/firebase";
 import { BasicLayout } from "../basicLayout/BasicLayout";
+import { loginPagePath } from "../login/LoginPage";
 import { registerPagePath } from "../register/RegisterPage";
 import { RaceEntryList } from "./RaceEntryList";
 
@@ -50,6 +51,9 @@ export const HomePage: React.FC = () => {
     <BasicLayout>
       <h1>HomePage</h1>
       <TryFirebase />
+      <p>
+        <Link to={loginPagePath()}>ログイン</Link>
+      </p>
       <p>
         <Link to={registerPagePath()}>追加</Link>
       </p>
