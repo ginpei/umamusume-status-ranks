@@ -15,6 +15,7 @@ export interface RaceEntry extends DataRecord {
   staminaRank: TadunaRank;
   staminaStatus: number;
   tadunaComment: string;
+  userId: string;
   voteRank: number;
 }
 
@@ -74,6 +75,7 @@ export function createRaceEntry(initial: Partial<RaceEntry> = {}): RaceEntry {
     staminaRank: initial.staminaRank ?? "great",
     staminaStatus: initial.staminaStatus ?? 0,
     tadunaComment: initial.tadunaComment ?? "",
+    userId: initial.userId ?? "",
     voteRank: initial.voteRank ?? 1,
   };
 }

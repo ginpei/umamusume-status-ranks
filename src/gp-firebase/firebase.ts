@@ -5,6 +5,8 @@ import "firebase/functions";
 
 export type Auth = firebase.auth.Auth;
 
+export type Firestore = firebase.firestore.Firestore;
+
 export type DocumentReference<
   T = firebase.firestore.DocumentData
 > = firebase.firestore.DocumentReference<T>;

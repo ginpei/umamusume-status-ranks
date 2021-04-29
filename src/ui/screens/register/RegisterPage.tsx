@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { useLoggedIn } from "../../../data/CurrentUserContext";
 import { createRaceEntry, RaceEntryCallback } from "../../../data/RaceEntry";
-import { rootPath } from "../../../misc";
+import { saveRaceEntry } from "../../../data/RaceEntryDb";
+import { db, isFirebaseError } from "../../../gp-firebase/firebase";
+import { getErrorMessage, rootPath } from "../../../misc";
 import { BasicLayout } from "../basicLayout/BasicLayout";
 import { RaceEntryForm } from "../home/RaceEntryForm";
 import { LoginFormWithMessage } from "../login/LoginForm";
@@ -23,20 +25,29 @@ export const RegisterPage: React.FC = () => {
 
 const RegisterPageContent: React.FC = () => {
   const [entry, setEntry] = useState(createRaceEntry());
+  const [errorMessage, setErrorMessage] = useState("");
 
   const onNewFormChange: RaceEntryCallback = (newEntry) => {
     setEntry(newEntry);
   };
 
-  const onNewFormSubmit: RaceEntryCallback = () => {
-    console.log("# entry", entry);
+  const onNewFormSubmit: RaceEntryCallback = async () => {
+    try {
+      await saveRaceEntry(db, entry);
+      setEntry(createRaceEntry());
+    } catch (error) {
+      setErrorMessage(getErrorMessage(error));
+    }
   };
 
   return (
-    <RaceEntryForm
-      entry={entry}
-      onChange={onNewFormChange}
-      onSubmit={onNewFormSubmit}
-    />
+    <>
+      {errorMessage && <p>{errorMessage}</p>}
+      <RaceEntryForm
+        entry={entry}
+        onChange={onNewFormChange}
+        onSubmit={onNewFormSubmit}
+      />
+    </>
   );
 };
