@@ -4,9 +4,10 @@ import { InputField } from "../../stable/InputField";
 import styles from "./StatusInput.module.scss";
 
 export const StatusInput: React.FC<{
+  disabled: boolean;
   entry: RaceEntry;
   onChange: RaceEntryCallback;
-}> = ({ entry, onChange }) => {
+}> = ({ disabled, entry, onChange }) => {
   const [editing, setEditing] = useState(false);
   const [editorContent, setEditorContent] = useState("");
   const refEditor = useRef<HTMLTextAreaElement>(null);
@@ -58,7 +59,7 @@ export const StatusInput: React.FC<{
     refEditor.current.select();
   }, [editing, refEditor.current]);
 
-  if (editing) {
+  if (editing && !disabled) {
     return (
       <InputField title="ステータス（1行ずつ）">
         <textarea
@@ -74,11 +75,21 @@ export const StatusInput: React.FC<{
 
   return (
     <div className={styles.root} onClick={onClick} tabIndex={0}>
-      <span className={styles.status}>{entry.speedStatus}</span>
-      <span className={styles.status}>{entry.staminaStatus}</span>
-      <span className={styles.status}>{entry.powerStatus}</span>
-      <span className={styles.status}>{entry.gutStatus}</span>
-      <span className={styles.status}>{entry.intelligenceStatus}</span>
+      <span className={styles.status} data-disabled={disabled}>
+        {entry.speedStatus}
+      </span>
+      <span className={styles.status} data-disabled={disabled}>
+        {entry.staminaStatus}
+      </span>
+      <span className={styles.status} data-disabled={disabled}>
+        {entry.powerStatus}
+      </span>
+      <span className={styles.status} data-disabled={disabled}>
+        {entry.gutStatus}
+      </span>
+      <span className={styles.status} data-disabled={disabled}>
+        {entry.intelligenceStatus}
+      </span>
     </div>
   );
 };

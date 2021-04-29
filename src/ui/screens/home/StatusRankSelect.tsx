@@ -3,15 +3,17 @@ import { OnStatusRankRadioChange, StatusRankRadio } from "./StatusRankRadio";
 import styles from "./StatusRankSelect.module.scss";
 
 export const StatusRankSelect: React.FC<{
+  disabled: boolean;
   name: string;
   onChange: OnStatusRankRadioChange;
   value: string;
-}> = ({ name, onChange, value }) => {
+}> = ({ disabled, name, onChange, value }) => {
   return (
     <span className={styles.root}>
       {tadunaRanks.map((key) => (
         <StatusRankRadio
           checked={key === value}
+          disabled={disabled}
           key={key}
           label={tadunaRankToSymbol(key)}
           name={name}

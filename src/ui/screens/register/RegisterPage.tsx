@@ -26,6 +26,7 @@ export const RegisterPage: React.FC = () => {
 const RegisterPageContent: React.FC = () => {
   const [entry, setEntry] = useState(createRaceEntry());
   const [errorMessage, setErrorMessage] = useState("");
+  const [working, setWorking] = useState(false);
 
   const onNewFormChange: RaceEntryCallback = (newEntry) => {
     setEntry(newEntry);
@@ -33,8 +34,10 @@ const RegisterPageContent: React.FC = () => {
 
   const onNewFormSubmit: RaceEntryCallback = async () => {
     try {
+      setWorking(true);
       await saveRaceEntry(db, entry);
       setEntry(createRaceEntry());
+      setWorking(false);
     } catch (error) {
       setErrorMessage(getErrorMessage(error));
     }
@@ -44,6 +47,7 @@ const RegisterPageContent: React.FC = () => {
     <>
       {errorMessage && <p>{errorMessage}</p>}
       <RaceEntryForm
+        disabled={working}
         entry={entry}
         onChange={onNewFormChange}
         onSubmit={onNewFormSubmit}

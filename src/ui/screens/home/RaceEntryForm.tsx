@@ -13,10 +13,11 @@ import { OnStatusRankRadioChange } from "./StatusRankRadio";
 import { StatusRankSelect } from "./StatusRankSelect";
 
 export const RaceEntryForm: React.FC<{
+  disabled: boolean;
   entry: RaceEntry;
   onChange: RaceEntryCallback;
   onSubmit: RaceEntryCallback;
-}> = ({ entry, onChange, onSubmit }) => {
+}> = ({ disabled, entry, onChange, onSubmit }) => {
   const onValueChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     const { name, value } = event.currentTarget;
 
@@ -64,6 +65,7 @@ export const RaceEntryForm: React.FC<{
       <div data-area="raceTitle">
         <InputField title="レース名">
           <input
+            disabled={disabled}
             name="raceTitle"
             onChange={onValueChange}
             required
@@ -75,6 +77,7 @@ export const RaceEntryForm: React.FC<{
       <div data-area="speedRank">
         <InputBlock title="スピード">
           <StatusRankSelect
+            disabled={disabled}
             name="speedRank"
             onChange={onRankChange}
             value={entry.speedRank}
@@ -84,6 +87,7 @@ export const RaceEntryForm: React.FC<{
       <div data-area="staminaRank">
         <InputBlock title="スタミナ">
           <StatusRankSelect
+            disabled={disabled}
             name="staminaRank"
             onChange={onRankChange}
             value={entry.staminaRank}
@@ -93,6 +97,7 @@ export const RaceEntryForm: React.FC<{
       <div data-area="powerRank">
         <InputBlock title="パワー">
           <StatusRankSelect
+            disabled={disabled}
             name="powerRank"
             onChange={onRankChange}
             value={entry.powerRank}
@@ -102,6 +107,7 @@ export const RaceEntryForm: React.FC<{
       <div data-area="gutRank">
         <InputBlock title="根性">
           <StatusRankSelect
+            disabled={disabled}
             name="gutRank"
             onChange={onRankChange}
             value={entry.gutRank}
@@ -111,6 +117,7 @@ export const RaceEntryForm: React.FC<{
       <div data-area="intelligenceRank">
         <InputBlock title="賢さ">
           <StatusRankSelect
+            disabled={disabled}
             name="intelligenceRank"
             onChange={onRankChange}
             value={entry.intelligenceRank}
@@ -118,11 +125,12 @@ export const RaceEntryForm: React.FC<{
         </InputBlock>
       </div>
       <div data-area="status">
-        <StatusInput entry={entry} onChange={onChange} />
+        <StatusInput disabled={disabled} entry={entry} onChange={onChange} />
       </div>
       <div data-area="tadunaComment">
         <InputBlock title="たづなさん評価">
           <input
+            disabled={disabled}
             list="RaceEntryForm-tadunaComment"
             name="tadunaComment"
             onChange={onValueChange}
@@ -142,6 +150,7 @@ export const RaceEntryForm: React.FC<{
       <div data-area="voteRank">
         <InputBlock title="人気順位">
           <input
+            disabled={disabled}
             name="voteRank"
             onChange={onValueChange}
             required
@@ -154,6 +163,7 @@ export const RaceEntryForm: React.FC<{
       <div data-area="expectation1">
         <InputBlock title="予想1">
           <ExpectationSelect
+            disabled={disabled}
             name="expectation1"
             onChange={onExpectationChange}
             value={entry.expectations[0]}
@@ -163,6 +173,7 @@ export const RaceEntryForm: React.FC<{
       <div data-area="expectation2">
         <InputBlock title="予想2">
           <ExpectationSelect
+            disabled={disabled}
             name="expectation2"
             onChange={onExpectationChange}
             value={entry.expectations[1]}
@@ -172,6 +183,7 @@ export const RaceEntryForm: React.FC<{
       <div data-area="expectation3">
         <InputBlock title="予想3">
           <ExpectationSelect
+            disabled={disabled}
             name="expectation3"
             onChange={onExpectationChange}
             value={entry.expectations[2]}
@@ -181,6 +193,7 @@ export const RaceEntryForm: React.FC<{
       <div data-area="commentatorComment">
         <InputBlock title="解説評価">
           <input
+            disabled={disabled}
             list="RaceEntryForm-commentatorComment"
             name="commentatorComment"
             onChange={onValueChange}
@@ -198,7 +211,9 @@ export const RaceEntryForm: React.FC<{
           </datalist>
         </InputBlock>
       </div>
-      <button data-area="submit">OK</button>
+      <button data-area="submit" disabled={disabled}>
+        OK
+      </button>
     </form>
   );
 };

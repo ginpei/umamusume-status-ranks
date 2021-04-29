@@ -6,6 +6,10 @@
 
 .status {
   text-align: center;
+
+  &[data-disabled="true"] {
+    color: var(--disabled-fg);
+  }
 }
 
 .editor {
