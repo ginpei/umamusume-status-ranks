@@ -1,11 +1,7 @@
-import { useState } from "react";
-import {
-  createRaceEntry,
-  RaceEntry,
-  RaceEntryCallback,
-} from "../../../data/RaceEntry";
+import { Link } from "react-router-dom";
+import { createRaceEntry, RaceEntry } from "../../../data/RaceEntry";
 import { BasicLayout } from "../basicLayout/BasicLayout";
-import { RaceEntryForm } from "./RaceEntryForm";
+import { registerPagePath } from "../register/RegisterPage";
 import { RaceEntryList } from "./RaceEntryList";
 
 const entries: RaceEntry[] = [
@@ -48,32 +44,13 @@ const entries: RaceEntry[] = [
 ];
 
 export const HomePage: React.FC = () => {
-  const onNewFormSubmit: RaceEntryCallback = (entry) => {
-    console.log("# entry", entry);
-  };
-
   return (
     <BasicLayout>
       <h1>HomePage</h1>
-      <details>
-        <summary>追加</summary>
-        <NewRaceEntryForm onSubmit={onNewFormSubmit} />
-      </details>
+      <p>
+        <Link to={registerPagePath()}>追加</Link>
+      </p>
       <RaceEntryList entries={entries} />
     </BasicLayout>
-  );
-};
-
-const NewRaceEntryForm: React.FC<{
-  onSubmit: RaceEntryCallback;
-}> = ({ onSubmit }) => {
-  const [entry, setEntry] = useState(createRaceEntry());
-
-  const onChange: RaceEntryCallback = (newEntry) => {
-    setEntry(newEntry);
-  };
-
-  return (
-    <RaceEntryForm entry={entry} onChange={onChange} onSubmit={onSubmit} />
   );
 };
