@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { raceTitles } from "../../../data/Race";
 import { rootPath } from "../../../misc";
 import { BasicLayout } from "../basicLayout/BasicLayout";
-import { entryListPagePath } from "../entryList/EntryListPage";
+import { raceViewPagePath } from "../raceView/RaceViewPage";
 
 export function raceListPagePath(): string {
-  return `${rootPath()}races`;
+  return `${rootPath()}races/`;
 }
 
 export const RaceListPage: React.FC = () => {
@@ -15,7 +15,7 @@ export const RaceListPage: React.FC = () => {
       <ul>
         {raceTitles.map((title) => (
           <li key={title}>
-            <Link to={entryListPagePath(title)}>{title}</Link>
+            <Link to={raceViewPagePath(title)}>{title}</Link>
           </li>
         ))}
       </ul>

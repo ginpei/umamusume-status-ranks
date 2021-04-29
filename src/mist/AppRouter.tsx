@@ -13,6 +13,10 @@ import {
   raceListPagePath,
 } from "../ui/screens/raceList/RaceListPage";
 import {
+  RaceViewPage,
+  raceViewPagePath,
+} from "../ui/screens/raceView/RaceViewPage";
+import {
   RegisterPage,
   registerPagePath,
 } from "../ui/screens/register/RegisterPage";
@@ -32,6 +36,11 @@ export const AppRouter: React.FC = () => {
           exact={true}
           path={raceListPagePath()}
           component={RaceListPage}
+        />
+        <Route
+          exact={true}
+          path={raceViewPagePath(":raceTitle")}
+          component={RaceViewPage}
         />
         <Route
           exact={true}

@@ -2,9 +2,10 @@ import {
   CollectionReference,
   DocumentData,
   DocumentReference,
+  DocumentSnapshot,
   Firestore,
 } from "../gp-firebase/firebase";
-import { RaceEntry } from "./RaceEntry";
+import { createRaceEntry, RaceEntry } from "./RaceEntry";
 
 export function raceEntryToDataRecord(entry: RaceEntry): DocumentData {
   return { ...entry };
@@ -16,6 +17,15 @@ export function getRaceEntryCollection(db: Firestore): CollectionReference {
 
 export function getRaceEntryDoc(db: Firestore, id: string): DocumentReference {
   return getRaceEntryCollection(db).doc(id);
+}
+
+export function ssToRaceEntry(ss: DocumentSnapshot): RaceEntry {
+  const data = ss.data();
+  if (!data) {
+    throw new Error("?");
+  }
+
+  return createRaceEntry(data);
 }
 
 export async function saveRaceEntry(
