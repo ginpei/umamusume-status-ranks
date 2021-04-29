@@ -4,7 +4,7 @@ import { createRaceEntry, RaceEntryCallback } from "../../../data/RaceEntry";
 import { rootPath } from "../../../misc";
 import { BasicLayout } from "../basicLayout/BasicLayout";
 import { RaceEntryForm } from "../home/RaceEntryForm";
-import { LoginForm, LoginFormWithMessage } from "../login/LoginForm";
+import { LoginFormWithMessage } from "../login/LoginForm";
 
 export function registerPagePath(): string {
   return `${rootPath()}register`;

@@ -14,18 +14,7 @@ if (withEmulator) {
   signInOptions.push(firebase.auth.GithubAuthProvider.PROVIDER_ID);
 }
 
-const uiConfig: firebaseui.auth.Config = {
-  callbacks: {
-    signInFailure(error) {
-      console.log(`# fail`, error);
-    },
-    signInSuccessWithAuthResult() {
-      console.log(`# success`);
-      return false;
-    },
-  },
-  signInOptions,
-};
+const uiConfig: firebaseui.auth.Config = { signInOptions };
 
 export const LoginForm: React.FC = () => {
   return <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />;
