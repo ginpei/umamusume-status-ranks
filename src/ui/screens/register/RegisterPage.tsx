@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useLoggedIn } from "../../../data/CurrentUserContext";
+import { useCurrentUser, useLoggedIn } from "../../../data/CurrentUserContext";
 import { createRaceEntry, RaceEntryCallback } from "../../../data/RaceEntry";
 import { saveRaceEntry } from "../../../data/RaceEntryDb";
 import { db, isFirebaseError } from "../../../gp-firebase/firebase";
@@ -24,6 +24,7 @@ export const RegisterPage: React.FC = () => {
 };
 
 const RegisterPageContent: React.FC = () => {
+  const user = useCurrentUser();
   const [entry, setEntry] = useState(createRaceEntry());
   const [errorMessage, setErrorMessage] = useState("");
   const [working, setWorking] = useState(false);
@@ -35,7 +36,9 @@ const RegisterPageContent: React.FC = () => {
   const onNewFormSubmit: RaceEntryCallback = async () => {
     try {
       setWorking(true);
-      await saveRaceEntry(db, entry);
+
+      await saveRaceEntry(db, { ...entry, userId: user.id });
+
       setEntry(createRaceEntry());
       setWorking(false);
     } catch (error) {
