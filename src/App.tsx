@@ -1,12 +1,12 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { HomePage } from "./components/screens/home/HomePage";
-import { LoginPage, loginPagePath } from "./components/screens/login/LoginPage";
-import { NotFoundScreen } from "./components/screens/misc/NotFoundScreen";
+import { rootPath } from "./misc";
+import { HomePage } from "./ui/screens/home/HomePage";
+import { LoginPage, loginPagePath } from "./ui/screens/login/LoginPage";
+import { NotFoundScreen } from "./ui/screens/misc/NotFoundScreen";
 import {
   RegisterPage,
   registerPagePath,
-} from "./components/screens/register/RegisterPage";
-import { rootPath } from "./misc";
+} from "./ui/screens/register/RegisterPage";
 
 const App: React.FC = () => {
   return (
