@@ -7,6 +7,8 @@ export type Auth = firebase.auth.Auth;
 
 export type Firestore = firebase.firestore.Firestore;
 
+export type DocumentData = firebase.firestore.DocumentData;
+
 export type DocumentReference<
   T = firebase.firestore.DocumentData
 > = firebase.firestore.DocumentReference<T>;

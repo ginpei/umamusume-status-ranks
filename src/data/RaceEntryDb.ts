@@ -1,11 +1,12 @@
 import {
   CollectionReference,
+  DocumentData,
   DocumentReference,
   Firestore,
 } from "../gp-firebase/firebase";
 import { RaceEntry } from "./RaceEntry";
 
-export function raceEntryToDataRecord(entry: RaceEntry): Record<string, any> {
+export function raceEntryToDataRecord(entry: RaceEntry): DocumentData {
   return { ...entry };
 }
 
