@@ -28,13 +28,18 @@ export const LoginPage: React.FC = () => {
 };
 
 const LogoutForm: React.FC = () => {
-  const onClick = () => {
-    auth.signOut();
+  const [dirty, setDirty] = useState(false);
+
+  const onClick = async () => {
+    setDirty(true);
+    await auth.signOut();
   };
 
   return (
     <div className="LogoutForm">
-      <button onClick={onClick}>ログアウト</button>
+      <button disabled={dirty} onClick={onClick}>
+        ログアウト
+      </button>
     </div>
   );
 };
