@@ -4,7 +4,7 @@ import { createRaceEntry, RaceEntryCallback } from "../../../data/RaceEntry";
 import { rootPath } from "../../../misc";
 import { BasicLayout } from "../basicLayout/BasicLayout";
 import { RaceEntryForm } from "../home/RaceEntryForm";
-import { LoginScreen } from "../misc/LoginScreen";
+import { LoginForm, LoginFormWithMessage } from "../login/LoginForm";
 
 export function registerPagePath(): string {
   return `${rootPath()}register`;
@@ -12,6 +12,16 @@ export function registerPagePath(): string {
 
 export const RegisterPage: React.FC = () => {
   const loggedIn = useLoggedIn();
+
+  return (
+    <BasicLayout>
+      <h1>追加</h1>
+      {loggedIn ? <RegisterPageContent /> : <LoginFormWithMessage />}
+    </BasicLayout>
+  );
+};
+
+const RegisterPageContent: React.FC = () => {
   const [entry, setEntry] = useState(createRaceEntry());
 
   const onNewFormChange: RaceEntryCallback = (newEntry) => {
@@ -22,18 +32,11 @@ export const RegisterPage: React.FC = () => {
     console.log("# entry", entry);
   };
 
-  if (!loggedIn) {
-    return <LoginScreen />;
-  }
-
   return (
-    <BasicLayout>
-      <h1>追加</h1>
-      <RaceEntryForm
-        entry={entry}
-        onChange={onNewFormChange}
-        onSubmit={onNewFormSubmit}
-      />
-    </BasicLayout>
+    <RaceEntryForm
+      entry={entry}
+      onChange={onNewFormChange}
+      onSubmit={onNewFormSubmit}
+    />
   );
 };

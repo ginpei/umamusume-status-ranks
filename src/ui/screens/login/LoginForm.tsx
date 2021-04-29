@@ -30,3 +30,14 @@ const uiConfig: firebaseui.auth.Config = {
 export const LoginForm: React.FC = () => {
   return <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />;
 };
+
+export const LoginFormWithMessage: React.FC<{ message?: string }> = ({
+  message = "ログインが必要です。",
+}) => {
+  return (
+    <div>
+      <p>{message}</p>
+      <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth} />
+    </div>
+  );
+};
