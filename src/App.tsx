@@ -7,6 +7,10 @@ import { HomePage } from "./ui/screens/home/HomePage";
 import { LoginPage, loginPagePath } from "./ui/screens/login/LoginPage";
 import { NotFoundScreen } from "./ui/screens/misc/NotFoundScreen";
 import {
+  RaceListPage,
+  raceListPagePath,
+} from "./ui/screens/raceList/RaceListPage";
+import {
   RegisterPage,
   registerPagePath,
 } from "./ui/screens/register/RegisterPage";
@@ -28,6 +32,11 @@ const App: React.FC = () => {
             exact={true}
             path={registerPagePath()}
             component={RegisterPage}
+          />
+          <Route
+            exact={true}
+            path={raceListPagePath()}
+            component={RaceListPage}
           />
           <Route component={NotFoundScreen} />
         </Switch>
