@@ -1,12 +1,12 @@
 import { Link } from "react-router-dom";
-import styles from "./GpBasicHeader.module.scss";
+import styles from "./GpBasicNavBar.module.scss";
 
-export type GpBasicHeaderProps = {
+export type GpBasicNavBarProps = {
   appName: string;
   homePath: string;
 };
 
-export const GpBasicHeader: React.FC<GpBasicHeaderProps> = ({
+export const GpBasicNavBar: React.FC<GpBasicNavBarProps> = ({
   appName,
   homePath,
 }) => {
