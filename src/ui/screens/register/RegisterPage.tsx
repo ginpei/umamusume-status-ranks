@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useLoggedIn } from "../../../data/CurrentUserContext";
 import { createRaceEntry, RaceEntryCallback } from "../../../data/RaceEntry";
 import { rootPath } from "../../../misc";
 import { BasicLayout } from "../basicLayout/BasicLayout";
@@ -9,6 +10,7 @@ export function registerPagePath(): string {
 }
 
 export const RegisterPage: React.FC = () => {
+  const loggedIn = useLoggedIn();
   const [entry, setEntry] = useState(createRaceEntry());
 
   const onNewFormChange: RaceEntryCallback = (newEntry) => {
@@ -18,6 +20,11 @@ export const RegisterPage: React.FC = () => {
   const onNewFormSubmit: RaceEntryCallback = () => {
     console.log("# entry", entry);
   };
+
+  if (!loggedIn) {
+    // TODO show login screen
+    return <p>ログインして</p>;
+  }
 
   return (
     <BasicLayout>
