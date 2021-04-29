@@ -24,7 +24,7 @@
     "lint:js": "eslint .",
     "lint:type": "tsc",
     "lint": "npm run lint:type && npm run lint:js",
-    "start": "firebase emulators:exec 'npm run dev' --ui --import .firebase-data --export-on-exit",
+    "start": "firebase emulators:exec 'REACT_APP_WITH_EMULATOR=1 npm run dev' --ui --import .firebase-data --export-on-exit",
     "dev": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
