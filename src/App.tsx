@@ -1,6 +1,6 @@
 import { BrowserRouter, Route, Switch } from "react-router-dom";
-import { NotFoundScreen } from "./components/misc/NotFoundScreen";
 import { HomePage } from "./components/pages/home/HomePage";
+import { NotFoundScreen } from "./components/pages/misc/NotFoundScreen";
 import {
   RegisterPage,
   registerPagePath,
