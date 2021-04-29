@@ -45,6 +45,10 @@ export const raceTitles = toCandidates(
   compareString
 );
 
+export function isValidRaceTitle(title: string): boolean {
+  return races.some((v) => v.title === title);
+}
+
 function toCandidates<T>(arr: T[], comparator: (v: T, u: T) => number) {
   return Array.from(new Set(arr)).sort(comparator);
 }

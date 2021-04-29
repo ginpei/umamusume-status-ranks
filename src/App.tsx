@@ -3,6 +3,10 @@ import { CurrentUserProvider } from "./data/CurrentUserContext";
 import { useFirebaseCurrentUser } from "./data/useFirebaseCurrentUserHook";
 import { auth } from "./gp-firebase/firebase";
 import { rootPath } from "./misc";
+import {
+  EntryListPage,
+  entryListPagePath,
+} from "./ui/screens/entryList/EntryListPage";
 import { HomePage } from "./ui/screens/home/HomePage";
 import { LoginPage, loginPagePath } from "./ui/screens/login/LoginPage";
 import { NotFoundScreen } from "./ui/screens/misc/NotFoundScreen";
@@ -37,6 +41,11 @@ const App: React.FC = () => {
             exact={true}
             path={raceListPagePath()}
             component={RaceListPage}
+          />
+          <Route
+            exact={true}
+            path={entryListPagePath(":raceTitle")}
+            component={EntryListPage}
           />
           <Route component={NotFoundScreen} />
         </Switch>
