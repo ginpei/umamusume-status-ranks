@@ -1,5 +1,4 @@
 import { HelmetProvider } from "react-helmet-async";
-import { BrowserRouter, Switch } from "react-router-dom";
 import { CurrentUserProvider } from "./data/CurrentUserContext";
 import { useFirebaseCurrentUser } from "./data/useFirebaseCurrentUserHook";
 import { auth } from "./gp-firebase/firebase";
