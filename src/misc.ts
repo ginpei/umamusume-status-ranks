@@ -12,3 +12,8 @@ export function getErrorMessage(error: unknown): string {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   return (error as any)?.message ?? "謎のエラーです。";
 }
+
+export function printError(error: unknown): void {
+  // eslint-disable-next-line no-console
+  console.error(error);
+}

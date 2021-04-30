@@ -4,6 +4,7 @@ import {
   DocumentReference,
   DocumentSnapshot,
   Firestore,
+  Query,
 } from "../gp-firebase/firebase";
 import { createRaceEntry, RaceEntry } from "./RaceEntry";
 
@@ -35,4 +36,26 @@ export async function saveRaceEntry(
   const coll = getRaceEntryCollection(db);
   const data = raceEntryToDataRecord(entry);
   return coll.add(data);
+}
+
+export function getRecentRaceEntriesQuery(
+  db: Firestore,
+  raceTitle: string
+): Query {
+  const coll = getRaceEntryCollection(db);
+  const query = coll
+    .where("raceTitle", "==", raceTitle)
+    .orderBy("createdAt", "desc")
+    .limit(50);
+  return query;
+}
+
+export async function fetchRecentRaceEntries(
+  db: Firestore,
+  raceTitle: string
+): Promise<RaceEntry[]> {
+  const query = getRecentRaceEntriesQuery(db, raceTitle);
+  const ss = await query.get();
+  const entries = ss.docs.map((v) => ssToRaceEntry(v));
+  return entries;
 }
