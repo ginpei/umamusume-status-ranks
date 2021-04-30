@@ -2,7 +2,7 @@ import { HelmetProvider } from "react-helmet-async";
 import { CurrentUserProvider } from "./data/CurrentUserContext";
 import { useFirebaseCurrentUser } from "./data/useFirebaseCurrentUserHook";
 import { auth } from "./gp-firebase/firebase";
-import { AppRouter } from "./mist/AppRouter";
+import { AppRouter } from "./misc/AppRouter";
 
 const App: React.FC = () => {
   const user = useFirebaseCurrentUser(auth);
