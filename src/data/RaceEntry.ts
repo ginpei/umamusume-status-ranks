@@ -15,9 +15,13 @@ export interface RaceEntry extends DataRecord {
   staminaRank: TadunaRank;
   staminaStatus: number;
   tadunaComment: string;
+  umaClass: UmaClass;
+  umaName: string;
   userId: string;
   voteRank: number;
 }
+
+export type UmaClass = typeof umaClasses[number];
 
 export type ExpectationLevel = typeof expectationLevels[number];
 
@@ -32,6 +36,8 @@ export type TadunaRank = typeof tadunaRanks[number];
 export type RaceEntryCallback = (entry: RaceEntry) => void;
 
 export type TadunaRankCallback = (rank: TadunaRank) => void;
+
+export const umaClasses = ["ジュニア", "クラシック", "シニア"] as const;
 
 export const expectationLevels = [
   "great",
@@ -75,6 +81,8 @@ export function createRaceEntry(initial: Partial<RaceEntry> = {}): RaceEntry {
     staminaRank: initial.staminaRank ?? "great",
     staminaStatus: initial.staminaStatus ?? 0,
     tadunaComment: initial.tadunaComment ?? "",
+    umaClass: initial.umaClass ?? "ジュニア",
+    umaName: initial.umaName ?? "",
     userId: initial.userId ?? "",
     voteRank: initial.voteRank ?? 1,
   };

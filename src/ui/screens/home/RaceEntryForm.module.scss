@@ -2,7 +2,8 @@
   display: grid;
   gap: 1em;
   grid-template:
-    "raceTitle     raceTitle     raceTitle     raceTitle     raceTitle       "
+    "umaName       umaName       umaName       umaName       umaClass        "
+    "raceTitle     raceTitle     raceTitle     raceTitle     umaClass        "
     "speedRank     staminaRank   powerRank     gutRank       intelligenceRank"
     "status        status        status        status        status          "
     "tadunaComment tadunaComment tadunaComment tadunaComment tadunaComment   "
@@ -10,6 +11,10 @@
     "commentatorComment commentatorComment commentatorComment commentatorComment commentatorComment   "
     "submit        submit        submit        submit        submit          "
     / 1fr 1fr 1fr 1fr 1fr;
+
+  & > [data-area="umaName"] { grid-area: umaName; }
+  & > [data-area="umaClass"] { grid-area: umaClass; }
+
 
   & > [data-area="raceTitle"] { grid-area: raceTitle; }
 

@@ -12,6 +12,7 @@ import {
 import styles from "./RaceEntryForm.module.scss";
 import { StatusInput } from "./StatusInput";
 import { OnStatusRankRadioChange, StatusRankSelect } from "./StatusRankSelect";
+import { OnUmaClassChange, UmaClassSelect } from "./UmaClassSelect";
 
 export const RaceEntryForm: React.FC<{
   disabled: boolean;
@@ -25,6 +26,14 @@ export const RaceEntryForm: React.FC<{
     const updated: RaceEntry = {
       ...entry,
       [name]: value,
+    };
+    onChange(updated);
+  };
+
+  const onUmaClassChange: OnUmaClassChange = (name, grade) => {
+    const updated: RaceEntry = {
+      ...entry,
+      umaClass: grade,
     };
     onChange(updated);
   };
@@ -63,6 +72,28 @@ export const RaceEntryForm: React.FC<{
 
   return (
     <form className={styles.root} onSubmit={onFormSubmit}>
+      <div data-area="umaName">
+        <InputField title="ウマ娘">
+          <input
+            disabled={disabled}
+            name="umaName"
+            onChange={onValueChange}
+            required
+            type="text"
+            value={entry.umaName}
+          />
+        </InputField>
+      </div>
+      <div data-area="umaClass">
+        <InputField title="級">
+          <UmaClassSelect
+            disabled={disabled}
+            name="umaClass"
+            onChange={onUmaClassChange}
+            value={entry.umaClass}
+          />
+        </InputField>
+      </div>
       <div data-area="raceTitle">
         <InputField title="レース名">
           <input
