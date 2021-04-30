@@ -1,26 +1,27 @@
-import { tadunaRanks, tadunaRankToSymbol } from "../../../data/RaceEntry";
-import { OnStatusRankRadioChange, StatusRankRadio } from "./StatusRankRadio";
-import styles from "./StatusRankSelect.module.scss";
+import {
+  TadunaRank,
+  tadunaRanks,
+  tadunaRankToSymbol,
+} from "../../../data/RaceEntry";
+import { VRadioGroup } from "../../stable/VRadioGroup";
+
+export type OnStatusRankRadioChange = (name: string, value: TadunaRank) => void;
 
 export const StatusRankSelect: React.FC<{
   disabled: boolean;
   name: string;
   onChange: OnStatusRankRadioChange;
-  value: string;
+  value: TadunaRank;
 }> = ({ disabled, name, onChange, value }) => {
+  const labels = tadunaRanks.map((v) => tadunaRankToSymbol(v));
   return (
-    <span className={styles.root}>
-      {tadunaRanks.map((key) => (
-        <StatusRankRadio
-          checked={key === value}
-          disabled={disabled}
-          key={key}
-          label={tadunaRankToSymbol(key)}
-          name={name}
-          onChange={onChange}
-          value={key}
-        />
-      ))}
-    </span>
+    <VRadioGroup
+      disabled={disabled}
+      labels={labels}
+      name={name}
+      onChange={onChange}
+      options={tadunaRanks}
+      value={value}
+    />
   );
 };

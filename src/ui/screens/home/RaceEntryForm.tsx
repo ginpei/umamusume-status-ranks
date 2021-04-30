@@ -1,16 +1,17 @@
-import { ChangeEventHandler, FormEventHandler, useState } from "react";
+import { ChangeEventHandler, FormEventHandler } from "react";
 import {
   ExpectationList,
   RaceEntry,
   RaceEntryCallback,
 } from "../../../data/RaceEntry";
 import { InputBlock, InputField } from "../../stable/InputField";
-import { OnExpectationRadioChange } from "./ExpectationRadio";
-import { ExpectationSelect } from "./ExpectationSelect";
+import {
+  ExpectationSelect,
+  OnExpectationRadioChange,
+} from "./ExpectationSelect";
 import styles from "./RaceEntryForm.module.scss";
 import { StatusInput } from "./StatusInput";
-import { OnStatusRankRadioChange } from "./StatusRankRadio";
-import { StatusRankSelect } from "./StatusRankSelect";
+import { OnStatusRankRadioChange, StatusRankSelect } from "./StatusRankSelect";
 
 export const RaceEntryForm: React.FC<{
   disabled: boolean;
