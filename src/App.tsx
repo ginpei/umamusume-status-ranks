@@ -1,3 +1,4 @@
+import { HelmetProvider } from "react-helmet-async";
 import { BrowserRouter, Switch } from "react-router-dom";
 import { CurrentUserProvider } from "./data/CurrentUserContext";
 import { useFirebaseCurrentUser } from "./data/useFirebaseCurrentUserHook";
@@ -12,9 +13,11 @@ const App: React.FC = () => {
   }
 
   return (
-    <CurrentUserProvider value={user}>
-      <AppRouter />
-    </CurrentUserProvider>
+    <HelmetProvider>
+      <CurrentUserProvider value={user}>
+        <AppRouter />
+      </CurrentUserProvider>
+    </HelmetProvider>
   );
 };
 
