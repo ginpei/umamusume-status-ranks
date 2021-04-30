@@ -4,6 +4,7 @@ import { RaceEntry } from "../../../data/RaceEntry";
 import { useRaceEntriesByTitle } from "../../../data/raceEntryHook";
 import { db } from "../../../gp-firebase/firebase";
 import { BasicLayout } from "../basicLayout/BasicLayout";
+import { entryListPagePath } from "../entryList/EntryListPage";
 import { raceListPagePath } from "../raceList/RaceListPage";
 import { registerPagePath } from "../register/RegisterPage";
 
@@ -21,6 +22,8 @@ export const RaceViewPage: React.FC = () => {
     <BasicLayout title={title}>
       <h1>{title}</h1>
       <p>
+        <Link to={entryListPagePath(raceTitle)}>登録済みのもの一覧</Link>
+        {" | "}
         <Link to={registerPagePath()}>追加</Link>
       </p>
       {entries && <RaceViewPageContent entries={entries} />}
