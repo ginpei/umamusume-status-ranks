@@ -9,7 +9,7 @@ import { RaceEntryForm } from "../home/RaceEntryForm";
 import { LoginFormWithMessage } from "../login/LoginForm";
 
 export function registerPagePath(): string {
-  return `${rootPath()}register`;
+  return `${rootPath()}register/`;
 }
 
 export const RegisterPage: React.FC = () => {
