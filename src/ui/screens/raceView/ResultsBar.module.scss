@@ -1,0 +1,35 @@
+.root {
+  position: relative;
+}
+
+.bar {
+  display: grid;
+  height: 600px;
+  width: 30px;
+}
+
+.innerBar {
+  display: grid;
+  font-size: 10px;
+  place-items: end start;
+
+  &[data-level="S"] { background-color: gold; }
+  &[data-level="A"] { background-color: orange; }
+  &[data-level="B"] { background-color: tomato; }
+  &[data-level="C"] { background-color: greenyellow; }
+  &[data-level="D"] { background-color: skyblue; }
+  &[data-level="E"] { background-color: paleturquoise; }
+  &[data-level="F"] { background-color: lightgray; }
+  &[data-level="G"] { background-color: darkgray; }
+}
+
+.mark {
+  bottom: 0px; // overwrote by style attr
+  display: grid;
+  height: 1em;
+  left: 30px;
+  margin-bottom: -0.5em;
+  place-items: center;
+  position: absolute;
+  width: 1em;
+}
