@@ -69,7 +69,7 @@ export const ResultsBar: React.FC<{ results: Result[] }> = ({ results }) => {
 };
 
 const Mark: React.FC<{ result: Result }> = ({ result }) => {
-  const bottom = result.status;
+  const bottom = result.status / 2;
 
   return (
     <span
