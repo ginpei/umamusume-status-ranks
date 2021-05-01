@@ -13,7 +13,13 @@ export const ResultsBar: React.FC<{ results: Result[] }> = ({ results }) => {
     <div className={styles.root}>
       <div className={styles.bar}>
         <div className={styles.innerBar} data-level="S">
+          SS+
+        </div>
+        <div className={styles.innerBar} data-level="S">
           SS
+        </div>
+        <div className={styles.innerBar} data-level="S">
+          S+
         </div>
         <div className={styles.innerBar} data-level="S">
           S
