@@ -15,6 +15,7 @@
   display: grid;
   gap: 1em;
   grid-template:
+    "umaName       umaName       umaName       umaClass      umaClass        "
     "raceTitle     raceTitle     raceTitle     raceTitle     raceTitle       "
     "speed         stamina       power         gut           intelligence    "
     "tadunaComment tadunaComment tadunaComment tadunaComment tadunaComment   "
@@ -28,9 +29,12 @@
     background-color: #f6f0f0;
     content: "";
     display: block;
-    grid-area: 2 / 1 / 2/ 6;
+    grid-area: speed / speed / intelligence / intelligence;
   }
 
+  & > [data-area="umaName"] { grid-area: umaName; }
+
+  & > [data-area="umaClass"] { grid-area: umaClass; }
   & > [data-area="raceTitle"] { grid-area: raceTitle; }
 
   & > [data-area="speed"] { grid-area: speed; }

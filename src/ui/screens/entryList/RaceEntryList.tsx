@@ -21,6 +21,12 @@ export const RaceEntryList: React.FC<{ entries: RaceEntry[] }> = ({
 const RaceEntryItem: React.FC<{ entry: RaceEntry }> = ({ entry }) => {
   return (
     <div className={styles.RaceEntryItem}>
+      <div data-area="umaName">
+        <InputBlock title="ウマ娘">{entry.umaName}</InputBlock>
+      </div>
+      <div data-area="umaClass">
+        <InputBlock title="級">{entry.umaClass}</InputBlock>
+      </div>
       <div data-area="raceTitle">
         <InputBlock title="レース名">{entry.raceTitle}</InputBlock>
       </div>
