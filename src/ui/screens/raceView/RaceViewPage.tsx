@@ -46,6 +46,38 @@ const RaceViewPageContent: React.FC<{ entries: RaceEntry[] }> = ({
     }));
   }, [entries]);
 
+  const staminaResults: Result[] = useMemo(() => {
+    return entries.map((v) => ({
+      entryId: v.id,
+      rank: v.staminaRank,
+      status: v.staminaStatus,
+    }));
+  }, [entries]);
+
+  const powerResults: Result[] = useMemo(() => {
+    return entries.map((v) => ({
+      entryId: v.id,
+      rank: v.powerRank,
+      status: v.powerStatus,
+    }));
+  }, [entries]);
+
+  const gutResults: Result[] = useMemo(() => {
+    return entries.map((v) => ({
+      entryId: v.id,
+      rank: v.gutRank,
+      status: v.gutStatus,
+    }));
+  }, [entries]);
+
+  const intelligenceResults: Result[] = useMemo(() => {
+    return entries.map((v) => ({
+      entryId: v.id,
+      rank: v.intelligenceRank,
+      status: v.intelligenceStatus,
+    }));
+  }, [entries]);
+
   return (
     <div className="u-margin">
       <div className={styles.bars}>
@@ -53,16 +85,16 @@ const RaceViewPageContent: React.FC<{ entries: RaceEntry[] }> = ({
           <ResultsBar results={speedResults} />
         </InputBlock>
         <InputBlock title="スタミナ">
-          <ResultsBar results={speedResults} />
+          <ResultsBar results={staminaResults} />
         </InputBlock>
         <InputBlock title="パワー">
-          <ResultsBar results={speedResults} />
+          <ResultsBar results={powerResults} />
         </InputBlock>
         <InputBlock title="根性">
-          <ResultsBar results={speedResults} />
+          <ResultsBar results={gutResults} />
         </InputBlock>
         <InputBlock title="賢さ">
-          <ResultsBar results={speedResults} />
+          <ResultsBar results={intelligenceResults} />
         </InputBlock>
       </div>
     </div>
