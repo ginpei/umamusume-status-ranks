@@ -39,7 +39,13 @@ const RegisterPageContent: React.FC = () => {
 
       await saveRaceEntry(db, { ...entry, userId: user.id });
 
-      setEntry(createRaceEntry());
+      setEntry(
+        createRaceEntry({
+          spGolshiChanMode2020: entry.spGolshiChanMode2020,
+          umaClass: entry.umaClass,
+          umaName: entry.umaName,
+        })
+      );
       setWorking(false);
     } catch (error) {
       setErrorMessage(getErrorMessage(error));
