@@ -9,6 +9,7 @@
     "tadunaComment tadunaComment tadunaComment tadunaComment tadunaComment   "
     "voteRank      voteRank      expectation1  expectation2  expectation3    "
     "commentatorComment commentatorComment commentatorComment commentatorComment commentatorComment   "
+    "special       special       special       special       special         "
     "submit        submit        submit        submit        submit          "
     / 1fr 1fr 1fr 1fr 1fr;
 
@@ -33,5 +34,6 @@
   & > [data-area="expectation3"] { grid-area: expectation3; }
 
   & > [data-area="commentatorComment"] { grid-area: commentatorComment; }
+  & > [data-area="special"] { grid-area: special; }
   & > [data-area="submit"] { grid-area: submit; }
 }

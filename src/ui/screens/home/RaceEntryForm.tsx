@@ -4,6 +4,10 @@ import {
   RaceEntry,
   RaceEntryCallback,
 } from "../../../data/RaceEntry";
+import {
+  GpCheckbox,
+  GpCheckboxChangeHandler,
+} from "../../../gp/components/stable/GpCheckbox";
 import { InputBlock, InputField } from "../../stable/InputField";
 import {
   ExpectationSelect,
@@ -61,6 +65,14 @@ export const RaceEntryForm: React.FC<{
     const updated: RaceEntry = {
       ...entry,
       expectations: newExpectations,
+    };
+    onChange(updated);
+  };
+
+  const onSpecialChange: GpCheckboxChangeHandler<string> = ({ checked }) => {
+    const updated: RaceEntry = {
+      ...entry,
+      spGolshiChanMode2020: checked,
     };
     onChange(updated);
   };
@@ -241,6 +253,17 @@ export const RaceEntryForm: React.FC<{
             <option value="逆転を狙える">逆転を狙える</option>
             <option value="これ以上ない仕上がり">これ以上ない仕上がり</option>
           </datalist>
+        </InputBlock>
+      </div>
+      <div data-area="special">
+        <InputBlock title="特別">
+          <GpCheckbox
+            checked={false}
+            label="ゴルシちゃんモード"
+            name="special"
+            onChange={onSpecialChange}
+            value="ゴルシちゃんモード2020"
+          />
         </InputBlock>
       </div>
       <button data-area="submit" disabled={disabled}>

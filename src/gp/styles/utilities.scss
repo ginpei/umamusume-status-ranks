@@ -20,3 +20,14 @@
   overflow: auto;
   width: 100%;
 }
+
+.u-checkbox,
+.u-radio {
+  line-height: var(--clickable-height);
+
+  & > input[type="checkbox"],
+  & > input[type="radio"] {
+    margin-right: 0.5em;
+    vertical-align: middle;
+  }
+}

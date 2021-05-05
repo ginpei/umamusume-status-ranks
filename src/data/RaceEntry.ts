@@ -10,6 +10,7 @@ export interface RaceEntry extends DataRecord {
   powerRank: TadunaRank;
   powerStatus: number;
   raceTitle: string;
+  spGolshiChanMode2020?: boolean;
   speedRank: TadunaRank;
   speedStatus: number;
   staminaRank: TadunaRank;
