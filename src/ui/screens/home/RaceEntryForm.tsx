@@ -9,6 +9,7 @@ import {
   GpCheckbox,
   GpCheckboxChangeHandler,
 } from "../../../gp/components/stable/GpCheckbox";
+import { NiceInput } from "../../pure/NiceInput";
 import { InputField, TitledField } from "../../stable/TitledField";
 import {
   ExpectationSelect,
@@ -86,7 +87,7 @@ export const RaceEntryForm: React.FC<{
     <form className={styles.root} onSubmit={onFormSubmit}>
       <div data-area="umaName">
         <InputField title="ウマ娘">
-          <input
+          <NiceInput
             disabled={disabled}
             name="umaName"
             onChange={onValueChange}
@@ -108,7 +109,7 @@ export const RaceEntryForm: React.FC<{
       </div>
       <div data-area="raceTitle">
         <InputField title="レース名">
-          <input
+          <NiceInput
             disabled={disabled}
             list="RaceEntryForm-raceTitle"
             name="raceTitle"
@@ -126,7 +127,7 @@ export const RaceEntryForm: React.FC<{
       </div>
       <div data-area="tadunaComment">
         <InputField title="たづなさん評価">
-          <input
+          <NiceInput
             disabled={disabled}
             list="RaceEntryForm-tadunaComment"
             name="tadunaComment"
@@ -195,7 +196,7 @@ export const RaceEntryForm: React.FC<{
         </TitledField>
       </div>
       <div data-area="speedStatus">
-        <input
+        <NiceInput
           disabled={disabled}
           name="speedStatus"
           onChange={onValueChange}
@@ -206,7 +207,7 @@ export const RaceEntryForm: React.FC<{
         />
       </div>
       <div data-area="staminaStatus">
-        <input
+        <NiceInput
           disabled={disabled}
           name="staminaStatus"
           onChange={onValueChange}
@@ -217,7 +218,7 @@ export const RaceEntryForm: React.FC<{
         />
       </div>
       <div data-area="powerStatus">
-        <input
+        <NiceInput
           disabled={disabled}
           name="powerStatus"
           onChange={onValueChange}
@@ -228,7 +229,7 @@ export const RaceEntryForm: React.FC<{
         />
       </div>
       <div data-area="gutStatus">
-        <input
+        <NiceInput
           disabled={disabled}
           name="gutStatus"
           onChange={onValueChange}
@@ -239,7 +240,7 @@ export const RaceEntryForm: React.FC<{
         />
       </div>
       <div data-area="intelligenceStatus">
-        <input
+        <NiceInput
           disabled={disabled}
           name="intelligenceStatus"
           onChange={onValueChange}
@@ -251,7 +252,7 @@ export const RaceEntryForm: React.FC<{
       </div>
       <div data-area="voteRank">
         <InputField title="人気順位">
-          <input
+          <NiceInput
             disabled={disabled}
             name="voteRank"
             onChange={onValueChange}
@@ -294,7 +295,7 @@ export const RaceEntryForm: React.FC<{
       </div>
       <div data-area="commentatorComment">
         <InputField title="解説評価">
-          <input
+          <NiceInput
             disabled={disabled}
             list="RaceEntryForm-commentatorComment"
             name="commentatorComment"
