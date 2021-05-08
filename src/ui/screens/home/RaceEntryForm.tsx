@@ -96,14 +96,14 @@ export const RaceEntryForm: React.FC<{
         </InputField>
       </div>
       <div data-area="umaClass">
-        <InputField title="級">
+        <InputBlock title="級">
           <UmaClassSelect
             disabled={disabled}
             name="umaClass"
             onChange={onUmaClassChange}
             value={entry.umaClass}
           />
-        </InputField>
+        </InputBlock>
       </div>
       <div data-area="raceTitle">
         <InputField title="レース名">
@@ -223,7 +223,7 @@ export const RaceEntryForm: React.FC<{
         />
       </div>
       <div data-area="tadunaComment">
-        <InputBlock title="たづなさん評価">
+        <InputField title="たづなさん評価">
           <input
             disabled={disabled}
             list="RaceEntryForm-tadunaComment"
@@ -240,10 +240,10 @@ export const RaceEntryForm: React.FC<{
             <option value="上位入着">上位入着</option>
             <option value="平均的">平均的</option>
           </datalist>
-        </InputBlock>
+        </InputField>
       </div>
       <div data-area="voteRank">
-        <InputBlock title="人気順位">
+        <InputField title="人気順位">
           <input
             disabled={disabled}
             name="voteRank"
@@ -253,7 +253,7 @@ export const RaceEntryForm: React.FC<{
             type="number"
             value={entry.voteRank}
           />
-        </InputBlock>
+        </InputField>
       </div>
       <div data-area="expectation1">
         <InputBlock title="予想1">
@@ -286,7 +286,7 @@ export const RaceEntryForm: React.FC<{
         </InputBlock>
       </div>
       <div data-area="commentatorComment">
-        <InputBlock title="解説評価">
+        <InputField title="解説評価">
           <input
             disabled={disabled}
             list="RaceEntryForm-commentatorComment"
@@ -304,7 +304,7 @@ export const RaceEntryForm: React.FC<{
             <option value="逆転を狙える">逆転を狙える</option>
             <option value="これ以上ない仕上がり">これ以上ない仕上がり</option>
           </datalist>
-        </InputBlock>
+        </InputField>
       </div>
       <div data-area="special">
         <InputBlock title="特別">
