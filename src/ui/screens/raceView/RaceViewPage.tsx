@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { RaceEntry } from "../../../data/RaceEntry";
 import { useRaceEntriesByTitle } from "../../../data/raceEntryHook";
 import { db } from "../../../gp-firebase/firebase";
-import { InputBlock } from "../../stable/InputField";
+import { TitledField } from "../../stable/TitledField";
 import { BasicLayout } from "../basicLayout/BasicLayout";
 import { entryListPagePath } from "../entryList/EntryListPage";
 import { raceListPagePath } from "../raceList/RaceListPage";
@@ -81,21 +81,21 @@ const RaceViewPageContent: React.FC<{ entries: RaceEntry[] }> = ({
   return (
     <div className="u-margin">
       <div className={styles.bars}>
-        <InputBlock title="スピード">
+        <TitledField title="スピード">
           <ResultsBar results={speedResults} />
-        </InputBlock>
-        <InputBlock title="スタミナ">
+        </TitledField>
+        <TitledField title="スタミナ">
           <ResultsBar results={staminaResults} />
-        </InputBlock>
-        <InputBlock title="パワー">
+        </TitledField>
+        <TitledField title="パワー">
           <ResultsBar results={powerResults} />
-        </InputBlock>
-        <InputBlock title="根性">
+        </TitledField>
+        <TitledField title="根性">
           <ResultsBar results={gutResults} />
-        </InputBlock>
-        <InputBlock title="賢さ">
+        </TitledField>
+        <TitledField title="賢さ">
           <ResultsBar results={intelligenceResults} />
-        </InputBlock>
+        </TitledField>
       </div>
     </div>
   );

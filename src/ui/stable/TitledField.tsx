@@ -1,4 +1,4 @@
-import styles from "./InputField.module.scss";
+import styles from "./TitledField.module.scss";
 
 export const InputField: React.FC<{ title: string }> = ({
   children,
@@ -12,7 +12,7 @@ export const InputField: React.FC<{ title: string }> = ({
   );
 };
 
-export const InputBlock: React.FC<{ title: string }> = ({
+export const TitledField: React.FC<{ title: string }> = ({
   children,
   title,
 }) => {

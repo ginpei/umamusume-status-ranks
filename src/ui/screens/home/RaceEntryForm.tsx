@@ -9,7 +9,7 @@ import {
   GpCheckbox,
   GpCheckboxChangeHandler,
 } from "../../../gp/components/stable/GpCheckbox";
-import { InputBlock, InputField } from "../../stable/InputField";
+import { InputField, TitledField } from "../../stable/TitledField";
 import {
   ExpectationSelect,
   OnExpectationRadioChange,
@@ -97,14 +97,14 @@ export const RaceEntryForm: React.FC<{
         </InputField>
       </div>
       <div data-area="umaClass">
-        <InputBlock title="級">
+        <TitledField title="級">
           <UmaClassSelect
             disabled={disabled}
             name="umaClass"
             onChange={onUmaClassChange}
             value={entry.umaClass}
           />
-        </InputBlock>
+        </TitledField>
       </div>
       <div data-area="raceTitle">
         <InputField title="レース名">
@@ -145,54 +145,54 @@ export const RaceEntryForm: React.FC<{
         </InputField>
       </div>
       <div data-area="speedRank">
-        <InputBlock title="スピード">
+        <TitledField title="スピード">
           <StatusRankSelect
             disabled={disabled}
             name="speedRank"
             onChange={onRankChange}
             value={entry.speedRank}
           />
-        </InputBlock>
+        </TitledField>
       </div>
       <div data-area="staminaRank">
-        <InputBlock title="スタミナ">
+        <TitledField title="スタミナ">
           <StatusRankSelect
             disabled={disabled}
             name="staminaRank"
             onChange={onRankChange}
             value={entry.staminaRank}
           />
-        </InputBlock>
+        </TitledField>
       </div>
       <div data-area="powerRank">
-        <InputBlock title="パワー">
+        <TitledField title="パワー">
           <StatusRankSelect
             disabled={disabled}
             name="powerRank"
             onChange={onRankChange}
             value={entry.powerRank}
           />
-        </InputBlock>
+        </TitledField>
       </div>
       <div data-area="gutRank">
-        <InputBlock title="根性">
+        <TitledField title="根性">
           <StatusRankSelect
             disabled={disabled}
             name="gutRank"
             onChange={onRankChange}
             value={entry.gutRank}
           />
-        </InputBlock>
+        </TitledField>
       </div>
       <div data-area="intelligenceRank">
-        <InputBlock title="賢さ">
+        <TitledField title="賢さ">
           <StatusRankSelect
             disabled={disabled}
             name="intelligenceRank"
             onChange={onRankChange}
             value={entry.intelligenceRank}
           />
-        </InputBlock>
+        </TitledField>
       </div>
       <div data-area="speedStatus">
         <input
@@ -263,34 +263,34 @@ export const RaceEntryForm: React.FC<{
         </InputField>
       </div>
       <div data-area="expectation1">
-        <InputBlock title="予想1">
+        <TitledField title="予想1">
           <ExpectationSelect
             disabled={disabled}
             name="expectation1"
             onChange={onExpectationChange}
             value={entry.expectations[0]}
           />
-        </InputBlock>
+        </TitledField>
       </div>
       <div data-area="expectation2">
-        <InputBlock title="予想2">
+        <TitledField title="予想2">
           <ExpectationSelect
             disabled={disabled}
             name="expectation2"
             onChange={onExpectationChange}
             value={entry.expectations[1]}
           />
-        </InputBlock>
+        </TitledField>
       </div>
       <div data-area="expectation3">
-        <InputBlock title="予想3">
+        <TitledField title="予想3">
           <ExpectationSelect
             disabled={disabled}
             name="expectation3"
             onChange={onExpectationChange}
             value={entry.expectations[2]}
           />
-        </InputBlock>
+        </TitledField>
       </div>
       <div data-area="commentatorComment">
         <InputField title="解説評価">
@@ -314,7 +314,7 @@ export const RaceEntryForm: React.FC<{
         </InputField>
       </div>
       <div data-area="special">
-        <InputBlock title="特別">
+        <TitledField title="特別">
           <GpCheckbox
             checked={false}
             label="ゴルシちゃんモード"
@@ -322,7 +322,7 @@ export const RaceEntryForm: React.FC<{
             onChange={onSpecialChange}
             value="ゴルシちゃんモード2020"
           />
-        </InputBlock>
+        </TitledField>
       </div>
       <button data-area="submit" disabled={disabled}>
         OK
