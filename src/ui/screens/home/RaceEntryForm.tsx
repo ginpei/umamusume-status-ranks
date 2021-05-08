@@ -1,4 +1,5 @@
 import { ChangeEventHandler, FormEventHandler } from "react";
+import { raceTitles } from "../../../data/Race";
 import {
   ExpectationList,
   RaceEntry,
@@ -109,6 +110,7 @@ export const RaceEntryForm: React.FC<{
         <InputField title="レース名">
           <input
             disabled={disabled}
+            list="RaceEntryForm-raceTitle"
             name="raceTitle"
             onChange={onValueChange}
             required
@@ -116,6 +118,11 @@ export const RaceEntryForm: React.FC<{
             value={entry.raceTitle}
           />
         </InputField>
+        <datalist id="RaceEntryForm-raceTitle">
+          {raceTitles.map((title) => (
+            <option key={title}>{title}</option>
+          ))}
+        </datalist>
       </div>
       <div data-area="tadunaComment">
         <InputField title="たづなさん評価">
