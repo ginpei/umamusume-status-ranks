@@ -14,7 +14,6 @@ import {
   OnExpectationRadioChange,
 } from "./ExpectationSelect";
 import styles from "./RaceEntryForm.module.scss";
-import { StatusInput } from "./StatusInput";
 import { OnStatusRankRadioChange, StatusRankSelect } from "./StatusRankSelect";
 import { OnUmaClassChange, UmaClassSelect } from "./UmaClassSelect";
 
@@ -168,8 +167,60 @@ export const RaceEntryForm: React.FC<{
           />
         </InputBlock>
       </div>
-      <div data-area="status">
-        <StatusInput disabled={disabled} entry={entry} onChange={onChange} />
+      <div data-area="speedStatus">
+        <input
+          disabled={disabled}
+          name="speedStatus"
+          onChange={onValueChange}
+          required
+          className="u-fullWidth u-textCenter"
+          type="number"
+          value={entry.speedStatus}
+        />
+      </div>
+      <div data-area="staminaStatus">
+        <input
+          disabled={disabled}
+          name="staminaStatus"
+          onChange={onValueChange}
+          required
+          className="u-fullWidth u-textCenter"
+          type="number"
+          value={entry.staminaStatus}
+        />
+      </div>
+      <div data-area="powerStatus">
+        <input
+          disabled={disabled}
+          name="powerStatus"
+          onChange={onValueChange}
+          required
+          className="u-fullWidth u-textCenter"
+          type="number"
+          value={entry.powerStatus}
+        />
+      </div>
+      <div data-area="gutStatus">
+        <input
+          disabled={disabled}
+          name="gutStatus"
+          onChange={onValueChange}
+          required
+          className="u-fullWidth u-textCenter"
+          type="number"
+          value={entry.gutStatus}
+        />
+      </div>
+      <div data-area="intelligenceStatus">
+        <input
+          disabled={disabled}
+          name="intelligenceStatus"
+          onChange={onValueChange}
+          required
+          className="u-fullWidth u-textCenter"
+          type="number"
+          value={entry.intelligenceStatus}
+        />
       </div>
       <div data-area="tadunaComment">
         <InputBlock title="たづなさん評価">
@@ -198,7 +249,7 @@ export const RaceEntryForm: React.FC<{
             name="voteRank"
             onChange={onValueChange}
             required
-            style={{ width: "100%" }}
+            className="u-fullWidth"
             type="number"
             value={entry.voteRank}
           />

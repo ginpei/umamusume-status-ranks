@@ -5,7 +5,7 @@
     "umaName       umaName       umaName       umaName       umaClass        "
     "raceTitle     raceTitle     raceTitle     raceTitle     umaClass        "
     "speedRank     staminaRank   powerRank     gutRank       intelligenceRank"
-    "status        status        status        status        status          "
+    "speedStatus   staminaStatus powerStatus   gutStatus     intelligenceStatus"
     "tadunaComment tadunaComment tadunaComment tadunaComment tadunaComment   "
     "voteRank      voteRank      expectation1  expectation2  expectation3    "
     "commentatorComment commentatorComment commentatorComment commentatorComment commentatorComment   "
@@ -25,7 +25,12 @@
   & > [data-area="gutRank"] { grid-area: gutRank; }
   & > [data-area="intelligenceRank"] { grid-area: intelligenceRank; }
 
-  & > [data-area="status"] { grid-area: status; }
+  & > [data-area="speedStatus"] { grid-area: speedStatus; }
+  & > [data-area="staminaStatus"] { grid-area: staminaStatus; }
+  & > [data-area="powerStatus"] { grid-area: powerStatus; }
+  & > [data-area="gutStatus"] { grid-area: gutStatus; }
+  & > [data-area="intelligenceStatus"] { grid-area: intelligenceStatus; }
+
   & > [data-area="tadunaComment"] { grid-area: tadunaComment; }
 
   & > [data-area="voteRank"] { grid-area: voteRank; }
