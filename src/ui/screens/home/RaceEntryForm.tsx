@@ -117,6 +117,26 @@ export const RaceEntryForm: React.FC<{
           />
         </InputField>
       </div>
+      <div data-area="tadunaComment">
+        <InputField title="たづなさん評価">
+          <input
+            disabled={disabled}
+            list="RaceEntryForm-tadunaComment"
+            name="tadunaComment"
+            onChange={onValueChange}
+            placeholder="1着争い, 有力, 上位入着, 平均的"
+            required
+            type="text"
+            value={entry.tadunaComment}
+          />
+          <datalist id="RaceEntryForm-tadunaComment">
+            <option value="1着争い">1着争い</option>
+            <option value="有力">有力</option>
+            <option value="上位入着">上位入着</option>
+            <option value="平均的">平均的</option>
+          </datalist>
+        </InputField>
+      </div>
       <div data-area="speedRank">
         <InputBlock title="スピード">
           <StatusRankSelect
@@ -221,26 +241,6 @@ export const RaceEntryForm: React.FC<{
           type="number"
           value={entry.intelligenceStatus}
         />
-      </div>
-      <div data-area="tadunaComment">
-        <InputField title="たづなさん評価">
-          <input
-            disabled={disabled}
-            list="RaceEntryForm-tadunaComment"
-            name="tadunaComment"
-            onChange={onValueChange}
-            placeholder="1着争い, 有力, 上位入着, 平均的"
-            required
-            type="text"
-            value={entry.tadunaComment}
-          />
-          <datalist id="RaceEntryForm-tadunaComment">
-            <option value="1着争い">1着争い</option>
-            <option value="有力">有力</option>
-            <option value="上位入着">上位入着</option>
-            <option value="平均的">平均的</option>
-          </datalist>
-        </InputField>
       </div>
       <div data-area="voteRank">
         <InputField title="人気順位">

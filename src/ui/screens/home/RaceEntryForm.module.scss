@@ -4,9 +4,9 @@
   grid-template:
     "umaName       umaName       umaName       umaName       umaClass        "
     "raceTitle     raceTitle     raceTitle     raceTitle     umaClass        "
+    "tadunaComment tadunaComment tadunaComment tadunaComment tadunaComment   "
     "speedRank     staminaRank   powerRank     gutRank       intelligenceRank"
     "speedStatus   staminaStatus powerStatus   gutStatus     intelligenceStatus"
-    "tadunaComment tadunaComment tadunaComment tadunaComment tadunaComment   "
     "voteRank      voteRank      expectation1  expectation2  expectation3    "
     "commentatorComment commentatorComment commentatorComment commentatorComment commentatorComment   "
     "special       special       special       special       special         "
@@ -19,6 +19,8 @@
 
   & > [data-area="raceTitle"] { grid-area: raceTitle; }
 
+  & > [data-area="tadunaComment"] { grid-area: tadunaComment; }
+
   & > [data-area="speedRank"] { grid-area: speedRank; }
   & > [data-area="staminaRank"] { grid-area: staminaRank; }
   & > [data-area="powerRank"] { grid-area: powerRank; }
@@ -30,8 +32,6 @@
   & > [data-area="powerStatus"] { grid-area: powerStatus; }
   & > [data-area="gutStatus"] { grid-area: gutStatus; }
   & > [data-area="intelligenceStatus"] { grid-area: intelligenceStatus; }
-
-  & > [data-area="tadunaComment"] { grid-area: tadunaComment; }
 
   & > [data-area="voteRank"] { grid-area: voteRank; }
   & > [data-area="expectation1"] { grid-area: expectation1; }
