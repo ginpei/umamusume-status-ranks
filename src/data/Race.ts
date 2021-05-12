@@ -41,6 +41,11 @@ export const siteName = toCandidates(
   compareString
 );
 
+export const umaNames = toCandidates(
+  races.flatMap((v) => v.umaNames),
+  compareString
+);
+
 export const raceTitles = toCandidates(
   races.map((v) => v.title),
   compareString

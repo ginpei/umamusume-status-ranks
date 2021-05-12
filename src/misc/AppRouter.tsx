@@ -20,6 +20,10 @@ import {
   RegisterPage,
   registerPagePath,
 } from "../ui/screens/register/RegisterPage";
+import {
+  UmaListPage,
+  umaListPagePath,
+} from "../ui/screens/umaList/UmaListPage";
 
 export const AppRouter: React.FC = () => {
   return (
@@ -32,6 +36,7 @@ export const AppRouter: React.FC = () => {
           path={registerPagePath()}
           component={RegisterPage}
         />
+        <Route exact={true} path={umaListPagePath()} component={UmaListPage} />
         <Route
           exact={true}
           path={raceListPagePath()}

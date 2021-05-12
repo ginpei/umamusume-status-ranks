@@ -3,6 +3,7 @@ import { BasicLayout } from "../basicLayout/BasicLayout";
 import { loginPagePath } from "../login/LoginPage";
 import { raceListPagePath } from "../raceList/RaceListPage";
 import { registerPagePath } from "../register/RegisterPage";
+import { umaListPagePath } from "../umaList/UmaListPage";
 
 export const HomePage: React.FC = () => {
   return (
@@ -15,7 +16,10 @@ export const HomePage: React.FC = () => {
         <Link to={registerPagePath()}>追加</Link>
       </p>
       <p>
-        <Link to={raceListPagePath()}>一覧</Link>
+        <Link to={umaListPagePath()}>ウマ娘一覧</Link>
+      </p>
+      <p>
+        <Link to={raceListPagePath()}>レース一覧</Link>
       </p>
     </BasicLayout>
   );
