@@ -22,14 +22,14 @@ export const UmaViewPage: React.FC = () => {
       <table>
         <thead>
           <tr>
-            <th>年</th>
+            <th>級</th>
             <th>月</th>
             <th>レース</th>
           </tr>
         </thead>
         <tbody>
           {umaRaces.map((race) => (
-            <RaceRow key={`${race.grade}${race.title}`} race={race} />
+            <RaceRow key={`${race.umaGrade}${race.title}`} race={race} />
           ))}
         </tbody>
       </table>
@@ -40,7 +40,7 @@ export const UmaViewPage: React.FC = () => {
 const RaceRow: React.FC<{ race: Race }> = ({ race }) => {
   return (
     <tr className="RaceRow">
-      <td>{race.grade}年目</td>
+      <td>{race.umaGrade}</td>
       <td>
         {race.month}月 {race.ofMonth}
       </td>

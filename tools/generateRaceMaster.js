@@ -77,13 +77,13 @@ function convertRowToRace(row) {
   return {
     direction,
     distance: Number(sDistance),
-    grade: parseInt(sGrade, 10),
     ground,
     month: parseInt(sMonth, 10),
     ofMonth: `${ofMonthPartial}半`,
     raceGrade,
     siteName,
     title,
+    umaGrade,
     umaNames,
   };
 }
