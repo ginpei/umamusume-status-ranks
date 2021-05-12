@@ -3,6 +3,7 @@ import { umaNames } from "../../../data/Race";
 import { rootPath } from "../../../misc";
 import { BasicLayout } from "../basicLayout/BasicLayout";
 import { raceViewPagePath } from "../raceView/RaceViewPage";
+import { umaViewPagePath } from "../umaView/UmaViewPage";
 
 export function umaListPagePath(): string {
   return `${rootPath()}uma/`;
@@ -15,8 +16,7 @@ export const UmaListPage: React.FC = () => {
       <ul>
         {umaNames.map((umaName) => (
           <li key={umaName}>
-            {/* TODO */}
-            <Link to={raceViewPagePath(umaName)}>{umaName}</Link>
+            <Link to={umaViewPagePath(umaName)}>{umaName}</Link>
           </li>
         ))}
       </ul>

@@ -24,6 +24,10 @@ import {
   UmaListPage,
   umaListPagePath,
 } from "../ui/screens/umaList/UmaListPage";
+import {
+  UmaViewPage,
+  umaViewPagePath,
+} from "../ui/screens/umaView/UmaViewPage";
 
 export const AppRouter: React.FC = () => {
   return (
@@ -37,6 +41,11 @@ export const AppRouter: React.FC = () => {
           component={RegisterPage}
         />
         <Route exact={true} path={umaListPagePath()} component={UmaListPage} />
+        <Route
+          exact={true}
+          path={umaViewPagePath(":umaName")}
+          component={UmaViewPage}
+        />
         <Route
           exact={true}
           path={raceListPagePath()}
