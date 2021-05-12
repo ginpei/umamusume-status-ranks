@@ -8,7 +8,7 @@ import { TitledField } from "../../stable/TitledField";
 import { BasicLayout } from "../basicLayout/BasicLayout";
 import { entryListPagePath } from "../entryList/EntryListPage";
 import { raceListPagePath } from "../raceList/RaceListPage";
-import { registerPagePath } from "../register/RegisterPage";
+import { registerPagePathWithQuery } from "../register/RegisterPage";
 import styles from "./RaceViewPage.module.scss";
 import { Result, ResultsBar } from "./ResultsBar";
 
@@ -28,7 +28,7 @@ export const RaceViewPage: React.FC = () => {
       <p>
         <Link to={entryListPagePath(raceTitle)}>登録済みのもの一覧</Link>
         {" | "}
-        <Link to={registerPagePath()}>追加</Link>
+        <Link to={registerPagePathWithQuery({ raceTitle })}>追加</Link>
       </p>
       {entries && <RaceViewPageContent entries={entries} />}
     </BasicLayout>
