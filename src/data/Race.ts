@@ -3,26 +3,31 @@ import raceMaster from "./raceMaster.json";
 export interface Race {
   direction: RaceDirection;
   distance: number;
-  grade: 1 | 2 | 3;
   ground: "芝" | "ダート";
   month: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
   ofMonth: "前半" | "後半";
   raceGrade: RaceGrade;
-  title: string;
   siteName: string;
+  title: string;
+  umaGrade: UmaGrade;
+  umaNames: string[];
 }
+
+export type UmaGrade = typeof umaGrades[number];
 
 export type RaceDirection = typeof raceDirections[number];
 
 export type RaceGrade = typeof raceGrades[number];
 
+export const umaGrades = ["ジュニア", "クラシック", "シニア"];
+
 export const raceDirections = [
   "左",
-  "左内",
-  "左外",
+  "左・内",
+  "左・外",
   "右",
-  "右外",
-  "右内",
+  "右・外",
+  "右・内",
   "直線",
 ] as const;
 
@@ -37,6 +42,11 @@ export const raceDistance = toCandidates(
 
 export const siteName = toCandidates(
   races.map((v) => v.siteName),
+  compareString
+);
+
+export const umaNames = toCandidates(
+  races.flatMap((v) => v.umaNames),
   compareString
 );
 
