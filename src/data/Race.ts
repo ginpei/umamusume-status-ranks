@@ -7,8 +7,8 @@ export interface Race {
   month: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
   ofMonth: "前半" | "後半";
   raceGrade: RaceGrade;
-  title: string;
   siteName: string;
+  title: string;
   umaGrade: UmaGrade;
   umaNames: string[];
 }
