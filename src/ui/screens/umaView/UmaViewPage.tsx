@@ -29,7 +29,7 @@ export const UmaViewPage: React.FC = () => {
         </thead>
         <tbody>
           {umaRaces.map((race) => (
-            <RaceRow key={`${race.umaGrade}${race.title}`} race={race} />
+            <RaceRow key={`${race.umaClass}${race.title}`} race={race} />
           ))}
         </tbody>
       </table>
@@ -40,7 +40,7 @@ export const UmaViewPage: React.FC = () => {
 const RaceRow: React.FC<{ race: Race }> = ({ race }) => {
   return (
     <tr className="RaceRow">
-      <td>{race.umaGrade}</td>
+      <td>{race.umaClass}</td>
       <td>
         {race.month}月 {race.ofMonth}
       </td>

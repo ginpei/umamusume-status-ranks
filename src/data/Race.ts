@@ -9,17 +9,17 @@ export interface Race {
   raceGrade: RaceGrade;
   siteName: string;
   title: string;
-  umaGrade: UmaGrade;
+  umaClass: UmaClass;
   umaNames: string[];
 }
 
-export type UmaGrade = typeof umaGrades[number];
+export type UmaClass = typeof umaClasses[number];
 
 export type RaceDirection = typeof raceDirections[number];
 
 export type RaceGrade = typeof raceGrades[number];
 
-export const umaGrades = ["ジュニア", "クラシック", "シニア"];
+export const umaClasses = ["ジュニア", "クラシック", "シニア"] as const;
 
 export const raceDirections = [
   "左",
@@ -54,6 +54,11 @@ export const raceTitles = toCandidates(
   races.map((v) => v.title),
   compareString
 );
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
+export function isUmaClass(umaClass: any): umaClass is UmaClass {
+  return umaClasses.includes(umaClass);
+}
 
 export function isValidRaceTitle(title: string): boolean {
   return races.some((v) => v.title === title);

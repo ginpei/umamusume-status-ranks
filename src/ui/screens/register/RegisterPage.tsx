@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useCurrentUser, useLoggedIn } from "../../../data/CurrentUserContext";
-import { isUmaGrade, UmaGrade } from "../../../data/Race";
+import { isUmaClass, UmaClass } from "../../../data/Race";
 import {
   createRaceEntry,
   RaceEntry,
@@ -25,7 +25,7 @@ export function registerPagePathWithQuery({
 }: {
   raceTitle?: string;
   umaName?: string;
-  umaGrade?: UmaGrade;
+  umaGrade?: UmaClass;
 }): string {
   const params = new URLSearchParams();
   if (umaName) {
@@ -108,7 +108,7 @@ function useDefaultRaceEntry(): Partial<RaceEntry> {
   const defaultEntry: Partial<RaceEntry> = {
     raceTitle: query.get("title") ?? undefined,
     umaName: query.get("uma") ?? undefined,
-    umaClass: isUmaGrade(grade) ? grade : undefined,
+    umaClass: isUmaClass(grade) ? grade : undefined,
   };
   return defaultEntry;
 }

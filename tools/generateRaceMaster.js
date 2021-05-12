@@ -59,8 +59,8 @@ function createMasterData(rows) {
 function convertRowToRace(row) {
   const [
     sChecked,
-    umaGrade,
-    sGrade,
+    umaClass,
+    sUmaGrade,
     sMonth,
     ofMonthPartial,
     title,
@@ -83,7 +83,7 @@ function convertRowToRace(row) {
     raceGrade,
     siteName,
     title,
-    umaGrade,
+    umaClass,
     umaNames,
   };
 }
