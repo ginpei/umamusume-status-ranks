@@ -34,4 +34,4 @@ pubsub-debug.log
 ui-debug.log
 
 # data source
-docs/raceMaster.tsv
+tools/raceMaster.tsv
