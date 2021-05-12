@@ -10,6 +10,7 @@ export interface Race {
   raceGrade: RaceGrade;
   title: string;
   siteName: string;
+  umaNames: string[];
 }
 
 export type RaceDirection = typeof raceDirections[number];
@@ -18,11 +19,11 @@ export type RaceGrade = typeof raceGrades[number];
 
 export const raceDirections = [
   "左",
-  "左内",
-  "左外",
+  "左・内",
+  "左・外",
   "右",
-  "右外",
-  "右内",
+  "右・外",
+  "右・内",
   "直線",
 ] as const;
 
