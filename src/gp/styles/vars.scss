@@ -6,12 +6,16 @@
   --disabled-fg: #999;
   --link-fg: #00c;
   --link-hover-fg: #c00;
+  --table-border-color: #ccc;
+  --table-header-bg: #666;
+  --table-header-fg: #fff;
   --theme-bg: #036;
   --theme-fg: #fff;
 }
 
 // sizes
 :root {
+  --base-padding: 0.2rem 0.5rem;
   --clickable-height: 1.5rem;
   --font-medium: 1rem;
   --font-small: 0.8rem;

@@ -1,10 +1,18 @@
 * {
   margin: 0;
+  padding: 0;
 }
 
-details,
+article,
+figcaption,
+figure,
+form,
 h1,
+h2,
+h3,
+ol,
 p,
+pre,
 table,
 ul {
   margin-top: 1em;
@@ -13,6 +21,7 @@ ul {
 body {
   background-color: var(--base-bg);
   color: var(--base-fg);
+  font-family: "游ゴシック", sans-serif;
 }
 
 table {
@@ -20,19 +29,61 @@ table {
 }
 
 th, td {
-  border: 1px solid var(--base-border-color);
-  padding: 0.5em;
+  border: 1px solid var(--table-border-color);
+  padding: var(--base-padding);
 }
 
 th {
-  background-color: #666;
+  background-color: var(--table-header-bg);
+  color: var(--table-header-fg);
+}
+
+:where(ol, ul) {
+  padding-inline-start: 40px;
+
+  li > & {
+    margin-top: calc(var(--clickable-height) - 1em);
+  }
+}
+
+li {
+  & + & {
+    margin-top: calc(var(--clickable-height) - 1em);
+  }
+}
+
+blockquote {
+  background-color: var(--box-bg);
+  border-left: 0.3em solid #ddd;
+  padding-left: 0.5em;
+}
+
+pre {
+  background-color: #333;
   color: #fff;
+
+  code {
+    background-color: transparent;
+    color: inherit;
+  }
 }
 
 a {
   color: var(--link-fg);
 
   &:hover {
+    color: var(--link-hover-fg);
+  }
+}
+
+code {
+  font-family: var(--code-font);
+  background-color: var(--code-bg);
+  border-radius: 0.2em;
+  color: var(--code-fg);
+  padding: 0 0.5em;
+
+  a:hover code {
     color: var(--link-hover-fg);
   }
 }
