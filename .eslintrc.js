@@ -5,4 +5,5 @@ module.exports = {
   rules: {
     // your rules here
   },
+  ignorePatterns: ["/build/"],
 };
