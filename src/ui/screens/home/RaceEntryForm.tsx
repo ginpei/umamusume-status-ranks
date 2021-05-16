@@ -3,6 +3,7 @@ import { ActionButton } from "@react-spectrum/button";
 import { Checkbox } from "@react-spectrum/checkbox";
 import { Form } from "@react-spectrum/form";
 import { ChangeEventHandler, FormEventHandler } from "react";
+import { TextField } from "@react-spectrum/textfield";
 import { raceTitles } from "../../../data/Race";
 import {
   ExpectationList,
@@ -22,7 +23,7 @@ import {
 import styles from "./RaceEntryForm.module.scss";
 import { OnStatusRankRadioChange, StatusRankSelect } from "./StatusRankSelect";
 import { OnUmaClassChange, UmaClassSelect } from "./UmaClassSelect";
-import { TextField } from "../../../vendor/TextField";
+import { TextListField } from "../../stateful/TextListField";
 
 export const RaceEntryForm: React.FC<{
   disabled: boolean;
@@ -136,38 +137,27 @@ export const RaceEntryForm: React.FC<{
           </TitledField>
         </div>
         <div data-area="raceTitle">
-          <FormInputField
-            entry={entry}
+          <TextListField
+            isRequired
             label="レース名"
-            list="RaceEntryForm-raceTitle"
             name="raceTitle"
-            onChange={onValueChange2}
+            onChange={(v) => onValueChange2("raceTitle", v)}
+            options={raceTitles}
+            value={entry.raceTitle}
+            width="100%"
           />
-          <datalist id="RaceEntryForm-raceTitle">
-            {raceTitles.map((title) => (
-              <option key={title}>{title}</option>
-            ))}
-          </datalist>
         </div>
         <div data-area="tadunaComment">
-          <InputField title="たづなさん評価">
-            <NiceInput
-              disabled={disabled}
-              list="RaceEntryForm-tadunaComment"
-              name="tadunaComment"
-              onChange={onValueChange}
-              placeholder="1着争い, 有力, 上位入着, 平均的"
-              required
-              type="text"
-              value={entry.tadunaComment}
-            />
-            <datalist id="RaceEntryForm-tadunaComment">
-              <option value="1着争い">1着争い</option>
-              <option value="有力">有力</option>
-              <option value="上位入着">上位入着</option>
-              <option value="平均的">平均的</option>
-            </datalist>
-          </InputField>
+          <TextListField
+            isRequired
+            label="たづなさん評価"
+            name="tadunaComment"
+            onChange={(v) => onValueChange2("tadunaComment", v)}
+            options={["1着争い", "有力", "上位入着", "平均的"]}
+            placeholder="1着争い, 有力, 上位入着, 平均的"
+            value={entry.tadunaComment}
+            width="100%"
+          />
         </div>
         <div data-area="speedRank">
           <TitledField title="スピード">
@@ -299,25 +289,22 @@ export const RaceEntryForm: React.FC<{
           </TitledField>
         </div>
         <div data-area="commentatorComment">
-          <InputField title="解説評価">
-            <NiceInput
-              disabled={disabled}
-              list="RaceEntryForm-commentatorComment"
-              name="commentatorComment"
-              onChange={onValueChange}
-              placeholder="完全に上位, 素質は負けていません, 引けを取りません"
-              required
-              type="text"
-              value={entry.commentatorComment}
-            />
-            <datalist id="RaceEntryForm-commentatorComment">
-              <option value="実力は完全に上位">実力は完全に上位</option>
-              <option value="素質は負けていません">素質は負けていません</option>
-              <option value="引けを取りません">引けを取りません</option>
-              <option value="逆転を狙える">逆転を狙える</option>
-              <option value="これ以上ない仕上がり">これ以上ない仕上がり</option>
-            </datalist>
-          </InputField>
+          <TextListField
+            isRequired
+            label="解説評価"
+            name="commentatorComment"
+            onChange={(v) => onValueChange2("commentatorComment", v)}
+            options={[
+              "実力は完全に上位",
+              "素質は負けていません",
+              "引けを取りません",
+              "逆転を狙える",
+              "これ以上ない仕上がり",
+            ]}
+            placeholder="完全に上位, 素質は負けていません, 引けを取りません"
+            value={entry.commentatorComment}
+            width="100%"
+          />
         </div>
         <div data-area="special">
           <Label>特別</Label>
