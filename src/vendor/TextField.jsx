@@ -1,3 +1,5 @@
+/* eslint-disable no-underscore-dangle */
+/* eslint-disable import/no-extraneous-dependencies */
 /*
  * Copyright 2020 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -10,24 +12,25 @@
  * governing permissions and limitations under the License.
  */
 
-import React, {forwardRef, RefObject, useRef} from 'react';
-import {SpectrumTextFieldProps, TextFieldRef} from '@react-types/textfield';
-import {TextFieldBase} from './TextFieldBase';
-import {useProviderProps} from '@react-spectrum/provider';
-import {useTextField} from '@react-aria/textfield';
+import { useTextField } from "@react-aria/textfield";
+import { useProviderProps } from "@react-spectrum/provider";
+import { TextFieldBase } from "@react-spectrum/textfield";
+import React, { forwardRef, useRef } from "react";
 
-function TextField(props: SpectrumTextFieldProps, ref: RefObject<TextFieldRef>) {
+function TextField(props, ref) {
+  // eslint-disable-next-line no-param-reassign
   props = useProviderProps(props);
 
-  let inputRef = useRef<HTMLInputElement>();
-  let {labelProps, inputProps} = useTextField(props, inputRef);
+  const inputRef = useRef();
+  const { labelProps, inputProps } = useTextField(props, inputRef);
   return (
     <TextFieldBase
       {...props}
       labelProps={labelProps}
       inputProps={inputProps}
       ref={ref}
-      inputRef={inputRef} />
+      inputRef={inputRef}
+    />
   );
 }
 
@@ -37,4 +40,4 @@ function TextField(props: SpectrumTextFieldProps, ref: RefObject<TextFieldRef>) 
  * communicate the entry requirements.
  */
 const _TextField = forwardRef(TextField);
-export {_TextField as TextField};
+export { _TextField as TextField };
