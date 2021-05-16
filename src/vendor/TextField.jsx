@@ -27,7 +27,7 @@ function TextField(props, ref) {
     <TextFieldBase
       {...props}
       labelProps={labelProps}
-      inputProps={inputProps}
+      inputProps={{ ...inputProps, list: props.list }}
       ref={ref}
       inputRef={inputRef}
     />

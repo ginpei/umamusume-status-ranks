@@ -2,7 +2,6 @@ import { Label } from "@react-spectrum/label";
 import { ActionButton } from "@react-spectrum/button";
 import { Checkbox } from "@react-spectrum/checkbox";
 import { Form } from "@react-spectrum/form";
-import { TextField } from "@react-spectrum/textfield";
 import { ChangeEventHandler, FormEventHandler } from "react";
 import { raceTitles } from "../../../data/Race";
 import {
@@ -23,6 +22,7 @@ import {
 import styles from "./RaceEntryForm.module.scss";
 import { OnStatusRankRadioChange, StatusRankSelect } from "./StatusRankSelect";
 import { OnUmaClassChange, UmaClassSelect } from "./UmaClassSelect";
+import { TextField } from "../../../vendor/TextField";
 
 export const RaceEntryForm: React.FC<{
   disabled: boolean;
@@ -136,17 +136,13 @@ export const RaceEntryForm: React.FC<{
           </TitledField>
         </div>
         <div data-area="raceTitle">
-          <InputField title="レース名">
-            <NiceInput
-              disabled={disabled}
-              list="RaceEntryForm-raceTitle"
-              name="raceTitle"
-              onChange={onValueChange}
-              required
-              type="text"
-              value={entry.raceTitle}
-            />
-          </InputField>
+          <FormInputField
+            entry={entry}
+            label="レース名"
+            list="RaceEntryForm-raceTitle"
+            name="raceTitle"
+            onChange={onValueChange2}
+          />
           <datalist id="RaceEntryForm-raceTitle">
             {raceTitles.map((title) => (
               <option key={title}>{title}</option>
