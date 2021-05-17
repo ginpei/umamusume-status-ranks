@@ -2,7 +2,7 @@ import { UmaClass, umaClasses } from "../../../data/RaceEntry";
 import { VRadioGroup } from "../../stable/VRadioGroup";
 import styles from "./UmaClassSelect.module.scss";
 
-export type OnUmaClassChange = (name: string, value: UmaClass) => void;
+export type OnUmaClassChange = (value: UmaClass) => void;
 
 export const UmaClassSelect: React.FC<{
   disabled: boolean;
@@ -19,7 +19,7 @@ export const UmaClassSelect: React.FC<{
       )}
       labels={labels}
       name={name}
-      onChange={onChange}
+      onChange={(v, u) => onChange(u)}
       options={umaClasses}
       value={value}
     />

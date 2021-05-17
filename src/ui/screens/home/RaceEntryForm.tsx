@@ -4,7 +4,13 @@ import { Checkbox } from "@react-spectrum/checkbox";
 import { Form } from "@react-spectrum/form";
 import { ChangeEventHandler, FormEventHandler } from "react";
 import { TextField } from "@react-spectrum/textfield";
-import { raceTitles } from "../../../data/Race";
+import { Item, Section } from "@react-spectrum/listbox";
+import {
+  isUmaClass,
+  raceTitles,
+  UmaClass,
+  umaClasses,
+} from "../../../data/Race";
 import {
   ExpectationList,
   RaceEntry,
@@ -24,6 +30,7 @@ import styles from "./RaceEntryForm.module.scss";
 import { OnStatusRankRadioChange, StatusRankSelect } from "./StatusRankSelect";
 import { OnUmaClassChange, UmaClassSelect } from "./UmaClassSelect";
 import { TextListField } from "../../stateful/TextListField";
+import { SingleListBox } from "../../stable/SingleListBox";
 
 export const RaceEntryForm: React.FC<{
   disabled: boolean;
@@ -62,10 +69,14 @@ export const RaceEntryForm: React.FC<{
     onChange(updated);
   };
 
-  const onUmaClassChange: OnUmaClassChange = (name, grade) => {
+  const onUmaClassChange = (umaClass: string) => {
+    if (!isUmaClass(umaClass)) {
+      throw new Error(`Unknown uma class: ${umaClass}`);
+    }
+
     const updated: RaceEntry = {
       ...entry,
-      umaClass: grade,
+      umaClass,
     };
     onChange(updated);
   };
@@ -127,14 +138,17 @@ export const RaceEntryForm: React.FC<{
           />
         </div>
         <div data-area="umaClass">
-          <TitledField title="級">
-            <UmaClassSelect
-              disabled={disabled}
-              name="umaClass"
-              onChange={onUmaClassChange}
-              value={entry.umaClass}
-            />
-          </TitledField>
+          <SingleListBox
+            onSelectionChange={(value) => onUmaClassChange(value)}
+            selectedKey={entry.umaClass}
+            width="100%"
+          >
+            <Section title="級">
+              {umaClasses.map((name) => (
+                <Item key={name}>{name}</Item>
+              ))}
+            </Section>
+          </SingleListBox>
         </div>
         <div data-area="raceTitle">
           <TextListField
