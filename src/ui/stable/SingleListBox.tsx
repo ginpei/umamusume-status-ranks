@@ -5,7 +5,7 @@ export type SpectrumListBoxProps = Parameters<typeof ListBox>[0];
 export type SelectionChangeHandler = SpectrumListBoxProps["onSelectionChange"];
 
 export type SingleListOriginalProps = {
-  onSelectionChange: (value: string) => void;
+  onSelectionChange: (value: string | undefined) => void;
   selectedKey: string;
 };
 
@@ -24,7 +24,7 @@ export const SingleListBox = ({
     if (!(keys instanceof Set) || keys.size > 1) {
       throw new Error("Invalid keys selected");
     }
-    const value = String(Array.from(keys.values())[0]);
+    const value = Array.from(keys.values())[0]?.toString();
     onSelectionChange(value);
   };
 

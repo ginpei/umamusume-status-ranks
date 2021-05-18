@@ -65,7 +65,11 @@ export const RaceEntryForm: React.FC<{
     onChange(updated);
   };
 
-  const onUmaClassChange = (umaClass: string) => {
+  const onUmaClassChange = (umaClass: string | undefined) => {
+    if (!umaClass) {
+      return;
+    }
+
     if (!isUmaClass(umaClass)) {
       throw new Error(`Unknown uma class: ${umaClass}`);
     }
@@ -321,7 +325,11 @@ const StatusRankListBox: React.FC<{
   onChange: TadunaRankCallback;
   value: TadunaRank;
 }> = ({ title, onChange, value }) => {
-  const onSelectionChange = (rank: string) => {
+  const onSelectionChange = (rank: string | undefined) => {
+    if (!rank) {
+      return;
+    }
+
     if (!isTadunaRank(rank)) {
       throw new Error(`Unknown taduna rank value: ${rank}`);
     }
@@ -350,7 +358,11 @@ const ExpectationListBox: React.FC<{
   onChange: ExpectationLevelCallback;
   value: ExpectationLevel;
 }> = ({ title, onChange, value }) => {
-  const onSelectionChange = (level: string) => {
+  const onSelectionChange = (level: string | undefined) => {
+    if (!level) {
+      return;
+    }
+
     if (!isExpectationLevel(level)) {
       throw new Error(`Unknown expectation level: ${level}`);
     }
