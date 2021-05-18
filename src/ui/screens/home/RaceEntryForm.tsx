@@ -12,7 +12,12 @@ import {
   umaClasses,
 } from "../../../data/Race";
 import {
+  ExpectationLevel,
+  ExpectationLevelCallback,
+  expectationLevels,
   ExpectationList,
+  expectationToSymbol,
+  isExpectationLevel,
   isTadunaRank,
   RaceEntry,
   RaceEntryCallback,
@@ -263,34 +268,25 @@ export const RaceEntryForm: React.FC<{
           />
         </div>
         <div data-area="expectation1">
-          <TitledField title="予想1">
-            <ExpectationSelect
-              disabled={disabled}
-              name="expectation1"
-              onChange={onExpectationChange}
-              value={entry.expectations[0]}
-            />
-          </TitledField>
+          <ExpectationListBox
+            title="予想1"
+            onChange={(v) => onExpectationChange("expectation1", v)}
+            value={entry.expectations[0]}
+          />
         </div>
         <div data-area="expectation2">
-          <TitledField title="予想2">
-            <ExpectationSelect
-              disabled={disabled}
-              name="expectation2"
-              onChange={onExpectationChange}
-              value={entry.expectations[1]}
-            />
-          </TitledField>
+          <ExpectationListBox
+            title="予想2"
+            onChange={(v) => onExpectationChange("expectation2", v)}
+            value={entry.expectations[1]}
+          />
         </div>
         <div data-area="expectation3">
-          <TitledField title="予想3">
-            <ExpectationSelect
-              disabled={disabled}
-              name="expectation3"
-              onChange={onExpectationChange}
-              value={entry.expectations[2]}
-            />
-          </TitledField>
+          <ExpectationListBox
+            title="予想3"
+            onChange={(v) => onExpectationChange("expectation3", v)}
+            value={entry.expectations[2]}
+          />
         </div>
         <div data-area="commentatorComment">
           <TextListField
@@ -356,6 +352,34 @@ const StatusRankListBox: React.FC<{
   );
 };
 
+const ExpectationListBox: React.FC<{
+  title: string;
+  onChange: ExpectationLevelCallback;
+  value: ExpectationLevel;
+}> = ({ title, onChange, value }) => {
+  const onSelectionChange = (level: string) => {
+    if (!isExpectationLevel(level)) {
+      throw new Error(`Unknown expectation level: ${level}`);
+    }
+
+    onChange(level);
+  };
+
+  return (
+    <SingleListBox
+      onSelectionChange={(v) => onSelectionChange(v)}
+      selectedKey={value}
+      width="100%"
+    >
+      <Section title={title}>
+        {expectationLevels.map((level) => (
+          <Item key={level}>{expectationToSymbol(level)}</Item>
+        ))}
+      </Section>
+    </SingleListBox>
+  );
+};
+
 interface FormInputFieldExtendedProps {
   name: keyof RaceEntry;
   entry: RaceEntry;
@@ -363,6 +387,7 @@ interface FormInputFieldExtendedProps {
   onChange: (name: keyof RaceEntry, value: string) => void;
 }
 
+// TODO replace with individual code
 const FormInputField: React.FC<
   Omit<Parameters<typeof TextField>[0], keyof FormInputFieldExtendedProps> &
     FormInputFieldExtendedProps

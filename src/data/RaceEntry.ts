@@ -38,6 +38,8 @@ export type RaceEntryCallback = (entry: RaceEntry) => void;
 
 export type TadunaRankCallback = (rank: TadunaRank) => void;
 
+export type ExpectationLevelCallback = (level: ExpectationLevel) => void;
+
 export const umaClasses = ["ジュニア", "クラシック", "シニア"] as const;
 
 export const expectationLevels = [
@@ -110,4 +112,9 @@ export function expectationListToSymbol(
 
 export function expectationToSymbol(expectation: ExpectationLevel): string {
   return expectationSymbolMap[expectation];
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
+export function isExpectationLevel(level: any): level is ExpectationLevel {
+  return expectationLevels.includes(level);
 }
