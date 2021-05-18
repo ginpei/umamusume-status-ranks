@@ -93,8 +93,9 @@ export function tadunaRankToSymbol(rank: TadunaRank): string {
   return tadunaRankSymbolMap[rank];
 }
 
-export function isTadunaRank(rank: unknown): rank is TadunaRank {
-  return typeof rank === "string" && rank in tadunaRankSymbolMap;
+// eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types, @typescript-eslint/no-explicit-any
+export function isTadunaRank(rank: any): rank is TadunaRank {
+  return tadunaRanks.includes(rank);
 }
 
 export function expectationListToSymbol(
