@@ -34,8 +34,7 @@ export const RaceEntryForm: React.FC<{
   onChange: RaceEntryCallback;
   onSubmit: RaceEntryCallback;
 }> = ({ disabled, entry, onChange, onSubmit }) => {
-  // TODO rename
-  const onValueChange2 = (name: keyof RaceEntry, value: string) => {
+  const onValueChange = (name: keyof RaceEntry, value: string) => {
     let typedValue;
     if (typeof entry[name] === "string") {
       typedValue = value;
@@ -106,7 +105,7 @@ export const RaceEntryForm: React.FC<{
             entry={entry}
             label="ウマ娘"
             name="umaName"
-            onChange={onValueChange2}
+            onChange={onValueChange}
           />
         </div>
         <div data-area="umaClass">
@@ -128,7 +127,7 @@ export const RaceEntryForm: React.FC<{
             isRequired
             label="レース名"
             name="raceTitle"
-            onChange={(v) => onValueChange2("raceTitle", v)}
+            onChange={(v) => onValueChange("raceTitle", v)}
             options={raceTitles}
             value={entry.raceTitle}
             width="100%"
@@ -139,7 +138,7 @@ export const RaceEntryForm: React.FC<{
             isRequired
             label="たづなさん評価"
             name="tadunaComment"
-            onChange={(v) => onValueChange2("tadunaComment", v)}
+            onChange={(v) => onValueChange("tadunaComment", v)}
             options={["1着争い", "有力", "上位入着", "平均的"]}
             placeholder="1着争い, 有力, 上位入着, 平均的"
             value={entry.tadunaComment}
@@ -149,35 +148,35 @@ export const RaceEntryForm: React.FC<{
         <div data-area="speedRank">
           <StatusRankListBox
             title="スピード"
-            onChange={(value) => onValueChange2("speedRank", value)}
+            onChange={(value) => onValueChange("speedRank", value)}
             value={entry.speedRank}
           />
         </div>
         <div data-area="staminaRank">
           <StatusRankListBox
             title="スタミナ"
-            onChange={(value) => onValueChange2("staminaRank", value)}
+            onChange={(value) => onValueChange("staminaRank", value)}
             value={entry.staminaRank}
           />
         </div>
         <div data-area="powerRank">
           <StatusRankListBox
             title="パワー"
-            onChange={(value) => onValueChange2("powerRank", value)}
+            onChange={(value) => onValueChange("powerRank", value)}
             value={entry.powerRank}
           />
         </div>
         <div data-area="gutRank">
           <StatusRankListBox
             title="根性"
-            onChange={(value) => onValueChange2("gutRank", value)}
+            onChange={(value) => onValueChange("gutRank", value)}
             value={entry.gutRank}
           />
         </div>
         <div data-area="intelligenceRank">
           <StatusRankListBox
             title="賢さ"
-            onChange={(value) => onValueChange2("intelligenceRank", value)}
+            onChange={(value) => onValueChange("intelligenceRank", value)}
             value={entry.intelligenceRank}
           />
         </div>
@@ -186,7 +185,7 @@ export const RaceEntryForm: React.FC<{
             aria-label="スピード"
             entry={entry}
             name="speedStatus"
-            onChange={onValueChange2}
+            onChange={onValueChange}
             type="number"
           />
         </div>
@@ -195,7 +194,7 @@ export const RaceEntryForm: React.FC<{
             aria-label="スタミナ"
             entry={entry}
             name="staminaStatus"
-            onChange={onValueChange2}
+            onChange={onValueChange}
             type="number"
           />
         </div>
@@ -204,7 +203,7 @@ export const RaceEntryForm: React.FC<{
             aria-label="パワー"
             entry={entry}
             name="powerStatus"
-            onChange={onValueChange2}
+            onChange={onValueChange}
             type="number"
           />
         </div>
@@ -213,7 +212,7 @@ export const RaceEntryForm: React.FC<{
             aria-label="根性"
             entry={entry}
             name="gutStatus"
-            onChange={onValueChange2}
+            onChange={onValueChange}
             type="number"
           />
         </div>
@@ -222,7 +221,7 @@ export const RaceEntryForm: React.FC<{
             aria-label="賢さ"
             entry={entry}
             name="intelligenceStatus"
-            onChange={onValueChange2}
+            onChange={onValueChange}
             type="number"
           />
         </div>
@@ -231,7 +230,7 @@ export const RaceEntryForm: React.FC<{
             entry={entry}
             label="人気順位"
             name="voteRank"
-            onChange={onValueChange2}
+            onChange={onValueChange}
             type="number"
           />
         </div>
@@ -261,7 +260,7 @@ export const RaceEntryForm: React.FC<{
             isRequired
             label="解説評価"
             name="commentatorComment"
-            onChange={(v) => onValueChange2("commentatorComment", v)}
+            onChange={(v) => onValueChange("commentatorComment", v)}
             options={[
               "実力は完全に上位",
               "素質は負けていません",
