@@ -135,6 +135,7 @@ export const RaceEntryForm: React.FC<{
         </div>
         <div data-area="umaClass">
           <SingleListBox
+            aria-label="級"
             onSelectionChange={(value) => onUmaClassChange(value)}
             selectedKey={entry.umaClass}
             width="100%"
@@ -206,6 +207,7 @@ export const RaceEntryForm: React.FC<{
         </div>
         <div data-area="speedStatus">
           <FormInputField
+            aria-label="スピード"
             entry={entry}
             name="speedStatus"
             onChange={onValueChange2}
@@ -214,6 +216,7 @@ export const RaceEntryForm: React.FC<{
         </div>
         <div data-area="staminaStatus">
           <FormInputField
+            aria-label="スタミナ"
             entry={entry}
             name="staminaStatus"
             onChange={onValueChange2}
@@ -222,6 +225,7 @@ export const RaceEntryForm: React.FC<{
         </div>
         <div data-area="powerStatus">
           <FormInputField
+            aria-label="パワー"
             entry={entry}
             name="powerStatus"
             onChange={onValueChange2}
@@ -230,6 +234,7 @@ export const RaceEntryForm: React.FC<{
         </div>
         <div data-area="gutStatus">
           <FormInputField
+            aria-label="根性"
             entry={entry}
             name="gutStatus"
             onChange={onValueChange2}
@@ -238,6 +243,7 @@ export const RaceEntryForm: React.FC<{
         </div>
         <div data-area="intelligenceStatus">
           <FormInputField
+            aria-label="賢さ"
             entry={entry}
             name="intelligenceStatus"
             onChange={onValueChange2}
@@ -325,6 +331,7 @@ const StatusRankListBox: React.FC<{
 
   return (
     <SingleListBox
+      aria-label={title}
       onSelectionChange={(v) => onSelectionChange(v)}
       selectedKey={value}
       width="100%"
@@ -353,6 +360,7 @@ const ExpectationListBox: React.FC<{
 
   return (
     <SingleListBox
+      aria-label={title}
       onSelectionChange={(v) => onSelectionChange(v)}
       selectedKey={value}
       width="100%"
