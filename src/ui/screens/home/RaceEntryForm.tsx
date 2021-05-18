@@ -34,7 +34,11 @@ export const RaceEntryForm: React.FC<{
   onChange: RaceEntryCallback;
   onSubmit: RaceEntryCallback;
 }> = ({ disabled, entry, onChange, onSubmit }) => {
-  const onValueChange = (name: keyof RaceEntry, value: string) => {
+  const onValueChange = (name: keyof RaceEntry, value: string | undefined) => {
+    if (!value) {
+      return;
+    }
+
     let typedValue;
     if (typeof entry[name] === "string") {
       typedValue = value;
@@ -49,22 +53,6 @@ export const RaceEntryForm: React.FC<{
     const updated: RaceEntry = {
       ...entry,
       [name]: typedValue,
-    };
-    onChange(updated);
-  };
-
-  const onUmaClassChange = (umaClass: string | undefined) => {
-    if (!umaClass) {
-      return;
-    }
-
-    if (!isUmaClass(umaClass)) {
-      throw new Error(`Unknown uma class: ${umaClass}`);
-    }
-
-    const updated: RaceEntry = {
-      ...entry,
-      umaClass,
     };
     onChange(updated);
   };
@@ -111,7 +99,7 @@ export const RaceEntryForm: React.FC<{
         <div data-area="umaClass">
           <SingleListBox
             aria-label="級"
-            onSelectionChange={(value) => onUmaClassChange(value)}
+            onSelectionChange={(value) => onValueChange("umaClass", value)}
             selectedKey={entry.umaClass}
             width="100%"
           >
