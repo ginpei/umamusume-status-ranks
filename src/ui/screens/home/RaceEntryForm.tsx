@@ -34,17 +34,6 @@ export const RaceEntryForm: React.FC<{
   onChange: RaceEntryCallback;
   onSubmit: RaceEntryCallback;
 }> = ({ disabled, entry, onChange, onSubmit }) => {
-  // TODO replace with onValueChange2
-  const onValueChange: ChangeEventHandler<HTMLInputElement> = (event) => {
-    const { name, value } = event.currentTarget;
-
-    const updated: RaceEntry = {
-      ...entry,
-      [name]: value,
-    };
-    onChange(updated);
-  };
-
   // TODO rename
   const onValueChange2 = (name: keyof RaceEntry, value: string) => {
     let typedValue;
@@ -81,14 +70,6 @@ export const RaceEntryForm: React.FC<{
     onChange(updated);
   };
 
-  const onRankChange: OnStatusRankRadioChange = (name, rank) => {
-    const updated: RaceEntry = {
-      ...entry,
-      [name]: rank,
-    };
-    onChange(updated);
-  };
-
   const onExpectationChange: OnExpectationRadioChange = (name, level) => {
     const newExpectations: ExpectationList = [...entry.expectations];
     if (name === "expectation1") {
@@ -110,15 +91,6 @@ export const RaceEntryForm: React.FC<{
 
   const onSpGolshiChanMode2020Change = (checked: boolean) => {
     onChange({ ...entry, spGolshiChanMode2020: checked });
-  };
-
-  // TODO delete
-  const onSpecialChange: GpCheckboxChangeHandler<string> = ({ checked }) => {
-    const updated: RaceEntry = {
-      ...entry,
-      spGolshiChanMode2020: checked,
-    };
-    onChange(updated);
   };
 
   const onFormSubmit: FormEventHandler = (event) => {
