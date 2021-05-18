@@ -1,16 +1,11 @@
-import { Label } from "@react-spectrum/label";
 import { ActionButton } from "@react-spectrum/button";
 import { Checkbox } from "@react-spectrum/checkbox";
 import { Form } from "@react-spectrum/form";
-import { ChangeEventHandler, FormEventHandler } from "react";
-import { TextField } from "@react-spectrum/textfield";
+import { Label } from "@react-spectrum/label";
 import { Item, Section } from "@react-spectrum/listbox";
-import {
-  isUmaClass,
-  raceTitles,
-  UmaClass,
-  umaClasses,
-} from "../../../data/Race";
+import { TextField } from "@react-spectrum/textfield";
+import { ChangeEventHandler, FormEventHandler } from "react";
+import { isUmaClass, raceTitles, umaClasses } from "../../../data/Race";
 import {
   ExpectationLevel,
   ExpectationLevelCallback,
@@ -26,21 +21,12 @@ import {
   tadunaRanks,
   tadunaRankToSymbol,
 } from "../../../data/RaceEntry";
-import {
-  GpCheckbox,
-  GpCheckboxChangeHandler,
-} from "../../../gp/components/stable/GpCheckbox";
-import { NiceInput } from "../../pure/NiceInput";
-import { InputField, TitledField } from "../../stable/TitledField";
-import {
-  ExpectationSelect,
-  OnExpectationRadioChange,
-} from "./ExpectationSelect";
-import styles from "./RaceEntryForm.module.scss";
-import { OnStatusRankRadioChange, StatusRankSelect } from "./StatusRankSelect";
-import { OnUmaClassChange, UmaClassSelect } from "./UmaClassSelect";
-import { TextListField } from "../../stateful/TextListField";
+import { GpCheckboxChangeHandler } from "../../../gp/components/stable/GpCheckbox";
 import { SingleListBox } from "../../stable/SingleListBox";
+import { TextListField } from "../../stateful/TextListField";
+import { OnExpectationRadioChange } from "./ExpectationSelect";
+import styles from "./RaceEntryForm.module.scss";
+import { OnStatusRankRadioChange } from "./StatusRankSelect";
 
 export const RaceEntryForm: React.FC<{
   disabled: boolean;
