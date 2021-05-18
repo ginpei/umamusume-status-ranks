@@ -13,8 +13,13 @@ import {
 } from "../../../data/Race";
 import {
   ExpectationList,
+  isTadunaRank,
   RaceEntry,
   RaceEntryCallback,
+  TadunaRank,
+  TadunaRankCallback,
+  tadunaRanks,
+  tadunaRankToSymbol,
 } from "../../../data/RaceEntry";
 import {
   GpCheckbox,
@@ -174,54 +179,39 @@ export const RaceEntryForm: React.FC<{
           />
         </div>
         <div data-area="speedRank">
-          <TitledField title="スピード">
-            <StatusRankSelect
-              disabled={disabled}
-              name="speedRank"
-              onChange={onRankChange}
-              value={entry.speedRank}
-            />
-          </TitledField>
+          <StatusRankListBox
+            title="スピード"
+            onChange={(value) => onValueChange2("speedRank", value)}
+            value={entry.speedRank}
+          />
         </div>
         <div data-area="staminaRank">
-          <TitledField title="スタミナ">
-            <StatusRankSelect
-              disabled={disabled}
-              name="staminaRank"
-              onChange={onRankChange}
-              value={entry.staminaRank}
-            />
-          </TitledField>
+          <StatusRankListBox
+            title="スタミナ"
+            onChange={(value) => onValueChange2("staminaRank", value)}
+            value={entry.staminaRank}
+          />
         </div>
         <div data-area="powerRank">
-          <TitledField title="パワー">
-            <StatusRankSelect
-              disabled={disabled}
-              name="powerRank"
-              onChange={onRankChange}
-              value={entry.powerRank}
-            />
-          </TitledField>
+          <StatusRankListBox
+            title="パワー"
+            onChange={(value) => onValueChange2("powerRank", value)}
+            value={entry.powerRank}
+          />
         </div>
         <div data-area="gutRank">
-          <TitledField title="根性">
-            <StatusRankSelect
-              disabled={disabled}
-              name="gutRank"
-              onChange={onRankChange}
-              value={entry.gutRank}
-            />
-          </TitledField>
+          <StatusRankListBox
+            title="根性"
+            onChange={(value) => onValueChange2("gutRank", value)}
+            value={entry.gutRank}
+          />
         </div>
         <div data-area="intelligenceRank">
-          <TitledField title="賢さ">
-            <StatusRankSelect
-              disabled={disabled}
-              name="intelligenceRank"
-              onChange={onRankChange}
-              value={entry.intelligenceRank}
-            />
-          </TitledField>
+          <StatusRankListBox
+            title="賢さ"
+            onChange={(value) => onValueChange2("intelligenceRank", value)}
+            value={entry.intelligenceRank}
+          />
         </div>
         <div data-area="speedStatus">
           <FormInputField
@@ -335,6 +325,34 @@ export const RaceEntryForm: React.FC<{
         </div>
       </div>
     </Form>
+  );
+};
+
+const StatusRankListBox: React.FC<{
+  title: string;
+  onChange: TadunaRankCallback;
+  value: TadunaRank;
+}> = ({ title, onChange, value }) => {
+  const onSelectionChange = (rank: string) => {
+    if (!isTadunaRank(rank)) {
+      throw new Error(`Unknown TadunaRank value: ${rank}`);
+    }
+
+    onChange(rank);
+  };
+
+  return (
+    <SingleListBox
+      onSelectionChange={(v) => onSelectionChange(v)}
+      selectedKey={value}
+      width="100%"
+    >
+      <Section title={title}>
+        {tadunaRanks.map((rank) => (
+          <Item key={rank}>{tadunaRankToSymbol(rank)}</Item>
+        ))}
+      </Section>
+    </SingleListBox>
   );
 };
 

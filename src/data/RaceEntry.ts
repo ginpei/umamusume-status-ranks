@@ -93,6 +93,10 @@ export function tadunaRankToSymbol(rank: TadunaRank): string {
   return tadunaRankSymbolMap[rank];
 }
 
+export function isTadunaRank(rank: unknown): rank is TadunaRank {
+  return typeof rank === "string" && rank in tadunaRankSymbolMap;
+}
+
 export function expectationListToSymbol(
   expectations: ExpectationList
 ): [string, string, string] {
