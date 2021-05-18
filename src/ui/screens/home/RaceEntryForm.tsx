@@ -335,7 +335,7 @@ const StatusRankListBox: React.FC<{
 }> = ({ title, onChange, value }) => {
   const onSelectionChange = (rank: string) => {
     if (!isTadunaRank(rank)) {
-      throw new Error(`Unknown TadunaRank value: ${rank}`);
+      throw new Error(`Unknown taduna rank value: ${rank}`);
     }
 
     onChange(rank);
