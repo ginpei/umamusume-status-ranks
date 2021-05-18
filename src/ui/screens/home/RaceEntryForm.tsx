@@ -58,22 +58,18 @@ export const RaceEntryForm: React.FC<{
   };
 
   const onExpectationChange: OnExpectationRadioChange = (name, level) => {
-    const newExpectations: ExpectationList = [...entry.expectations];
+    const expectations: ExpectationList = [...entry.expectations];
     if (name === "expectation1") {
-      newExpectations[0] = level;
+      expectations[0] = level;
     } else if (name === "expectation2") {
-      newExpectations[1] = level;
+      expectations[1] = level;
     } else if (name === "expectation3") {
-      newExpectations[2] = level;
+      expectations[2] = level;
     } else {
       throw new Error(`Unknown name "${name}"`);
     }
 
-    const updated: RaceEntry = {
-      ...entry,
-      expectations: newExpectations,
-    };
-    onChange(updated);
+    onChange({ ...entry, expectations });
   };
 
   const onSpGolshiChanMode2020Change = (checked: boolean) => {
