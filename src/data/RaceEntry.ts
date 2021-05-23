@@ -10,7 +10,7 @@ export interface RaceEntry extends DataRecord {
   powerRank: TadunaRank;
   powerStatus: number;
   raceTitle: string;
-  spGolshiChanMode2020?: boolean;
+  spGolshiChanMode2021?: boolean;
   speedRank: TadunaRank;
   speedStatus: number;
   staminaRank: TadunaRank;
@@ -68,6 +68,13 @@ const expectationSymbolMap: Record<ExpectationLevel, string> = {
 };
 
 export function createRaceEntry(initial: Partial<RaceEntry> = {}): RaceEntry {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const oldFormat = initial as any;
+
+  // named it as 2020 accidentally!
+  const spGolshiChanMode2021 =
+    initial.spGolshiChanMode2021 ?? oldFormat.spGolshiChanMode2020 ?? false;
+
   return {
     ...createDataRecord(initial),
     commentatorComment: initial.commentatorComment ?? "",
@@ -81,6 +88,7 @@ export function createRaceEntry(initial: Partial<RaceEntry> = {}): RaceEntry {
     raceTitle: initial.raceTitle ?? "",
     speedRank: initial.speedRank ?? "great",
     speedStatus: initial.speedStatus ?? 0,
+    spGolshiChanMode2021,
     staminaRank: initial.staminaRank ?? "great",
     staminaStatus: initial.staminaStatus ?? 0,
     tadunaComment: initial.tadunaComment ?? "",

@@ -77,7 +77,7 @@ const RegisterPageContent: React.FC<{
 
       setEntry(
         createRaceEntry({
-          spGolshiChanMode2020: entry.spGolshiChanMode2020,
+          spGolshiChanMode2021: entry.spGolshiChanMode2021,
           umaClass: entry.umaClass,
           umaName: entry.umaName,
         })

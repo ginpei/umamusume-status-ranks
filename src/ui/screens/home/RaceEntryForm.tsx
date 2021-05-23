@@ -67,7 +67,7 @@ export const RaceEntryForm: React.FC<{
   };
 
   const onSpGolshiChanMode2020Change = (checked: boolean) => {
-    onChange({ ...entry, spGolshiChanMode2020: checked });
+    onChange({ ...entry, spGolshiChanMode2021: checked });
   };
 
   const onFormSubmit: FormEventHandler = (event) => {
@@ -257,11 +257,11 @@ export const RaceEntryForm: React.FC<{
         <div data-area="special">
           <Label>特別</Label>
           <Checkbox
-            isSelected={entry.spGolshiChanMode2020}
+            isSelected={entry.spGolshiChanMode2021}
             name="spGolshiChanMode2020"
             onChange={onSpGolshiChanMode2020Change}
           >
-            ゴルシちゃんモード (2020)
+            ゴルシちゃんモード (2021)
           </Checkbox>
         </div>
         <div data-area="submit">
