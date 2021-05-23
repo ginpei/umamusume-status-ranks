@@ -48,4 +48,11 @@ li.Option {
   &[data-focusable="true"] {
     border-color: var(--spectrum-alias-border-color-mouse-focus,var(--spectrum-global-color-blue-500));
   }
+
+  &[data-disabled="true"] {
+    background-color: var(--spectrum-global-color-gray-200);
+    border-color: var(--spectrum-alias-border-color-transparent,transparent);
+    color: var(--spectrum-alias-text-color-disabled,var(--spectrum-global-color-gray-500));
+    -webkit-text-fill-color: var(--spectrum-alias-text-color-disabled,var(--spectrum-global-color-gray-500));
+  }
 }

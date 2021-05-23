@@ -8,6 +8,7 @@ import { Node, Selection } from "../../misc/react-types-shared";
 import styles from "./NiceListBox.module.scss";
 
 export interface NiceListBoxProps extends SelectionOptions {
+  disabled?: boolean;
   onChange: SymbolSelectionChangeHandler;
   options: NiceListBoxOption[];
   value: string;
@@ -32,12 +33,15 @@ interface OptionProps<T> {
 }
 
 export const NiceListBox: React.VFC<NiceListBoxProps> = ({
+  disabled,
   label,
   onChange,
   options,
   value,
   width,
 }) => {
+  const disabledKeys = disabled ? options.map((v) => v.value) : undefined;
+
   const onSelectionChange = (selection: Selection) => {
     if (!(selection instanceof Set)) {
       return;
@@ -50,6 +54,7 @@ export const NiceListBox: React.VFC<NiceListBoxProps> = ({
   return (
     <>
       <Select
+        disabledKeys={disabledKeys}
         label={label}
         onSelectionChange={onSelectionChange}
         selectedKeys={[value]}
@@ -108,6 +113,7 @@ function Option<T>({ item, state }: OptionProps<T>) {
     <li
       {...mergeProps(optionProps, focusProps)}
       className={styles.Option}
+      data-disabled={isDisabled}
       data-focusable={isFocusVisible}
       data-selected={isSelected}
       ref={ref}

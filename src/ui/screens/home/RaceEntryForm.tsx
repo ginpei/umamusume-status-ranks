@@ -112,6 +112,7 @@ export const RaceEntryForm: React.FC<{
         </div>
         <div data-area="umaClass">
           <NiceListBox
+            disabled={disabled}
             label="級"
             onChange={(v) => onValueChange("umaClass", v)}
             options={umaClassOptions}
@@ -143,6 +144,7 @@ export const RaceEntryForm: React.FC<{
         </div>
         <div data-area="speedRank">
           <StatusRankListBox
+            disabled={disabled}
             title="スピード"
             onChange={(value) => onValueChange("speedRank", value)}
             value={entry.speedRank}
@@ -150,6 +152,7 @@ export const RaceEntryForm: React.FC<{
         </div>
         <div data-area="staminaRank">
           <StatusRankListBox
+            disabled={disabled}
             title="スタミナ"
             onChange={(value) => onValueChange("staminaRank", value)}
             value={entry.staminaRank}
@@ -157,6 +160,7 @@ export const RaceEntryForm: React.FC<{
         </div>
         <div data-area="powerRank">
           <StatusRankListBox
+            disabled={disabled}
             title="パワー"
             onChange={(value) => onValueChange("powerRank", value)}
             value={entry.powerRank}
@@ -164,6 +168,7 @@ export const RaceEntryForm: React.FC<{
         </div>
         <div data-area="gutRank">
           <StatusRankListBox
+            disabled={disabled}
             title="根性"
             onChange={(value) => onValueChange("gutRank", value)}
             value={entry.gutRank}
@@ -171,6 +176,7 @@ export const RaceEntryForm: React.FC<{
         </div>
         <div data-area="intelligenceRank">
           <StatusRankListBox
+            disabled={disabled}
             title="賢さ"
             onChange={(value) => onValueChange("intelligenceRank", value)}
             value={entry.intelligenceRank}
@@ -232,6 +238,7 @@ export const RaceEntryForm: React.FC<{
         </div>
         <div data-area="expectation1">
           <ExpectationListBox
+            disabled={disabled}
             title="予想1"
             onChange={(v) => onExpectationChange("expectation1", v)}
             value={entry.expectations[0]}
@@ -239,6 +246,7 @@ export const RaceEntryForm: React.FC<{
         </div>
         <div data-area="expectation2">
           <ExpectationListBox
+            disabled={disabled}
             title="予想2"
             onChange={(v) => onExpectationChange("expectation2", v)}
             value={entry.expectations[1]}
@@ -246,6 +254,7 @@ export const RaceEntryForm: React.FC<{
         </div>
         <div data-area="expectation3">
           <ExpectationListBox
+            disabled={disabled}
             title="予想3"
             onChange={(v) => onExpectationChange("expectation3", v)}
             value={entry.expectations[2]}
@@ -288,10 +297,11 @@ export const RaceEntryForm: React.FC<{
 };
 
 const StatusRankListBox: React.FC<{
+  disabled: boolean;
   title: string;
   onChange: TadunaRankCallback;
   value: TadunaRank;
-}> = ({ title, onChange, value }) => {
+}> = ({ disabled, title, onChange, value }) => {
   const onSelectionChange: SymbolSelectionChangeHandler = (selection) => {
     if (!isTadunaRank(selection)) {
       return;
@@ -302,6 +312,7 @@ const StatusRankListBox: React.FC<{
 
   return (
     <NiceListBox
+      disabled={disabled}
       label={title}
       onChange={onSelectionChange}
       options={tadunaRankOptions}
@@ -311,10 +322,11 @@ const StatusRankListBox: React.FC<{
 };
 
 const ExpectationListBox: React.FC<{
+  disabled: boolean;
   title: string;
   onChange: ExpectationLevelCallback;
   value: ExpectationLevel;
-}> = ({ title, onChange, value }) => {
+}> = ({ disabled, title, onChange, value }) => {
   const onSelectionChange = (level: string | undefined) => {
     if (!level) {
       return;
@@ -329,6 +341,7 @@ const ExpectationListBox: React.FC<{
 
   return (
     <NiceListBox
+      disabled={disabled}
       label={title}
       onChange={onSelectionChange}
       options={expectationLevelOptions}
