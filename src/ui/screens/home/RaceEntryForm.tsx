@@ -27,7 +27,7 @@ export const RaceEntryForm: React.FC<{
   onSubmit: RaceEntryCallback;
 }> = ({ disabled, entry, onChange, onSubmit }) => {
   const onValueChange = (name: keyof RaceEntry, value: string | undefined) => {
-    if (!value) {
+    if (value === undefined) {
       return;
     }
 
