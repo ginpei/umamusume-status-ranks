@@ -4,8 +4,8 @@ export interface Race {
   direction: RaceDirection;
   distance: number;
   ground: "芝" | "ダート";
-  month: 1 | 2 | 3 | 4 | 5 | 6 | 7 | 8 | 9 | 10 | 11 | 12;
-  ofMonth: "前半" | "後半";
+  month: RaceMonth;
+  ofMonth: OfMonth;
   raceGrade: RaceGrade;
   siteName: string;
   title: string;
@@ -16,6 +16,10 @@ export interface Race {
 export type UmaClass = typeof umaClasses[number];
 
 export type RaceDirection = typeof raceDirections[number];
+
+export type RaceMonth = typeof raceMonths[number];
+
+export type OfMonth = typeof ofMonths[number];
 
 export type RaceGrade = typeof raceGrades[number];
 
@@ -30,6 +34,10 @@ export const raceDirections = [
   "右・内",
   "直線",
 ] as const;
+
+export const raceMonths = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
+
+export const ofMonths = ["前半", "後半"];
 
 export const raceGrades = ["G1", "G2", "G3", "OP", "Pre-OP"] as const;
 
