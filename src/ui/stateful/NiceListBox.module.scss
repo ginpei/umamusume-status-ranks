@@ -1,23 +1,51 @@
 .Select {
-  border: 1px solid gray;
-  list-style: none;
-  margin: 5px 0;
-  max-width: 250;
-  padding: 0;
+  cursor: default;
 }
 
-.Option {
-  background: transparent;
-  color: inherit;
-  outline: none;
-  padding: 2px 5px;
+.Select_label {
+  color: var(--spectrum-alias-label-text-color,var(--spectrum-global-color-gray-700));
+  font-size: var(--spectrum-global-dimension-font-size-75);
+  -webkit-font-smoothing: subpixel-antialiased;
+  -moz-osx-font-smoothing: auto;
+  font-smoothing: subpixel-antialiased;
+  font-weight: var(--spectrum-global-font-weight-regular,400);
+  line-height: var(--spectrum-global-font-line-height-small,1.3);
+  padding: var(--spectrum-global-dimension-size-50) 0 var(--spectrum-global-dimension-size-65);
+}
+
+ul.Select_list {
+  display: inline-grid;
+  gap: 1px;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+li.Option {
+  background-color: #f9f9f9;
+  border-radius: var(--spectrum-alias-border-radius-regular,var(--spectrum-global-dimension-size-50));
+  border-width: var(--spectrum-alias-border-size-thin,var(--spectrum-global-dimension-static-size-10));
+  border: 1px solid transparent;
+  box-sizing: border-box;
+  display: grid;
+  font-size: var(--spectrum-alias-font-size-default,var(--spectrum-global-dimension-font-size-100));
+  font-weight: var(--spectrum-alias-body-text-font-weight,var(--spectrum-global-font-weight-regular));
+  height: var(--spectrum-alias-single-line-height,var(--spectrum-global-dimension-size-400));
+  place-items: center;
+  width: 100%;
+
+  &:where(:hover, :focus-visible):not([data-disabled="true"]) {
+    background-color: var(--spectrum-global-color-gray-50);
+  }
 
   &[data-selected="true"] {
-    background: blueviolet;
-    color: white;
+    background-color: var(--spectrum-global-color-gray-50);
+    border-color: var(--spectrum-alias-border-color,var(--spectrum-global-color-gray-400));
+    color: var(--spectrum-alias-text-color,var(--spectrum-global-color-gray-800));
   }
 
   &[data-focusable="true"] {
-    outline: 2px solid orange;
+    border-color: var(--spectrum-alias-border-color-mouse-focus,var(--spectrum-global-color-blue-500));
   }
 }

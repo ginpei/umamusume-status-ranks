@@ -11,6 +11,7 @@ export interface NiceListBoxProps extends SelectionOptions {
   onChange: SymbolSelectionChangeHandler;
   options: NiceListBoxOption[];
   value: string;
+  width?: string;
 }
 
 export interface NiceListBoxOption {
@@ -22,6 +23,7 @@ export type SymbolSelectionChangeHandler = (option: string | undefined) => void;
 
 interface SelectionOptions {
   label: string;
+  width?: string;
 }
 
 interface OptionProps<T> {
@@ -34,6 +36,7 @@ export const NiceListBox: React.VFC<NiceListBoxProps> = ({
   onChange,
   options,
   value,
+  width,
 }) => {
   const onSelectionChange = (selection: Selection) => {
     if (!(selection instanceof Set)) {
@@ -51,6 +54,7 @@ export const NiceListBox: React.VFC<NiceListBoxProps> = ({
         onSelectionChange={onSelectionChange}
         selectedKeys={[value]}
         selectionMode="single"
+        width={width}
       >
         {options.map(({ name, value: v }) => (
           <Item key={v}>{name}</Item>
@@ -68,14 +72,16 @@ function Select<T extends Record<string, unknown>>(
   const { listBoxProps, labelProps } = useListBox(props, state, ref);
 
   return (
-    <>
-      <div {...labelProps}>{props.label}</div>
-      <ul {...listBoxProps} className={styles.Select} ref={ref}>
+    <div className={styles.Select} style={{ width: props.width }}>
+      <div {...labelProps} className={styles.Select_label}>
+        {props.label}
+      </div>
+      <ul {...listBoxProps} className={styles.Select_list} ref={ref}>
         {Array.from(state.collection).map((item) => (
           <Option key={item.key} item={item} state={state} />
         ))}
       </ul>
-    </>
+    </div>
   );
 }
 
