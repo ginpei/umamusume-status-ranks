@@ -2,10 +2,9 @@ import { ActionButton } from "@react-spectrum/button";
 import { Checkbox } from "@react-spectrum/checkbox";
 import { Form } from "@react-spectrum/form";
 import { Label } from "@react-spectrum/label";
-import { Item, Section } from "@react-spectrum/listbox";
 import { TextField } from "@react-spectrum/textfield";
-import { ChangeEventHandler, FormEventHandler } from "react";
-import { isUmaClass, raceTitles, umaClasses } from "../../../data/Race";
+import { FormEventHandler, useMemo } from "react";
+import { raceTitles, umaClasses } from "../../../data/Race";
 import {
   ExpectationLevel,
   ExpectationLevelCallback,
@@ -21,12 +20,31 @@ import {
   tadunaRanks,
   tadunaRankToSymbol,
 } from "../../../data/RaceEntry";
-import { GpCheckboxChangeHandler } from "../../../gp/components/stable/GpCheckbox";
-import { SingleListBox } from "../../stable/SingleListBox";
+import {
+  NiceListBox,
+  NiceListBoxOption,
+  SymbolSelectionChangeHandler,
+} from "../../stateful/NiceListBox";
 import { TextListField } from "../../stateful/TextListField";
 import { OnExpectationRadioChange } from "./ExpectationSelect";
 import styles from "./RaceEntryForm.module.scss";
-import { OnStatusRankRadioChange } from "./StatusRankSelect";
+
+const umaClassOptions: NiceListBoxOption[] = umaClasses.map((v) => ({
+  name: v,
+  value: v,
+}));
+
+const tadunaRankOptions: NiceListBoxOption[] = tadunaRanks.map((v) => ({
+  name: tadunaRankToSymbol(v),
+  value: v,
+}));
+
+const expectationLevelOptions: NiceListBoxOption[] = expectationLevels.map(
+  (v) => ({
+    name: expectationToSymbol(v),
+    value: v,
+  })
+);
 
 export const RaceEntryForm: React.FC<{
   disabled: boolean;
@@ -93,18 +111,12 @@ export const RaceEntryForm: React.FC<{
           />
         </div>
         <div data-area="umaClass">
-          <SingleListBox
-            aria-label="級"
-            onSelectionChange={(value) => onValueChange("umaClass", value)}
-            selectedKey={entry.umaClass}
-            width="100%"
-          >
-            <Section title="級">
-              {umaClasses.map((name) => (
-                <Item key={name}>{name}</Item>
-              ))}
-            </Section>
-          </SingleListBox>
+          <NiceListBox
+            label="級"
+            onChange={(v) => onValueChange("umaClass", v)}
+            options={umaClassOptions}
+            value={entry.umaClass}
+          />
         </div>
         <div data-area="raceTitle">
           <TextListField
@@ -280,31 +292,21 @@ const StatusRankListBox: React.FC<{
   onChange: TadunaRankCallback;
   value: TadunaRank;
 }> = ({ title, onChange, value }) => {
-  const onSelectionChange = (rank: string | undefined) => {
-    if (!rank) {
+  const onSelectionChange: SymbolSelectionChangeHandler = (selection) => {
+    if (!isTadunaRank(selection)) {
       return;
     }
 
-    if (!isTadunaRank(rank)) {
-      throw new Error(`Unknown taduna rank value: ${rank}`);
-    }
-
-    onChange(rank);
+    onChange(selection);
   };
 
   return (
-    <SingleListBox
-      aria-label={title}
-      onSelectionChange={(v) => onSelectionChange(v)}
-      selectedKey={value}
-      width="100%"
-    >
-      <Section title={title}>
-        {tadunaRanks.map((rank) => (
-          <Item key={rank}>{tadunaRankToSymbol(rank)}</Item>
-        ))}
-      </Section>
-    </SingleListBox>
+    <NiceListBox
+      label={title}
+      onChange={onSelectionChange}
+      options={tadunaRankOptions}
+      value={value}
+    />
   );
 };
 
@@ -326,18 +328,12 @@ const ExpectationListBox: React.FC<{
   };
 
   return (
-    <SingleListBox
-      aria-label={title}
-      onSelectionChange={(v) => onSelectionChange(v)}
-      selectedKey={value}
-      width="100%"
-    >
-      <Section title={title}>
-        {expectationLevels.map((level) => (
-          <Item key={level}>{expectationToSymbol(level)}</Item>
-        ))}
-      </Section>
-    </SingleListBox>
+    <NiceListBox
+      label={title}
+      onChange={onSelectionChange}
+      options={expectationLevelOptions}
+      value={value}
+    />
   );
 };
 
