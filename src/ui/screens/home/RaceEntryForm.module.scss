@@ -2,8 +2,8 @@
   display: grid;
   gap: 1em;
   grid-template:
-    "umaName       umaName       umaName       umaName       umaClass        "
-    "raceTitle     raceTitle     raceTitle     raceTitle     umaClass        "
+    "umaName       umaName       umaName       umaClass      umaClass        "
+    "raceTitle     raceTitle     raceTitle     umaClass      umaClass        "
     "tadunaComment tadunaComment tadunaComment tadunaComment tadunaComment   "
     "speedRank     staminaRank   powerRank     gutRank       intelligenceRank"
     "speedStatus   staminaStatus powerStatus   gutStatus     intelligenceStatus"
