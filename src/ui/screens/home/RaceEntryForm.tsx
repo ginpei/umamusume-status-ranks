@@ -26,7 +26,6 @@ import {
   SymbolSelectionChangeHandler,
 } from "../../stateful/NiceListBox";
 import { TextListField } from "../../stateful/TextListField";
-import { OnExpectationRadioChange } from "./ExpectationSelect";
 import styles from "./RaceEntryForm.module.scss";
 
 const umaClassOptions: NiceListBoxOption[] = umaClasses.map((v) => ({
@@ -75,7 +74,7 @@ export const RaceEntryForm: React.FC<{
     onChange(updated);
   };
 
-  const onExpectationChange: OnExpectationRadioChange = (name, level) => {
+  const onExpectationChange = (name: string, level: ExpectationLevel) => {
     const expectations: ExpectationList = [...entry.expectations];
     if (name === "expectation1") {
       expectations[0] = level;
