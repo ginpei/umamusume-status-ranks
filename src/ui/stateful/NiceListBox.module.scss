@@ -23,7 +23,7 @@ ul.Select_list {
 }
 
 li.Option {
-  background-color: #f9f9f9;
+  background-color: var(--spectrum-global-color-gray-75);
   border-radius: var(--spectrum-alias-border-radius-regular,var(--spectrum-global-dimension-size-50));
   border-width: var(--spectrum-alias-border-size-thin,var(--spectrum-global-dimension-static-size-10));
   border: 1px solid transparent;
