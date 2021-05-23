@@ -7,43 +7,20 @@ import { FormEventHandler } from "react";
 import { raceTitles, umaClasses } from "../../../data/Race";
 import {
   ExpectationLevel,
-  ExpectationLevelCallback,
-  expectationLevels,
   ExpectationList,
-  expectationToSymbol,
-  isExpectationLevel,
-  isTadunaRank,
   RaceEntry,
   RaceEntryCallback,
-  TadunaRank,
-  TadunaRankCallback,
-  tadunaRanks,
-  tadunaRankToSymbol,
 } from "../../../data/RaceEntry";
-import {
-  NiceListBox,
-  NiceListBoxOption,
-  SymbolSelectionChangeHandler,
-} from "../../stateful/NiceListBox";
+import { NiceListBox, NiceListBoxOption } from "../../stateful/NiceListBox";
 import { TextListField } from "../../stateful/TextListField";
+import { ExpectationListBox } from "./ExpectationListBox";
 import styles from "./RaceEntryForm.module.scss";
+import { StatusRankListBox } from "./StatusRankListBox";
 
 const umaClassOptions: NiceListBoxOption[] = umaClasses.map((v) => ({
   name: v,
   value: v,
 }));
-
-const tadunaRankOptions: NiceListBoxOption[] = tadunaRanks.map((v) => ({
-  name: tadunaRankToSymbol(v),
-  value: v,
-}));
-
-const expectationLevelOptions: NiceListBoxOption[] = expectationLevels.map(
-  (v) => ({
-    name: expectationToSymbol(v),
-    value: v,
-  })
-);
 
 export const RaceEntryForm: React.FC<{
   disabled: boolean;
@@ -294,60 +271,6 @@ export const RaceEntryForm: React.FC<{
         </div>
       </div>
     </Form>
-  );
-};
-
-const StatusRankListBox: React.FC<{
-  disabled: boolean;
-  title: string;
-  onChange: TadunaRankCallback;
-  value: TadunaRank;
-}> = ({ disabled, title, onChange, value }) => {
-  const onSelectionChange: SymbolSelectionChangeHandler = (selection) => {
-    if (!isTadunaRank(selection)) {
-      return;
-    }
-
-    onChange(selection);
-  };
-
-  return (
-    <NiceListBox
-      disabled={disabled}
-      label={title}
-      onChange={onSelectionChange}
-      options={tadunaRankOptions}
-      value={value}
-    />
-  );
-};
-
-const ExpectationListBox: React.FC<{
-  disabled: boolean;
-  title: string;
-  onChange: ExpectationLevelCallback;
-  value: ExpectationLevel;
-}> = ({ disabled, title, onChange, value }) => {
-  const onSelectionChange = (level: string | undefined) => {
-    if (!level) {
-      return;
-    }
-
-    if (!isExpectationLevel(level)) {
-      throw new Error(`Unknown expectation level: ${level}`);
-    }
-
-    onChange(level);
-  };
-
-  return (
-    <NiceListBox
-      disabled={disabled}
-      label={title}
-      onChange={onSelectionChange}
-      options={expectationLevelOptions}
-      value={value}
-    />
   );
 };
 
