@@ -289,7 +289,9 @@ export const RaceEntryForm: React.FC<{
           </Checkbox>
         </div>
         <div data-area="submit">
-          <ActionButton width="100%">OK</ActionButton>
+          <ActionButton type="submit" width="100%">
+            OK
+          </ActionButton>
         </div>
       </div>
     </Form>
