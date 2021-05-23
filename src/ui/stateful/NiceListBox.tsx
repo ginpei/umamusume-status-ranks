@@ -5,6 +5,7 @@ import { Item } from "@react-stately/collections";
 import { ListProps, ListState, useListState } from "@react-stately/list";
 import { useRef } from "react";
 import { Node, Selection } from "../../misc/react-types-shared";
+import styles from "./NiceListBox.module.scss";
 
 export interface NiceListBoxProps extends SelectionOptions {
   onChange: SymbolSelectionChangeHandler;
@@ -69,17 +70,7 @@ function Select<T extends Record<string, unknown>>(
   return (
     <>
       <div {...labelProps}>{props.label}</div>
-      <ul
-        {...listBoxProps}
-        ref={ref}
-        style={{
-          padding: 0,
-          margin: "5px 0",
-          listStyle: "none",
-          border: "1px solid gray",
-          maxWidth: 250,
-        }}
-      >
+      <ul {...listBoxProps} className={styles.Select} ref={ref}>
         {Array.from(state.collection).map((item) => (
           <Option key={item.key} item={item} state={state} />
         ))}
@@ -110,13 +101,10 @@ function Option<T>({ item, state }: OptionProps<T>) {
   return (
     <li
       {...mergeProps(optionProps, focusProps)}
+      className={styles.Option}
+      data-focusable={isFocusVisible}
+      data-selected={isSelected}
       ref={ref}
-      style={{
-        background: isSelected ? "blueviolet" : "transparent",
-        color: isSelected ? "white" : undefined,
-        padding: "2px 5px",
-        outline: isFocusVisible ? "2px solid orange" : "none",
-      }}
     >
       {item.rendered}
     </li>
