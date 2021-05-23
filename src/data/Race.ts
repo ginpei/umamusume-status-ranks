@@ -51,7 +51,7 @@ export const umaNames = toCandidates(
 );
 
 export const raceTitles = toCandidates(
-  races.map((v) => v.title),
+  races.map((v) => v.title).filter((v) => v),
   compareString
 );
 
