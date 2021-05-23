@@ -1,7 +1,5 @@
 import { ActionButton } from "@react-spectrum/button";
-import { Checkbox } from "@react-spectrum/checkbox";
 import { Form } from "@react-spectrum/form";
-import { Label } from "@react-spectrum/label";
 import { TextField } from "@react-spectrum/textfield";
 import { FormEventHandler } from "react";
 import { raceTitles, umaClasses } from "../../../data/Race";
@@ -66,9 +64,9 @@ export const RaceEntryForm: React.FC<{
     onChange({ ...entry, expectations });
   };
 
-  const onSpGolshiChanMode2020Change = (checked: boolean) => {
-    onChange({ ...entry, spGolshiChanMode2021: checked });
-  };
+  // const onSpGolshiChanMode2020Change = (checked: boolean) => {
+  //   onChange({ ...entry, spGolshiChanMode2021: checked });
+  // };
 
   const onFormSubmit: FormEventHandler = (event) => {
     event.preventDefault();
@@ -254,7 +252,7 @@ export const RaceEntryForm: React.FC<{
             width="100%"
           />
         </div>
-        <div data-area="special">
+        {/* <div data-area="special">
           <Label>特別</Label>
           <Checkbox
             isSelected={entry.spGolshiChanMode2021}
@@ -263,7 +261,7 @@ export const RaceEntryForm: React.FC<{
           >
             ゴルシちゃんモード (2021)
           </Checkbox>
-        </div>
+        </div> */}
         <div data-area="submit">
           <ActionButton type="submit" width="100%">
             OK
