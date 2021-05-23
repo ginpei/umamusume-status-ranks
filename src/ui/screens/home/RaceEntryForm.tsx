@@ -3,7 +3,7 @@ import { Checkbox } from "@react-spectrum/checkbox";
 import { Form } from "@react-spectrum/form";
 import { Label } from "@react-spectrum/label";
 import { TextField } from "@react-spectrum/textfield";
-import { FormEventHandler, useMemo } from "react";
+import { FormEventHandler } from "react";
 import { raceTitles, umaClasses } from "../../../data/Race";
 import {
   ExpectationLevel,
