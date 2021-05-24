@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import styled from "styled-components";
 import {
   OfMonth,
@@ -8,8 +7,8 @@ import {
   races,
   UmaClass,
 } from "../../../data/Race";
-import { raceViewPagePath } from "../raceView/RaceViewPage";
 import { RaceFilter } from "./RaceFilter";
+import { RaceListItem } from "./RaceListItem";
 
 export const RaceListByUmaClass: React.FC<{
   raceFilter: RaceFilter;
@@ -26,6 +25,7 @@ export const RaceListByUmaClass: React.FC<{
             ofMonth={ofMonth}
             raceFilter={raceFilter}
             umaClass={umaClass}
+            umaName={raceFilter.umaName}
           />
         ))
       )}
@@ -38,7 +38,8 @@ const RaceListOfMonth: React.FC<{
   ofMonth: OfMonth;
   raceFilter: RaceFilter;
   umaClass: UmaClass;
-}> = ({ month, ofMonth, raceFilter, umaClass }) => {
+  umaName: string;
+}> = ({ month, ofMonth, raceFilter, umaClass, umaName }) => {
   const filteredRaces = filterRaces(
     races,
     raceFilter,
@@ -58,18 +59,10 @@ const RaceListOfMonth: React.FC<{
       </h3>
       <div>
         {filteredRaces.map((race) => (
-          <RaceItem key={race.title} race={race} />
+          <RaceListItem key={race.title} race={race} umaName={umaName} />
         ))}
       </div>
     </>
-  );
-};
-
-const RaceItem: React.FC<{ race: Race }> = ({ race }) => {
-  return (
-    <RaceItemRoot>
-      <Link to={raceViewPagePath(race.title)}>{race.title}</Link>
-    </RaceItemRoot>
   );
 };
 
@@ -85,23 +78,7 @@ const ListHeading = styled.h2`
   padding-right: 1rem;
   position: sticky;
   top: 0;
-`;
-
-const RaceItemRoot = styled.div`
-  border-color: var(
-    --spectrum-alias-border-color,
-    var(--spectrum-global-color-gray-400)
-  );
-  border-style: none none solid;
-  border-width: 1px 0;
-  margin-top: -1px;
-  margin-left: -1rem;
-  margin-right: -1rem;
-  padding: 1rem;
-
-  &:first-child {
-    border-top-style: solid;
-  }
+  z-index: 1;
 `;
 
 function filterRaces(
