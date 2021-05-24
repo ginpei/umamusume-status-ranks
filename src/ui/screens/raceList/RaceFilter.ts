@@ -11,3 +11,11 @@ export function createRaceFilter(
     umaName: initial?.umaName ?? "",
   };
 }
+
+export function isEmptyRaceFilter(filter: RaceFilter): boolean {
+  if (filter.umaName !== "") {
+    return false;
+  }
+
+  return true;
+}

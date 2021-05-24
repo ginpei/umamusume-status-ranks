@@ -1,9 +1,13 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { umaClasses } from "../../../data/Race";
 import { rootPath } from "../../../misc";
 import { BasicLayout } from "../basicLayout/BasicLayout";
-import { createRaceFilter, RaceFilterHandler } from "./RaceFilter";
+import {
+  isEmptyRaceFilter as isRaceFilterEmpty,
+  RaceFilterHandler,
+} from "./RaceFilter";
 import { RaceFilterForm } from "./RaceFilterForm";
+import { useRaceFilterStore } from "./RaceFilterHooks";
 import { RaceListByUmaClass } from "./RaceListByUmaClass";
 
 export function raceListPagePath(): string {
@@ -11,7 +15,12 @@ export function raceListPagePath(): string {
 }
 
 export const RaceListPage: React.FC = () => {
-  const [filter, setFilter] = useState(createRaceFilter());
+  const [filter, setFilter] = useRaceFilterStore();
+  const [filterFormOpen, setFilterFormOpen] = useState(false);
+
+  useEffect(() => {
+    setFilterFormOpen(!isRaceFilterEmpty(filter));
+  }, []);
 
   const onFilterChange: RaceFilterHandler = (newFilter) => {
     setFilter(newFilter);
@@ -20,7 +29,7 @@ export const RaceListPage: React.FC = () => {
   return (
     <BasicLayout title="レース一覧">
       <h1>レース一覧</h1>
-      <details>
+      <details open={filterFormOpen}>
         <summary>フィルター</summary>
         <RaceFilterForm filter={filter} onChange={onFilterChange} />
       </details>

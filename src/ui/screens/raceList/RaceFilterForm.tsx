@@ -12,7 +12,7 @@ export const RaceFilterForm: React.FC<RaceFilterFormProps> = ({
   filter,
   onChange,
 }) => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState(filter.umaName);
 
   const umaNameId = useMemo(() => Math.random().toFixed(32).slice(2), []);
 
