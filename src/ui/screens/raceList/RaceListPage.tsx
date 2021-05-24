@@ -1,13 +1,10 @@
 import { useEffect, useState } from "react";
 import { umaClasses } from "../../../data/Race";
+import { isEmptyRaceFilter, RaceFilterHandler } from "../../../data/RaceFilter";
+import { useRaceFilterStore } from "../../../data/RaceFilterHooks";
 import { rootPath } from "../../../misc";
 import { BasicLayout } from "../basicLayout/BasicLayout";
-import {
-  isEmptyRaceFilter as isRaceFilterEmpty,
-  RaceFilterHandler,
-} from "./RaceFilter";
 import { RaceFilterForm } from "./RaceFilterForm";
-import { useRaceFilterStore } from "./RaceFilterHooks";
 import { RaceListByUmaClass } from "./RaceListByUmaClass";
 
 export function raceListPagePath(): string {
@@ -19,7 +16,7 @@ export const RaceListPage: React.FC = () => {
   const [filterFormOpen, setFilterFormOpen] = useState(false);
 
   useEffect(() => {
-    setFilterFormOpen(!isRaceFilterEmpty(filter));
+    setFilterFormOpen(!isEmptyRaceFilter(filter));
   }, []);
 
   const onFilterChange: RaceFilterHandler = (newFilter) => {

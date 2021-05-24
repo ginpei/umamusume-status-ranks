@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { printError } from "../../../misc";
+import { printError } from "../misc";
 import { createRaceFilter, RaceFilter, RaceFilterHandler } from "./RaceFilter";
 
 const raceFilterStoreName = "umamusume-status-ranks--raceFilter";

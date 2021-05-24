@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { umaNames } from "../../../data/Race";
+import { RaceFilter, RaceFilterHandler } from "../../../data/RaceFilter";
 import { TextField } from "../../../vendor/TextField";
-import { RaceFilter, RaceFilterHandler } from "./RaceFilter";
 
 export interface RaceFilterFormProps {
   filter: RaceFilter;

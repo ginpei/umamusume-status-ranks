@@ -7,7 +7,7 @@ import {
   races,
   UmaClass,
 } from "../../../data/Race";
-import { RaceFilter } from "./RaceFilter";
+import { RaceFilter } from "../../../data/RaceFilter";
 import { RaceListItem } from "./RaceListItem";
 
 export const RaceListByUmaClass: React.FC<{
