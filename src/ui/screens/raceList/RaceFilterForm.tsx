@@ -32,6 +32,7 @@ export const RaceFilterForm: React.FC<RaceFilterFormProps> = ({
         label="ウマ娘"
         list={umaNameId}
         onChange={onInputChange}
+        type="search"
         value={name}
         width="100%"
       />
