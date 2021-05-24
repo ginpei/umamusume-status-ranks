@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import styled from "styled-components";
 import {
   OfMonth,
   ofMonths,
@@ -15,8 +16,8 @@ export const RaceListByUmaClass: React.FC<{
   umaClass: UmaClass;
 }> = ({ raceFilter, umaClass }) => {
   return (
-    <>
-      <h2>{umaClass}級</h2>
+    <ListSection>
+      <ListHeading>{umaClass}級</ListHeading>
       {raceMonths.map((month) =>
         ofMonths.map((ofMonth) => (
           <RaceListOfMonth
@@ -28,7 +29,7 @@ export const RaceListByUmaClass: React.FC<{
           />
         ))
       )}
-    </>
+    </ListSection>
   );
 };
 
@@ -71,6 +72,20 @@ const RaceItem: React.FC<{ race: Race }> = ({ race }) => {
     </li>
   );
 };
+
+const ListSection = styled.section`
+  position: relative;
+`;
+
+const ListHeading = styled.h2`
+  background-color: var(--spectrum-global-color-gray-50);
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  position: sticky;
+  top: 0;
+`;
 
 function filterRaces(
   source: Race[],
