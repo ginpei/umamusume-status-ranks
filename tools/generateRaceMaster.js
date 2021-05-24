@@ -60,7 +60,7 @@ function convertRowToRace(row) {
   const [
     sChecked,
     umaClass,
-    sUmaGrade,
+    sUmaClass,
     sMonth,
     ofMonthPartial,
     title,

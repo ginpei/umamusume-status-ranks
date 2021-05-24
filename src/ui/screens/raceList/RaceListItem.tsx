@@ -52,7 +52,7 @@ export const RaceListItem: React.FC<RaceListItemProps> = ({
             <Link
               to={registerPagePathWithQuery({
                 raceTitle: race.title,
-                umaGrade: race.umaClass,
+                umaClass: race.umaClass,
                 umaName,
               })}
             >

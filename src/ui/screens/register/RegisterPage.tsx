@@ -21,18 +21,18 @@ export function registerPagePath(): string {
 export function registerPagePathWithQuery({
   raceTitle,
   umaName,
-  umaGrade,
+  umaClass,
 }: {
   raceTitle?: string;
   umaName?: string;
-  umaGrade?: UmaClass;
+  umaClass?: UmaClass;
 }): string {
   const params = new URLSearchParams();
   if (umaName) {
     params.set("uma", umaName);
   }
-  if (umaGrade) {
-    params.set("grade", umaGrade);
+  if (umaClass) {
+    params.set("grade", umaClass);
   }
   if (raceTitle) {
     params.set("title", raceTitle);
