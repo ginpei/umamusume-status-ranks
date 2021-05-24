@@ -4,6 +4,8 @@ import styled from "styled-components";
 import {
   raceDistanceCategories,
   RaceDistanceCategory,
+  RaceGrade,
+  raceGrades,
   RaceGround,
   raceGrounds,
   umaNames,
@@ -61,6 +63,18 @@ export const RaceFilterForm: React.FC<RaceFilterFormProps> = ({
     onChange({ ...filter, grounds });
   };
 
+  const onGradeChange = (grade: RaceGrade, checked: boolean) => {
+    const set = new Set([...filter.grades]);
+    if (checked) {
+      set.add(grade);
+    } else {
+      set.delete(grade);
+    }
+
+    const grades = Array.from(set);
+    onChange({ ...filter, grades });
+  };
+
   return (
     <form className="RaceFilterForm">
       <div className="u-margin">
@@ -105,6 +119,21 @@ export const RaceFilterForm: React.FC<RaceFilterFormProps> = ({
             value={ground}
           >
             {ground}
+          </Checkbox>
+        ))}
+      </div>
+      <div className="u-margin">
+        <div>
+          <LabelText>グレード</LabelText>
+        </div>
+        {raceGrades.map((grade) => (
+          <Checkbox
+            isSelected={filter.grades.includes(grade)}
+            key={grade}
+            onChange={(v) => onGradeChange(grade, v)}
+            value={grade}
+          >
+            {grade}
           </Checkbox>
         ))}
       </div>

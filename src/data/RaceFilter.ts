@@ -1,7 +1,8 @@
-import { RaceDistanceCategory, RaceGround } from "./Race";
+import { RaceDistanceCategory, RaceGrade, RaceGround } from "./Race";
 
 export interface RaceFilter {
   distanceCategories: RaceDistanceCategory[];
+  grades: RaceGrade[];
   grounds: RaceGround[];
   umaName: string;
 }
@@ -13,6 +14,7 @@ export function createRaceFilter(
 ): RaceFilter {
   return {
     distanceCategories: initial?.distanceCategories ?? [],
+    grades: initial?.grades ?? [],
     grounds: initial?.grounds ?? [],
     umaName: initial?.umaName ?? "",
   };
@@ -24,6 +26,10 @@ export function isEmptyRaceFilter(filter: RaceFilter): boolean {
   }
 
   if (filter.distanceCategories.length > 0) {
+    return false;
+  }
+
+  if (filter.grades.length > 0) {
     return false;
   }
 

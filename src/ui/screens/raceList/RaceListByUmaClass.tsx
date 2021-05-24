@@ -101,7 +101,10 @@ function filterRaces(
           raceFilter.distanceCategories.includes(
             raceDistanceToCategory(v.distance)
           )) &&
-        (raceFilter.grounds.length < 1 || raceFilter.grounds.includes(v.ground))
+        (raceFilter.grounds.length < 1 ||
+          raceFilter.grounds.includes(v.ground)) &&
+        (raceFilter.grades.length < 1 ||
+          raceFilter.grades.includes(v.raceGrade))
     )
     .sort((v, u) => v.title.localeCompare(u.title))
     .sort(
