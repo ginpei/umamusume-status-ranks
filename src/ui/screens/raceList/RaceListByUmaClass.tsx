@@ -9,7 +9,7 @@ import {
   races,
   UmaClass,
 } from "../../../data/Race";
-import { RaceFilter } from "../../../data/RaceFilter";
+import { filterRaces, RaceFilter } from "../../../data/RaceFilter";
 import { RaceListItem } from "./RaceListItem";
 
 export const RaceListByUmaClass: React.FC<{
@@ -89,35 +89,3 @@ const ListHeading = styled.h2`
   top: 0;
   z-index: 1;
 `;
-
-function filterRaces(
-  source: Race[],
-  raceFilter: RaceFilter,
-  umaClass: UmaClass,
-  month: number,
-  ofMonth: OfMonth
-) {
-  return [...source]
-    .filter(
-      (v) =>
-        v.umaClass === umaClass &&
-        v.month === month &&
-        v.ofMonth === ofMonth &&
-        (!raceFilter.umaName ||
-          raceFilter.milestonesEmphasized ||
-          v.umaNames.includes(raceFilter.umaName)) &&
-        (raceFilter.distanceCategories.length < 1 ||
-          raceFilter.distanceCategories.includes(
-            raceDistanceToCategory(v.distance)
-          )) &&
-        (raceFilter.grounds.length < 1 ||
-          raceFilter.grounds.includes(v.ground)) &&
-        (raceFilter.grades.length < 1 ||
-          raceFilter.grades.includes(v.raceGrade))
-    )
-    .sort((v, u) => v.title.localeCompare(u.title))
-    .sort(
-      (v, u) =>
-        raceGrades.indexOf(v.raceGrade) - raceGrades.indexOf(u.raceGrade)
-    );
-}
