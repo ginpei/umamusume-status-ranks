@@ -147,8 +147,5 @@ const LabelText = styled.span`
     var(--spectrum-global-color-gray-700)
   );
   font-size: var(--spectrum-global-dimension-font-size-75);
-  -webkit-font-smoothing: subpixel-antialiased;
-  -moz-osx-font-smoothing: auto;
-  font-smooth: subpixel-antialiased;
   font-weight: var(--spectrum-global-font-weight-regular, 400);
 `;
