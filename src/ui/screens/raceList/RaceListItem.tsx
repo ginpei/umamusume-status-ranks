@@ -21,10 +21,15 @@ export const RaceListItem: React.FC<RaceListItemProps> = ({
   return (
     <Root>
       <LinkBox>
-        <Link to={raceViewPagePath(race.title)}>
-          <RaceGrade data-grade={race.raceGrade}>{race.raceGrade}</RaceGrade>
-          {race.title}
-        </Link>
+        <span>
+          <Link to={raceViewPagePath(race.title)}>
+            <RaceGrade data-grade={race.raceGrade}>{race.raceGrade}</RaceGrade>
+            {race.title}
+          </Link>
+          <small>
+            （{raceDistanceToCategory(race.distance)[0]}、{race.ground[0]}）
+          </small>
+        </span>
       </LinkBox>
       <ModerateToggleButton
         aria-label="詳しく"
