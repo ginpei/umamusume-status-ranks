@@ -32,7 +32,10 @@ export const RaceListItem: React.FC<RaceListItemProps> = ({
       {detailsOpen && (
         <DetailsFrame>
           <p>
-            {race.siteName}競馬場・{race.distance}m・{race.direction}
+            <DetailInlineItem>{race.siteName}</DetailInlineItem>
+            <DetailInlineItem>{race.ground}</DetailInlineItem>
+            <DetailInlineItem>{race.distance}</DetailInlineItem>m
+            <DetailInlineItem>{race.direction}</DetailInlineItem>
           </p>
           <p>
             <Link
@@ -80,4 +83,12 @@ const LinkBox = styled.div`
 
 const DetailsFrame = styled.div`
   grid-area: details;
+`;
+
+const DetailInlineItem = styled.span`
+  margin-left: 1rem;
+
+  &:first-child {
+    margin-left: 0;
+  }
 `;
