@@ -79,7 +79,7 @@ export const RaceFilterForm: React.FC<RaceFilterFormProps> = ({
     <form className="RaceFilterForm">
       <div className="u-margin">
         <TextField
-          label="ウマ娘"
+          label="ウマ娘（目標レース）"
           list={umaNameId}
           onChange={onUmaNameChange}
           type="search"
