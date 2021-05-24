@@ -21,7 +21,10 @@ export const RaceListItem: React.FC<RaceListItemProps> = ({
   return (
     <Root>
       <LinkBox>
-        <Link to={raceViewPagePath(race.title)}>{race.title}</Link>
+        <Link to={raceViewPagePath(race.title)}>
+          <RaceGrade data-grade={race.raceGrade}>{race.raceGrade}</RaceGrade>
+          {race.title}
+        </Link>
       </LinkBox>
       <ModerateToggleButton
         aria-label="詳しく"
@@ -80,6 +83,46 @@ const Root = styled.div`
 const LinkBox = styled.div`
   display: grid;
   place-items: center start;
+`;
+
+const RaceGrade = styled.span`
+  --l-bg: #000;
+  --l-fg: #fff;
+  --l-font-size: 1em;
+  background-color: var(--l-bg);
+  border-radius: var(
+    --spectrum-alias-border-radius-regular,
+    var(--spectrum-global-dimension-size-50)
+  );
+  color: var(--l-fg);
+  display: inline-block;
+  font-size: var(--l-font-size);
+  height: 1rem;
+  line-height: 1rem;
+  margin-right: 0.5rem;
+  text-align: center;
+  width: 2rem;
+
+  &[data-grade="G1"] {
+    --l-bg: blue;
+  }
+
+  &[data-grade="G2"] {
+    --l-bg: fuchsia;
+  }
+
+  &[data-grade="G3"] {
+    --l-bg: limegreen;
+  }
+
+  &[data-grade="OP"] {
+    --l-bg: orange;
+  }
+
+  &[data-grade="Pre-OP"] {
+    --l-font-size: 0.5em;
+    --l-bg: orange;
+  }
 `;
 
 const DetailsFrame = styled.div`
