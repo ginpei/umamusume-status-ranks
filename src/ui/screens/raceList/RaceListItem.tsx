@@ -27,7 +27,7 @@ export const RaceListItem: React.FC<RaceListItemProps> = ({
         isSelected={detailsOpen}
         onChange={setDetailsOpen}
       >
-        {detailsOpen ? "▲" : "▼"}
+        …
       </ToggleButton>
       {detailsOpen && (
         <DetailsFrame>
