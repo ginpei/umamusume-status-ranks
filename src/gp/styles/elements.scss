@@ -66,11 +66,12 @@ summary {
   border-style: none;
   border-width: var(--spectrum-alias-border-size-thin,var(--spectrum-global-dimension-static-size-10));
   cursor: pointer;
-  margin: -1rem -1rem 0;
+  margin: -1rem -1rem;
   padding: 3px var(--spectrum-global-dimension-size-150) 5px calc(var(--spectrum-global-dimension-size-150) - 1px);
 
   details[open] & {
     border-bottom-style: solid;
+    margin-bottom: 0;
   }
 }
 
