@@ -95,7 +95,7 @@ const LinkBox = styled.div`
 const RaceGrade = styled.span`
   --l-bg: #000;
   --l-fg: #fff;
-  --l-font-size: 1em;
+  --l-font-size: 0.8em;
   background-color: var(--l-bg);
   border-radius: var(
     --spectrum-alias-border-radius-regular,
