@@ -4,6 +4,7 @@
 }
 
 article,
+details,
 figcaption,
 figure,
 form,
@@ -49,6 +50,27 @@ th {
 li {
   & + & {
     margin-top: calc(var(--clickable-height) - 1em);
+  }
+}
+
+details {
+  border-color: var(--spectrum-alias-border-color,var(--spectrum-global-color-gray-400));
+  border-radius: var(--spectrum-alias-border-radius-regular,var(--spectrum-global-dimension-size-50));
+  border-style: solid;
+  border-width: var(--spectrum-alias-border-size-thin,var(--spectrum-global-dimension-static-size-10));
+  padding: 1rem;
+}
+
+summary {
+  border-color: var(--spectrum-alias-border-color,var(--spectrum-global-color-gray-400));
+  border-style: none;
+  border-width: var(--spectrum-alias-border-size-thin,var(--spectrum-global-dimension-static-size-10));
+  cursor: pointer;
+  margin: -1rem -1rem 0;
+  padding: 3px var(--spectrum-global-dimension-size-150) 5px calc(var(--spectrum-global-dimension-size-150) - 1px);
+
+  details[open] & {
+    border-bottom-style: solid;
   }
 }
 
