@@ -4,6 +4,7 @@ import {
   ofMonths,
   Race,
   raceDistanceToCategory,
+  raceGrades,
   raceMonths,
   races,
   UmaClass,
@@ -102,5 +103,9 @@ function filterRaces(
           )) &&
         (raceFilter.grounds.length < 1 || raceFilter.grounds.includes(v.ground))
     )
-    .sort((v, u) => v.title.localeCompare(u.title));
+    .sort((v, u) => v.title.localeCompare(u.title))
+    .sort(
+      (v, u) =>
+        raceGrades.indexOf(v.raceGrade) - raceGrades.indexOf(u.raceGrade)
+    );
 }
