@@ -1,0 +1,45 @@
+import { useEffect, useMemo, useState } from "react";
+import { umaNames } from "../../../data/Race";
+import { TextField } from "../../../vendor/TextField";
+import { RaceFilter, RaceFilterHandler } from "./RaceFilter";
+
+export interface RaceFilterFormProps {
+  filter: RaceFilter;
+  onChange: RaceFilterHandler;
+}
+
+export const RaceFilterForm: React.FC<RaceFilterFormProps> = ({
+  filter,
+  onChange,
+}) => {
+  const [name, setName] = useState("");
+
+  const umaNameId = useMemo(() => Math.random().toFixed(32).slice(2), []);
+
+  const onInputChange = (newName: string) => {
+    setName(newName);
+  };
+
+  useEffect(() => {
+    if (name === "" || umaNames.includes(name)) {
+      onChange({ ...filter, umaName: name });
+    }
+  }, [name]);
+
+  return (
+    <form className="RaceFilterForm">
+      <TextField
+        label="ウマ娘"
+        list={umaNameId}
+        onChange={onInputChange}
+        value={name}
+        width="100%"
+      />
+      <datalist id={umaNameId}>
+        {umaNames.map((umaName) => (
+          <option>{umaName}</option>
+        ))}
+      </datalist>
+    </form>
+  );
+};
