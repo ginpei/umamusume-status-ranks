@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { printError } from "../../../misc";
 import { createRaceFilter, RaceFilter, RaceFilterHandler } from "./RaceFilter";
 
 const raceFilterStoreName = "umamusume-status-ranks--raceFilter";
@@ -29,7 +30,7 @@ function loadRaceFilter() {
     const filter = createRaceFilter(data);
     return filter;
   } catch (error) {
-    console.error(error);
+    printError(error);
     return null;
   }
 }
