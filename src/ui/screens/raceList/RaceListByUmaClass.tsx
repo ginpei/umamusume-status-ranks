@@ -3,13 +3,12 @@ import {
   OfMonth,
   ofMonths,
   Race,
-  raceDistanceToCategory,
   raceGrades,
   raceMonths,
   races,
   UmaClass,
 } from "../../../data/Race";
-import { filterRaces, RaceFilter } from "../../../data/RaceFilter";
+import { matchRaceFilter, RaceFilter } from "../../../data/RaceFilter";
 import { RaceListItem } from "./RaceListItem";
 
 export const RaceListByUmaClass: React.FC<{
@@ -44,10 +43,10 @@ const RaceListOfMonth: React.FC<{
 }> = ({ month, ofMonth, raceFilter, umaClass, umaName }) => {
   const filteredRaces = filterRaces(
     races,
-    raceFilter,
     umaClass,
     month,
-    ofMonth
+    ofMonth,
+    raceFilter
   );
 
   if (filteredRaces.length < 1) {
@@ -89,3 +88,25 @@ const ListHeading = styled.h2`
   top: 0;
   z-index: 1;
 `;
+
+function filterRaces(
+  source: Race[],
+  umaClass: UmaClass,
+  month: number,
+  ofMonth: OfMonth,
+  raceFilter: RaceFilter
+) {
+  return [...source]
+    .filter(
+      (v) =>
+        v.umaClass === umaClass &&
+        v.month === month &&
+        v.ofMonth === ofMonth &&
+        matchRaceFilter(v, raceFilter)
+    )
+    .sort((v, u) => v.title.localeCompare(u.title))
+    .sort(
+      (v, u) =>
+        raceGrades.indexOf(v.raceGrade) - raceGrades.indexOf(u.raceGrade)
+    );
+}
