@@ -56,20 +56,20 @@ const RaceListOfMonth: React.FC<{
       <h3>
         {month}月{ofMonth}
       </h3>
-      <ul>
+      <div>
         {filteredRaces.map((race) => (
           <RaceItem key={race.title} race={race} />
         ))}
-      </ul>
+      </div>
     </>
   );
 };
 
 const RaceItem: React.FC<{ race: Race }> = ({ race }) => {
   return (
-    <li className="RaceItem">
+    <RaceItemRoot>
       <Link to={raceViewPagePath(race.title)}>{race.title}</Link>
-    </li>
+    </RaceItemRoot>
   );
 };
 
@@ -85,6 +85,23 @@ const ListHeading = styled.h2`
   padding-right: 1rem;
   position: sticky;
   top: 0;
+`;
+
+const RaceItemRoot = styled.div`
+  border-color: var(
+    --spectrum-alias-border-color,
+    var(--spectrum-global-color-gray-400)
+  );
+  border-style: none none solid;
+  border-width: 1px 0;
+  margin-top: -1px;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding: 1rem;
+
+  &:first-child {
+    border-top-style: solid;
+  }
 `;
 
 function filterRaces(
