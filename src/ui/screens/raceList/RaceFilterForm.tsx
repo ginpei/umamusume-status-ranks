@@ -26,15 +26,15 @@ export const RaceFilterForm: React.FC<RaceFilterFormProps> = ({
 
   const umaNameId = useMemo(() => Math.random().toFixed(32).slice(2), []);
 
-  const onInputChange = (newName: string) => {
-    setName(newName);
-  };
-
   useEffect(() => {
     if (name === "" || umaNames.includes(name)) {
       onChange({ ...filter, umaName: name });
     }
   }, [name]);
+
+  const onUmaNameChange = (newName: string) => {
+    setName(newName);
+  };
 
   const onDistanceChange = (
     distance: RaceDistanceCategory,
@@ -81,7 +81,7 @@ export const RaceFilterForm: React.FC<RaceFilterFormProps> = ({
         <TextField
           label="ウマ娘"
           list={umaNameId}
-          onChange={onInputChange}
+          onChange={onUmaNameChange}
           type="search"
           value={name}
           width="100%"
