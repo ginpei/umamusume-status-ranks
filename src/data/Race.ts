@@ -17,6 +17,8 @@ export type UmaClass = typeof umaClasses[number];
 
 export type RaceDirection = typeof raceDirections[number];
 
+export type RaceDistanceCategory = typeof raceDistanceCategories[number];
+
 export type RaceMonth = typeof raceMonths[number];
 
 export type OfMonth = typeof ofMonths[number];
@@ -35,6 +37,13 @@ export const raceDirections = [
   "直線",
 ] as const;
 
+export const raceDistanceCategories = [
+  "短距離",
+  "マイル",
+  "中距離",
+  "長距離",
+] as const;
+
 export const raceMonths = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 
 export const ofMonths = ["前半", "後半"];
@@ -47,6 +56,22 @@ export const raceDistance = toCandidates(
   races.map((v) => v.distance),
   compareNumber
 );
+
+export function raceDistanceToCategory(distance: number): RaceDistanceCategory {
+  if (distance <= 1400) {
+    return "短距離";
+  }
+
+  if (distance <= 1800) {
+    return "マイル";
+  }
+
+  if (distance <= 2400) {
+    return "中距離";
+  }
+
+  return "長距離";
+}
 
 export const siteName = toCandidates(
   races.map((v) => v.siteName),

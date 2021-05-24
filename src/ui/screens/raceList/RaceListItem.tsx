@@ -2,7 +2,7 @@ import { ToggleButton } from "@react-spectrum/button";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
-import { Race } from "../../../data/Race";
+import { Race, raceDistanceToCategory } from "../../../data/Race";
 import { raceViewPagePath } from "../raceView/RaceViewPage";
 import { registerPagePathWithQuery } from "../register/RegisterPage";
 import { ModerateToggleButton } from "./ModerateToggleButton";
@@ -38,7 +38,9 @@ export const RaceListItem: React.FC<RaceListItemProps> = ({
           <p>
             <DetailInlineItem>{race.siteName}</DetailInlineItem>
             <DetailInlineItem>{race.ground}</DetailInlineItem>
-            <DetailInlineItem>{race.distance}</DetailInlineItem>m
+            <DetailInlineItem>
+              {race.distance}m（{raceDistanceToCategory(race.distance)}）
+            </DetailInlineItem>
             <DetailInlineItem>{race.direction}</DetailInlineItem>
           </p>
           <p>
