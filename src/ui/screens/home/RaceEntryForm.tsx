@@ -2,6 +2,7 @@ import { ActionButton } from "@react-spectrum/button";
 import { Form } from "@react-spectrum/form";
 import { TextField } from "@react-spectrum/textfield";
 import { FormEventHandler } from "react";
+import styled from "styled-components";
 import { raceTitles, umaClasses } from "../../../data/Race";
 import {
   ExpectationLevel,
@@ -12,7 +13,6 @@ import {
 import { NiceListBox, NiceListBoxOption } from "../../stateful/NiceListBox";
 import { TextListField } from "../../stateful/TextListField";
 import { ExpectationListBox } from "./ExpectationListBox";
-import styles from "./RaceEntryForm.module.scss";
 import { StatusRankListBox } from "./StatusRankListBox";
 
 const umaClassOptions: NiceListBoxOption[] = umaClasses.map((v) => ({
@@ -75,7 +75,7 @@ export const RaceEntryForm: React.FC<{
 
   return (
     <Form isDisabled={disabled} onSubmit={onFormSubmit}>
-      <div className={styles.root}>
+      <Frame>
         <div data-area="umaName">
           <FormInputField
             entry={entry}
@@ -267,10 +267,96 @@ export const RaceEntryForm: React.FC<{
             OK
           </ActionButton>
         </div>
-      </div>
+      </Frame>
     </Form>
   );
 };
+
+const Frame = styled.div`
+  display: grid;
+  gap: 1em;
+  grid-template:
+    "umaName       umaName       umaName       umaClass      umaClass        "
+    "raceTitle     raceTitle     raceTitle     umaClass      umaClass        "
+    "tadunaComment tadunaComment tadunaComment tadunaComment tadunaComment   "
+    "speedRank     staminaRank   powerRank     gutRank       intelligenceRank"
+    "speedStatus   staminaStatus powerStatus   gutStatus     intelligenceStatus"
+    "voteRank      voteRank      expectation1  expectation2  expectation3    "
+    "commentatorComment commentatorComment commentatorComment commentatorComment commentatorComment   "
+    "special       special       special       special       special         "
+    "submit        submit        submit        submit        submit          "
+    / 1fr 1fr 1fr 1fr 1fr;
+
+  & > [data-area="umaName"] {
+    grid-area: umaName;
+  }
+  & > [data-area="umaClass"] {
+    grid-area: umaClass;
+  }
+
+  & > [data-area="raceTitle"] {
+    grid-area: raceTitle;
+  }
+
+  & > [data-area="tadunaComment"] {
+    grid-area: tadunaComment;
+  }
+
+  & > [data-area="speedRank"] {
+    grid-area: speedRank;
+  }
+  & > [data-area="staminaRank"] {
+    grid-area: staminaRank;
+  }
+  & > [data-area="powerRank"] {
+    grid-area: powerRank;
+  }
+  & > [data-area="gutRank"] {
+    grid-area: gutRank;
+  }
+  & > [data-area="intelligenceRank"] {
+    grid-area: intelligenceRank;
+  }
+
+  & > [data-area="speedStatus"] {
+    grid-area: speedStatus;
+  }
+  & > [data-area="staminaStatus"] {
+    grid-area: staminaStatus;
+  }
+  & > [data-area="powerStatus"] {
+    grid-area: powerStatus;
+  }
+  & > [data-area="gutStatus"] {
+    grid-area: gutStatus;
+  }
+  & > [data-area="intelligenceStatus"] {
+    grid-area: intelligenceStatus;
+  }
+
+  & > [data-area="voteRank"] {
+    grid-area: voteRank;
+  }
+  & > [data-area="expectation1"] {
+    grid-area: expectation1;
+  }
+  & > [data-area="expectation2"] {
+    grid-area: expectation2;
+  }
+  & > [data-area="expectation3"] {
+    grid-area: expectation3;
+  }
+
+  & > [data-area="commentatorComment"] {
+    grid-area: commentatorComment;
+  }
+  & > [data-area="special"] {
+    grid-area: special;
+  }
+  & > [data-area="submit"] {
+    grid-area: submit;
+  }
+`;
 
 interface FormInputFieldExtendedProps {
   name: keyof RaceEntry;
