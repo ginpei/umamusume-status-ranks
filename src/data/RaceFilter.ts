@@ -51,16 +51,16 @@ export function isEmptyRaceFilter(filter: RaceFilter): boolean {
   return true;
 }
 
-export function matchRaceFilter(v: Race, raceFilter: RaceFilter): boolean {
+export function matchRaceFilter(race: Race, filter: RaceFilter): boolean {
   return (
-    (!raceFilter.umaName ||
-      raceFilter.milestonesEmphasized ||
-      v.umaNames.includes(raceFilter.umaName)) &&
-    (raceFilter.distanceCategories.length < 1 ||
-      raceFilter.distanceCategories.includes(
-        raceDistanceToCategory(v.distance)
+    (!filter.umaName ||
+      filter.milestonesEmphasized ||
+      race.umaNames.includes(filter.umaName)) &&
+    (filter.distanceCategories.length < 1 ||
+      filter.distanceCategories.includes(
+        raceDistanceToCategory(race.distance)
       )) &&
-    (raceFilter.grounds.length < 1 || raceFilter.grounds.includes(v.ground)) &&
-    (raceFilter.grades.length < 1 || raceFilter.grades.includes(v.raceGrade))
+    (filter.grounds.length < 1 || filter.grounds.includes(race.ground)) &&
+    (filter.grades.length < 1 || filter.grades.includes(race.raceGrade))
   );
 }
