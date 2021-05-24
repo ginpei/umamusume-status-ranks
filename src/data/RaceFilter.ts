@@ -52,10 +52,18 @@ export function isEmptyRaceFilter(filter: RaceFilter): boolean {
 }
 
 export function matchRaceFilter(race: Race, filter: RaceFilter): boolean {
+  if (filter.umaName) {
+    const isMilestone = race.umaNames.includes(filter.umaName);
+    if (filter.milestonesEmphasized) {
+      if (isMilestone) {
+        return true;
+      }
+    } else if (!isMilestone) {
+      return false;
+    }
+  }
+
   return (
-    (!filter.umaName ||
-      filter.milestonesEmphasized ||
-      race.umaNames.includes(filter.umaName)) &&
     (filter.distanceCategories.length < 1 ||
       filter.distanceCategories.includes(
         raceDistanceToCategory(race.distance)
