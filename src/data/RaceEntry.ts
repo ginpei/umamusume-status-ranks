@@ -1,4 +1,5 @@
 import { createDataRecord, DataRecord } from "../gp/data/DataRecord";
+import { UmaClass } from "./Race";
 
 export interface RaceEntry extends DataRecord {
   commentatorComment: string;
@@ -22,8 +23,6 @@ export interface RaceEntry extends DataRecord {
   voteRank: number;
 }
 
-export type UmaClass = typeof umaClasses[number];
-
 export type ExpectationLevel = typeof expectationLevels[number];
 
 export type ExpectationList = [
@@ -39,8 +38,6 @@ export type RaceEntryCallback = (entry: RaceEntry) => void;
 export type TadunaRankCallback = (rank: TadunaRank) => void;
 
 export type ExpectationLevelCallback = (level: ExpectationLevel) => void;
-
-export const umaClasses = ["ジュニア", "クラシック", "シニア"] as const;
 
 export const expectationLevels = [
   "great",
