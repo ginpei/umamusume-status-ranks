@@ -19,9 +19,9 @@ export const RaceListItem: React.FC<RaceListItemProps> = ({
 
   return (
     <Root>
-      <div>
+      <LinkBox>
         <Link to={raceViewPagePath(race.title)}>{race.title}</Link>
-      </div>
+      </LinkBox>
       <ToggleButton
         aria-label="詳しく"
         isSelected={detailsOpen}
@@ -71,6 +71,11 @@ const Root = styled.div`
   &:first-child {
     border-top-style: solid;
   }
+`;
+
+const LinkBox = styled.div`
+  display: grid;
+  place-items: center start;
 `;
 
 const DetailsFrame = styled.div`
