@@ -3,7 +3,7 @@ import raceMaster from "./raceMaster.json";
 export interface Race {
   direction: RaceDirection;
   distance: number;
-  ground: "芝" | "ダート";
+  ground: RaceGround;
   month: RaceMonth;
   ofMonth: OfMonth;
   raceGrade: RaceGrade;
@@ -18,6 +18,8 @@ export type UmaClass = typeof umaClasses[number];
 export type RaceDirection = typeof raceDirections[number];
 
 export type RaceDistanceCategory = typeof raceDistanceCategories[number];
+
+export type RaceGround = typeof raceGrounds[number];
 
 export type RaceMonth = typeof raceMonths[number];
 
@@ -43,6 +45,8 @@ export const raceDistanceCategories = [
   "中距離",
   "長距離",
 ] as const;
+
+export const raceGrounds = ["芝", "ダート"];
 
 export const raceMonths = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12];
 

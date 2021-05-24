@@ -3,6 +3,7 @@ import {
   OfMonth,
   ofMonths,
   Race,
+  raceDistanceToCategory,
   raceMonths,
   races,
   UmaClass,
@@ -94,7 +95,12 @@ function filterRaces(
         v.umaClass === umaClass &&
         v.month === month &&
         v.ofMonth === ofMonth &&
-        (!raceFilter.umaName || v.umaNames.includes(raceFilter.umaName))
+        (!raceFilter.umaName || v.umaNames.includes(raceFilter.umaName)) &&
+        (raceFilter.distanceCategories.length < 1 ||
+          raceFilter.distanceCategories.includes(
+            raceDistanceToCategory(v.distance)
+          )) &&
+        (raceFilter.grounds.length < 1 || raceFilter.grounds.includes(v.ground))
     )
     .sort((v, u) => v.title.localeCompare(u.title));
 }
