@@ -61,7 +61,14 @@ const RaceListOfMonth: React.FC<{
       </h3>
       <div>
         {filteredRaces.map((race) => (
-          <RaceListItem key={race.title} race={race} umaName={umaName} />
+          <RaceListItem
+            isMilestone={
+              raceFilter.milestonesEmphasized && race.umaNames.includes(umaName)
+            }
+            key={race.title}
+            race={race}
+            umaName={umaName}
+          />
         ))}
       </div>
     </>
@@ -96,7 +103,9 @@ function filterRaces(
         v.umaClass === umaClass &&
         v.month === month &&
         v.ofMonth === ofMonth &&
-        (!raceFilter.umaName || v.umaNames.includes(raceFilter.umaName)) &&
+        (!raceFilter.umaName ||
+          raceFilter.milestonesEmphasized ||
+          v.umaNames.includes(raceFilter.umaName)) &&
         (raceFilter.distanceCategories.length < 1 ||
           raceFilter.distanceCategories.includes(
             raceDistanceToCategory(v.distance)

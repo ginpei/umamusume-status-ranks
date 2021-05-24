@@ -36,6 +36,10 @@ export const RaceFilterForm: React.FC<RaceFilterFormProps> = ({
     setName(newName);
   };
 
+  const onMilestonesEmphasizedChange = (checked: boolean) => {
+    onChange({ ...filter, milestonesEmphasized: checked });
+  };
+
   const onDistanceChange = (
     distance: RaceDistanceCategory,
     checked: boolean
@@ -91,6 +95,12 @@ export const RaceFilterForm: React.FC<RaceFilterFormProps> = ({
             <option key={umaName}>{umaName}</option>
           ))}
         </datalist>
+        <Checkbox
+          isSelected={filter.milestonesEmphasized}
+          onChange={onMilestonesEmphasizedChange}
+        >
+          絞り込む代わりに強調表示
+        </Checkbox>
       </div>
       <div className="u-margin">
         <div>

@@ -2,6 +2,7 @@ import { RaceDistanceCategory, RaceGrade, RaceGround } from "./Race";
 
 export interface RaceFilter {
   distanceCategories: RaceDistanceCategory[];
+  milestonesEmphasized: boolean;
   grades: RaceGrade[];
   grounds: RaceGround[];
   umaName: string;
@@ -14,6 +15,7 @@ export function createRaceFilter(
 ): RaceFilter {
   return {
     distanceCategories: initial?.distanceCategories ?? [],
+    milestonesEmphasized: initial?.milestonesEmphasized ?? false,
     grades: initial?.grades ?? [],
     grounds: initial?.grounds ?? [],
     umaName: initial?.umaName ?? "",

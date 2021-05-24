@@ -8,11 +8,13 @@ import { registerPagePathWithQuery } from "../register/RegisterPage";
 import { ModerateToggleButton } from "./ModerateToggleButton";
 
 export interface RaceListItemProps {
+  isMilestone: boolean;
   race: Race;
   umaName: string;
 }
 
 export const RaceListItem: React.FC<RaceListItemProps> = ({
+  isMilestone,
   race,
   umaName,
 }) => {
@@ -29,6 +31,7 @@ export const RaceListItem: React.FC<RaceListItemProps> = ({
           <small>
             （{raceDistanceToCategory(race.distance)[0]}、{race.ground[0]}）
           </small>
+          {isMilestone && <MilestoneMark>目標レース</MilestoneMark>}
         </span>
       </LinkBox>
       <ModerateToggleButton
@@ -130,6 +133,16 @@ const RaceGrade = styled.span`
     --l-font-size: 0.5em;
     --l-bg: orange;
   }
+`;
+
+const MilestoneMark = styled.small`
+  background-color: tomato;
+  border-radius: var(
+    --spectrum-alias-border-radius-regular,
+    var(--spectrum-global-dimension-size-50)
+  );
+  color: white;
+  padding: 0 0.5em;
 `;
 
 const DetailsFrame = styled.div`
