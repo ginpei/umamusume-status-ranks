@@ -92,10 +92,10 @@ pre {
 }
 
 a {
-  color: var(--link-fg);
+  color: var(--spectrum-global-color-blue-600);
 
   &:hover {
-    color: var(--link-hover-fg);
+    color: var(--spectrum-global-color-red-600);
   }
 
   &[href^="http"] {
@@ -110,6 +110,10 @@ a {
       transition: transform 200ms;
     }
   }
+}
+
+button {
+  color: var(--spectrum-alias-text-color,var(--spectrum-global-color-gray-800));
 }
 
 code {
