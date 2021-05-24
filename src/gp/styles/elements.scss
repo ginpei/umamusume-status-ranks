@@ -96,6 +96,19 @@ a {
   &:hover {
     color: var(--link-hover-fg);
   }
+
+  &[href^="http"] {
+    &::after {
+      content: "🚀";
+      display: inline-block;
+      margin-left: 0.1em;
+    }
+
+    &:where(:hover, :focus)::after {
+      transform: translate(0.2em, -0.2em);
+      transition: transform 200ms;
+    }
+  }
 }
 
 code {
