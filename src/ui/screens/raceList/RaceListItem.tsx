@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { Race } from "../../../data/Race";
 import { raceViewPagePath } from "../raceView/RaceViewPage";
 import { registerPagePathWithQuery } from "../register/RegisterPage";
+import { ModerateToggleButton } from "./ModerateToggleButton";
 
 export interface RaceListItemProps {
   race: Race;
@@ -22,13 +23,13 @@ export const RaceListItem: React.FC<RaceListItemProps> = ({
       <LinkBox>
         <Link to={raceViewPagePath(race.title)}>{race.title}</Link>
       </LinkBox>
-      <ToggleButton
+      <ModerateToggleButton
         aria-label="詳しく"
-        isSelected={detailsOpen}
+        on={detailsOpen}
         onChange={setDetailsOpen}
       >
         …
-      </ToggleButton>
+      </ModerateToggleButton>
       {detailsOpen && (
         <DetailsFrame>
           <p>
