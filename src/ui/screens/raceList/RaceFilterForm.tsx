@@ -37,7 +37,7 @@ export const RaceFilterForm: React.FC<RaceFilterFormProps> = ({
       />
       <datalist id={umaNameId}>
         {umaNames.map((umaName) => (
-          <option>{umaName}</option>
+          <option key={umaName}>{umaName}</option>
         ))}
       </datalist>
     </form>
