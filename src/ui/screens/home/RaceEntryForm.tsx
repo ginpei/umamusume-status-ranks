@@ -87,6 +87,7 @@ export const RaceEntryForm: React.FC<{
         <div data-area="umaClass">
           <NiceListBox
             disabled={disabled}
+            direction="horizontal"
             label="級"
             onChange={(v) => onValueChange("umaClass", v)}
             options={umaClassOptions}
@@ -276,8 +277,9 @@ const Frame = styled.div`
   display: grid;
   gap: 1em;
   grid-template:
-    "umaName       umaName       umaName       umaClass      umaClass        "
-    "raceTitle     raceTitle     raceTitle     umaClass      umaClass        "
+    "umaName       umaName       umaName       umaName       umaName         "
+    "umaClass      umaClass      umaClass      umaClass      umaClass        "
+    "raceTitle     raceTitle     raceTitle     raceTitle     raceTitle       "
     "tadunaComment tadunaComment tadunaComment tadunaComment tadunaComment   "
     "speedRank     staminaRank   powerRank     gutRank       intelligenceRank"
     "speedStatus   staminaStatus powerStatus   gutStatus     intelligenceStatus"

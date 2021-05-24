@@ -7,7 +7,7 @@ import { useRef } from "react";
 import { Node, Selection } from "../../misc/react-types-shared";
 import styles from "./NiceListBox.module.scss";
 
-export interface NiceListBoxProps extends SelectionOptions {
+export interface NiceListBoxProps extends SelectList, SelectionOptions {
   disabled?: boolean;
   onChange: SymbolSelectionChangeHandler;
   options: NiceListBoxOption[];
@@ -15,12 +15,18 @@ export interface NiceListBoxProps extends SelectionOptions {
   width?: string;
 }
 
+export type NiceListBoxDirection = "vertical" | "horizontal";
+
 export interface NiceListBoxOption {
   name: string;
   value: string;
 }
 
 export type SymbolSelectionChangeHandler = (option: string | undefined) => void;
+
+interface SelectList {
+  direction?: NiceListBoxDirection;
+}
 
 interface SelectionOptions {
   label: string;
@@ -34,6 +40,7 @@ interface OptionProps<T> {
 
 export const NiceListBox: React.VFC<NiceListBoxProps> = ({
   disabled,
+  direction,
   label,
   onChange,
   options,
@@ -55,6 +62,7 @@ export const NiceListBox: React.VFC<NiceListBoxProps> = ({
     <>
       <Select
         disabledKeys={disabledKeys}
+        direction={direction}
         label={label}
         onSelectionChange={onSelectionChange}
         selectedKeys={[value]}
@@ -70,7 +78,7 @@ export const NiceListBox: React.VFC<NiceListBoxProps> = ({
 };
 
 function Select<T extends Record<string, unknown>>(
-  props: ListProps<T> & SelectionOptions
+  props: ListProps<T> & SelectList & SelectionOptions
 ): JSX.Element {
   const state = useListState(props);
   const ref = useRef() as React.RefObject<HTMLUListElement>;
@@ -81,7 +89,12 @@ function Select<T extends Record<string, unknown>>(
       <div {...labelProps} className={styles.Select_label}>
         {props.label}
       </div>
-      <ul {...listBoxProps} className={styles.Select_list} ref={ref}>
+      <ul
+        {...listBoxProps}
+        className={styles.Select_list}
+        data-direction={props.direction}
+        ref={ref}
+      >
         {Array.from(state.collection).map((item) => (
           <Option key={item.key} item={item} state={state} />
         ))}
