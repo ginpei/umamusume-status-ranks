@@ -1,4 +1,5 @@
 import { useState } from "react";
+import styled from "styled-components";
 import { useCurrentUser, useLoggedIn } from "../../../data/CurrentUserContext";
 import { isUmaClass, UmaClass } from "../../../data/Race";
 import {
@@ -97,9 +98,14 @@ const RegisterPageContent: React.FC<{
         onChange={onNewFormChange}
         onSubmit={onNewFormSubmit}
       />
+      <Spacer />
     </>
   );
 };
+
+const Spacer = styled.div`
+  height: 50vh;
+`;
 
 function useDefaultRaceEntry(): Partial<RaceEntry> {
   const query = useQuery();
