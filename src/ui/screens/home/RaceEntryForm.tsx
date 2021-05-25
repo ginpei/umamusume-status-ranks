@@ -111,7 +111,15 @@ export const RaceEntryForm: React.FC<{
             label="たづなさん評価"
             name="tadunaComment"
             onChange={(v) => onValueChange("tadunaComment", v)}
-            options={["1着争い", "有力", "上位入着", "平均的"]}
+            options={[
+              "1着争い",
+              "有力",
+              "上位入着",
+              "平均的",
+              "一発に期待",
+              "距離適性が合っていない",
+              "バ場適性が合っていない",
+            ]}
             placeholder="1着争い, 有力, 上位入着, 平均的"
             value={entry.tadunaComment}
             width="100%"
@@ -245,8 +253,12 @@ export const RaceEntryForm: React.FC<{
               "実力は完全に上位",
               "素質は負けていません",
               "引けを取りません",
+              "人気と実力",
               "逆転を狙える",
+              "いい感じに気合が",
               "これ以上ない仕上がり",
+              "好走を期待",
+              "健闘を期待",
             ]}
             placeholder="完全に上位, 素質は負けていません, 引けを取りません"
             value={entry.commentatorComment}
