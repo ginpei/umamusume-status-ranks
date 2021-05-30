@@ -1,6 +1,5 @@
-import { useEffect, useState } from "react";
 import { umaClasses } from "../../../data/Race";
-import { isEmptyRaceFilter, RaceFilterHandler } from "../../../data/RaceFilter";
+import { RaceFilterHandler } from "../../../data/RaceFilter";
 import { useRaceFilterStore } from "../../../data/RaceFilterHooks";
 import { rootPath } from "../../../misc";
 import { BasicLayout } from "../basicLayout/BasicLayout";
@@ -13,7 +12,6 @@ export function raceListPagePath(): string {
 
 export const RaceListPage: React.FC = () => {
   const [filter, setFilter] = useRaceFilterStore();
-  const filterFormOpen = !isEmptyRaceFilter(filter);
 
   const onFilterChange: RaceFilterHandler = (newFilter) => {
     setFilter(newFilter);
@@ -31,7 +29,7 @@ export const RaceListPage: React.FC = () => {
           【ウマ娘】全レースカレンダー(ウマ娘目標付き) ver1.2.1 - Google Sheets
         </a>
       </p>
-      <details open={filterFormOpen}>
+      <details open>
         <summary>フィルター</summary>
         <RaceFilterForm filter={filter} onChange={onFilterChange} />
       </details>

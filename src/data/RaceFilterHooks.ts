@@ -4,8 +4,12 @@ import { createRaceFilter, RaceFilter, RaceFilterHandler } from "./RaceFilter";
 
 const raceFilterStoreName = "umamusume-status-ranks--raceFilter";
 
+const defaultFilter = createRaceFilter({
+  grades: ["G1", "G2", "G3"],
+});
+
 export function useRaceFilterStore(): [RaceFilter, RaceFilterHandler] {
-  const [filter, setFilter] = useState(loadRaceFilter() || createRaceFilter());
+  const [filter, setFilter] = useState(loadRaceFilter() || defaultFilter);
 
   useEffect(() => {
     saveRaceFilter(filter);
