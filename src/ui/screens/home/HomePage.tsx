@@ -16,7 +16,7 @@ export const HomePage: React.FC = () => {
           <Link to={registerPagePath()}>出走記録を追加</Link>
         </li>
         <li>
-          <Link to={loginPagePath()}>ログイン</Link>
+          <Link to={loginPagePath()}>ログイン / ログアウト</Link>
         </li>
       </ul>
       <h1>外部リンク🚀</h1>
