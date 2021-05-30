@@ -1,6 +1,5 @@
 import { Checkbox } from "@react-spectrum/checkbox";
 import { useEffect, useMemo, useState } from "react";
-import styled from "styled-components";
 import {
   raceDistanceCategories,
   RaceDistanceCategory,
@@ -12,6 +11,7 @@ import {
 } from "../../../data/Race";
 import { RaceFilter, RaceFilterHandler } from "../../../data/RaceFilter";
 import { TextField } from "../../../vendor/TextField";
+import { LabelText } from "../../stable/LabelText";
 
 export interface RaceFilterFormProps {
   filter: RaceFilter;
@@ -150,12 +150,3 @@ export const RaceFilterForm: React.FC<RaceFilterFormProps> = ({
     </form>
   );
 };
-
-const LabelText = styled.span`
-  color: var(
-    --spectrum-alias-label-text-color,
-    var(--spectrum-global-color-gray-700)
-  );
-  font-size: var(--spectrum-global-dimension-font-size-75);
-  font-weight: var(--spectrum-global-font-weight-regular, 400);
-`;
