@@ -7,9 +7,9 @@ import { fetchRecentRaceEntries } from "../../../data/RaceEntryDb";
 import { db } from "../../../gp-firebase/firebase";
 import { printError } from "../../../misc";
 import { BasicLayout } from "../basicLayout/BasicLayout";
-import { RaceEntryList } from "./RaceEntryList";
-import { NotFoundScreen } from "../misc/NotFoundScreen";
+import { NotFoundScreen } from "../notFound/NotFoundScreen";
 import { raceViewPagePath } from "../raceView/RaceViewPage";
+import { RaceEntryList } from "./RaceEntryList";
 
 export function entryListPagePath(raceName: string): string {
   return `${raceViewPagePath(raceName)}entries/`;

@@ -2,10 +2,10 @@ import { Link } from "react-router-dom";
 import { useLoggedIn } from "../../../data/CurrentUserContext";
 import { rootPath } from "../../../misc";
 import { BasicLayout } from "../basicLayout/BasicLayout";
-import { LoginScreen } from "../misc/LoginScreen";
-import { LogoutForm } from "../misc/LogoutForm";
+import { LoginScreen } from "../loginScreen/LoginScreen";
+import { LogoutForm } from "../../stateful/LogoutForm";
 import { raceListPagePath } from "../raceList/RaceListPage";
-import { LoginForm } from "./LoginForm";
+import { LoginForm } from "../../stateful/LoginForm";
 
 export function loginPagePath(): string {
   return `${rootPath()}login/`;

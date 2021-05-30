@@ -6,8 +6,8 @@ import {
   entryListPagePath,
 } from "../ui/screens/entryList/EntryListPage";
 import { HomePage } from "../ui/screens/home/HomePage";
-import { LoginPage, loginPagePath } from "../ui/screens/login/LoginPage";
-import { NotFoundScreen } from "../ui/screens/misc/NotFoundScreen";
+import { LoginPage, loginPagePath } from "../ui/screens/loginPage/LoginPage";
+import { NotFoundScreen } from "../ui/screens/notFound/NotFoundScreen";
 import {
   RaceListPage,
   raceListPagePath,

@@ -11,9 +11,9 @@ import { saveRaceEntry } from "../../../data/RaceEntryDb";
 import { db } from "../../../gp-firebase/firebase";
 import { getErrorMessage, rootPath } from "../../../misc";
 import { useQuery } from "../../../misc/useQuery";
+import { LoginFormWithMessage } from "../../stateful/LoginForm";
 import { BasicLayout } from "../basicLayout/BasicLayout";
 import { RaceEntryForm } from "../home/RaceEntryForm";
-import { LoginFormWithMessage } from "../login/LoginForm";
 
 export function registerPagePath(): string {
   return `${rootPath()}register/`;

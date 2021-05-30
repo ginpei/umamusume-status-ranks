@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { auth } from "../../../gp-firebase/firebase";
+import { LoginForm } from "../../stateful/LoginForm";
+import { LogoutForm } from "../../stateful/LogoutForm";
 import { BasicLayout } from "../basicLayout/BasicLayout";
-import { LoginForm } from "../login/LoginForm";
-import { LogoutForm } from "./LogoutForm";
 
 export const LoginScreen: React.FC = () => {
   const [loggedIn, setLoggedIn] = useState(false);

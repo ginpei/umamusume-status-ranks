@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { BasicLayout } from "../basicLayout/BasicLayout";
-import { loginPagePath } from "../login/LoginPage";
+import { loginPagePath } from "../loginPage/LoginPage";
 import { raceListPagePath } from "../raceList/RaceListPage";
 import { registerPagePath } from "../register/RegisterPage";
 

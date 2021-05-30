@@ -1,6 +1,6 @@
 import firebase from "firebase/app";
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
-import { auth } from "../../../gp-firebase/firebase";
+import { auth } from "../../gp-firebase/firebase";
 
 const signInOptions = [
   firebase.auth.TwitterAuthProvider.PROVIDER_ID,
