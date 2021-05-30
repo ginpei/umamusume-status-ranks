@@ -13,11 +13,7 @@ export function raceListPagePath(): string {
 
 export const RaceListPage: React.FC = () => {
   const [filter, setFilter] = useRaceFilterStore();
-  const [filterFormOpen, setFilterFormOpen] = useState(false);
-
-  useEffect(() => {
-    setFilterFormOpen(!isEmptyRaceFilter(filter));
-  }, []);
+  const filterFormOpen = !isEmptyRaceFilter(filter);
 
   const onFilterChange: RaceFilterHandler = (newFilter) => {
     setFilter(newFilter);
