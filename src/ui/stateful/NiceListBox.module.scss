@@ -4,7 +4,7 @@
 
 .Select_label {
   color: var(--spectrum-alias-label-text-color,var(--spectrum-global-color-gray-700));
-  font-size: var(--spectrum-global-dimension-font-size-75);
+  font-size: var(--niceListBox-SelectLabel-fontSize, var(--spectrum-global-dimension-font-size-75));
   -webkit-font-smoothing: subpixel-antialiased;
   -moz-osx-font-smoothing: auto;
   font-smooth: auto;
