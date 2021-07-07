@@ -97,6 +97,7 @@ const RegisterPageContent: React.FC<{
         entry={entry}
         onChange={onNewFormChange}
         onSubmit={onNewFormSubmit}
+        submitLabel="OK"
       />
       <Spacer />
     </>

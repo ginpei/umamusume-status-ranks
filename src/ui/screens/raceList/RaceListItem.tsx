@@ -1,8 +1,19 @@
-import { ToggleButton } from "@react-spectrum/button";
-import { useState } from "react";
+/* eslint-disable import/no-extraneous-dependencies */
+import { ActionButton, Button } from "@react-spectrum/button";
+import { ButtonGroup } from "@react-spectrum/buttongroup";
+import { Dialog, DialogTrigger } from "@react-spectrum/dialog";
+import { Content } from "@react-spectrum/view";
+import { useEffect, useState } from "react";
+
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+import { useCurrentUser } from "../../../data/CurrentUserContext";
 import { Race, raceDistanceToCategory } from "../../../data/Race";
+import { createRaceEntry, RaceEntryCallback } from "../../../data/RaceEntry";
+import { saveRaceEntry } from "../../../data/RaceEntryDb";
+import { db } from "../../../gp-firebase/firebase";
+import { getErrorMessage } from "../../../misc";
+import { RaceEntryForm } from "../home/RaceEntryForm";
 import { raceViewPagePath } from "../raceView/RaceViewPage";
 import { registerPagePathWithQuery } from "../register/RegisterPage";
 import { ModerateToggleButton } from "./ModerateToggleButton";
@@ -61,6 +72,9 @@ export const RaceListItem: React.FC<RaceListItemProps> = ({
             >
               出走記録を追加
             </Link>
+          </p>
+          <p>
+            <RegisterButton umaName={umaName} raceTitle={race.title} />
           </p>
         </DetailsFrame>
       )}
@@ -155,4 +169,87 @@ const DetailInlineItem = styled.span`
   &:first-child {
     margin-left: 0;
   }
+`;
+
+const RegisterButton: React.FC<{ umaName: string; raceTitle: string }> = ({
+  umaName,
+  raceTitle,
+}) => {
+  const user = useCurrentUser();
+  const [entry, setEntry] = useState(createRaceEntry({ umaName, raceTitle }));
+  const [errorMessage, setErrorMessage] = useState("");
+  const [working, setWorking] = useState(false);
+
+  useEffect(() => {
+    if (!errorMessage) {
+      return;
+    }
+
+    // eslint-disable-next-line no-alert
+    window.alert(errorMessage);
+    setErrorMessage("");
+  }, [errorMessage]);
+
+  const onNewFormChange: RaceEntryCallback = (newEntry) => {
+    setEntry(newEntry);
+  };
+
+  const onNewFormSubmit = async () => {
+    try {
+      setWorking(true);
+
+      await saveRaceEntry(db, { ...entry, userId: user.id });
+
+      setEntry(
+        createRaceEntry({
+          spGolshiChanMode2021: entry.spGolshiChanMode2021,
+          umaClass: entry.umaClass,
+          umaName: entry.umaName,
+        })
+      );
+    } catch (error) {
+      setErrorMessage(getErrorMessage(error));
+    } finally {
+      setWorking(false);
+    }
+  };
+
+  return (
+    <DialogTrigger>
+      <ActionButton>出走記録を追加</ActionButton>
+      {(close) => (
+        <Dialog>
+          <Content>
+            <DialogRaceEntryFormStyleProvider>
+              <RaceEntryForm
+                disabled={working}
+                entry={entry}
+                onChange={onNewFormChange}
+                onSubmit={onNewFormSubmit}
+                submitLabel={""}
+              />
+            </DialogRaceEntryFormStyleProvider>
+          </Content>
+          <ButtonGroup>
+            <Button variant="secondary" onPress={close}>
+              Cancel
+            </Button>
+            <Button variant="cta" onPress={onNewFormSubmit}>
+              Confirm
+            </Button>
+          </ButtonGroup>
+        </Dialog>
+      )}
+    </DialogTrigger>
+  );
+};
+
+const DialogRaceEntryFormStyleProvider = styled.div`
+  // overwrite to shrink inputs
+  // (they don't have own named vars)
+  --spectrum-global-dimension-size-150: min(3vw, 15px); // padding
+  --spectrum-global-dimension-size-600: min(1vw, 48px); // min-width
+
+  // overwrite to keep text one line
+  --spectrum-global-dimension-font-size-75: 3vw;
 `;

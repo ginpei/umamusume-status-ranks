@@ -25,7 +25,8 @@ export const RaceEntryForm: React.FC<{
   entry: RaceEntry;
   onChange: RaceEntryCallback;
   onSubmit: RaceEntryCallback;
-}> = ({ disabled, entry, onChange, onSubmit }) => {
+  submitLabel: string;
+}> = ({ disabled, entry, onChange, onSubmit, submitLabel }) => {
   const onValueChange = (name: keyof RaceEntry, value: string | undefined) => {
     if (value === undefined) {
       return;
@@ -276,11 +277,13 @@ export const RaceEntryForm: React.FC<{
             ゴルシちゃんモード (2021)
           </Checkbox>
         </div> */}
-        <div data-area="submit">
-          <ActionButton type="submit" width="100%">
-            OK
-          </ActionButton>
-        </div>
+        {submitLabel && (
+          <div data-area="submit">
+            <ActionButton type="submit" width="100%">
+              {submitLabel}
+            </ActionButton>
+          </div>
+        )}
       </Frame>
     </Form>
   );
@@ -288,7 +291,7 @@ export const RaceEntryForm: React.FC<{
 
 const Frame = styled.div`
   display: grid;
-  gap: 1em;
+  gap: 1em 0.5em;
   grid-template:
     "umaName       umaName       umaName       umaName       umaName         "
     "umaClass      umaClass      umaClass      umaClass      umaClass        "
